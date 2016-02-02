@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE113F8B1C60A35300DDD73A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113F8A1C60A35300DDD73A /* main.m */; };
+		CE113F8E1C60A35300DDD73A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113F8D1C60A35300DDD73A /* AppDelegate.m */; };
+		CE113F911C60A35300DDD73A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113F901C60A35300DDD73A /* ViewController.m */; };
+		CE113F941C60A35300DDD73A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE113F921C60A35300DDD73A /* Main.storyboard */; };
+		CE113F971C60A35300DDD73A /* Fridge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE113F951C60A35300DDD73A /* Fridge.xcdatamodeld */; };
+		CE113F991C60A35300DDD73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE113F981C60A35300DDD73A /* Assets.xcassets */; };
+		CE113F9C1C60A35300DDD73A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE113F9A1C60A35300DDD73A /* LaunchScreen.storyboard */; };
+		CE113FA71C60A35300DDD73A /* FridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FA61C60A35300DDD73A /* FridgeTests.m */; };
+		CE113FB21C60A35300DDD73A /* FridgeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FB11C60A35300DDD73A /* FridgeUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE113FA31C60A35300DDD73A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE113F7E1C60A35300DDD73A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE113F851C60A35300DDD73A;
+			remoteInfo = Fridge;
+		};
+		CE113FAE1C60A35300DDD73A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE113F7E1C60A35300DDD73A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE113F851C60A35300DDD73A;
+			remoteInfo = Fridge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CE113F861C60A35300DDD73A /* Fridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE113F8A1C60A35300DDD73A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE113F8C1C60A35300DDD73A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE113F8D1C60A35300DDD73A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE113F8F1C60A35300DDD73A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CE113F901C60A35300DDD73A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CE113F931C60A35300DDD73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE113F961C60A35300DDD73A /* Fridge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fridge.xcdatamodel; sourceTree = "<group>"; };
+		CE113F981C60A35300DDD73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE113F9B1C60A35300DDD73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE113F9D1C60A35300DDD73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE113FA21C60A35300DDD73A /* FridgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE113FA61C60A35300DDD73A /* FridgeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FridgeTests.m; sourceTree = "<group>"; };
+		CE113FA81C60A35300DDD73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE113FAD1C60A35300DDD73A /* FridgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FridgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE113FB11C60A35300DDD73A /* FridgeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FridgeUITests.m; sourceTree = "<group>"; };
+		CE113FB31C60A35300DDD73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE113F831C60A35300DDD73A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE113F9F1C60A35300DDD73A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE113FAA1C60A35300DDD73A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE113F7D1C60A35300DDD73A = {
+			isa = PBXGroup;
+			children = (
+				CE113F881C60A35300DDD73A /* Fridge */,
+				CE113FA51C60A35300DDD73A /* FridgeTests */,
+				CE113FB01C60A35300DDD73A /* FridgeUITests */,
+				CE113F871C60A35300DDD73A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE113F871C60A35300DDD73A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE113F861C60A35300DDD73A /* Fridge.app */,
+				CE113FA21C60A35300DDD73A /* FridgeTests.xctest */,
+				CE113FAD1C60A35300DDD73A /* FridgeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE113F881C60A35300DDD73A /* Fridge */ = {
+			isa = PBXGroup;
+			children = (
+				CE113F8C1C60A35300DDD73A /* AppDelegate.h */,
+				CE113F8D1C60A35300DDD73A /* AppDelegate.m */,
+				CE113F8F1C60A35300DDD73A /* ViewController.h */,
+				CE113F901C60A35300DDD73A /* ViewController.m */,
+				CE113F921C60A35300DDD73A /* Main.storyboard */,
+				CE113F981C60A35300DDD73A /* Assets.xcassets */,
+				CE113F9A1C60A35300DDD73A /* LaunchScreen.storyboard */,
+				CE113F9D1C60A35300DDD73A /* Info.plist */,
+				CE113F951C60A35300DDD73A /* Fridge.xcdatamodeld */,
+				CE113F891C60A35300DDD73A /* Supporting Files */,
+			);
+			path = Fridge;
+			sourceTree = "<group>";
+		};
+		CE113F891C60A35300DDD73A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE113F8A1C60A35300DDD73A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE113FA51C60A35300DDD73A /* FridgeTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE113FA61C60A35300DDD73A /* FridgeTests.m */,
+				CE113FA81C60A35300DDD73A /* Info.plist */,
+			);
+			path = FridgeTests;
+			sourceTree = "<group>";
+		};
+		CE113FB01C60A35300DDD73A /* FridgeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CE113FB11C60A35300DDD73A /* FridgeUITests.m */,
+				CE113FB31C60A35300DDD73A /* Info.plist */,
+			);
+			path = FridgeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE113F851C60A35300DDD73A /* Fridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE113FB61C60A35300DDD73A /* Build configuration list for PBXNativeTarget "Fridge" */;
+			buildPhases = (
+				CE113F821C60A35300DDD73A /* Sources */,
+				CE113F831C60A35300DDD73A /* Frameworks */,
+				CE113F841C60A35300DDD73A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fridge;
+			productName = Fridge;
+			productReference = CE113F861C60A35300DDD73A /* Fridge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE113FA11C60A35300DDD73A /* FridgeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE113FB91C60A35300DDD73A /* Build configuration list for PBXNativeTarget "FridgeTests" */;
+			buildPhases = (
+				CE113F9E1C60A35300DDD73A /* Sources */,
+				CE113F9F1C60A35300DDD73A /* Frameworks */,
+				CE113FA01C60A35300DDD73A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE113FA41C60A35300DDD73A /* PBXTargetDependency */,
+			);
+			name = FridgeTests;
+			productName = FridgeTests;
+			productReference = CE113FA21C60A35300DDD73A /* FridgeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CE113FAC1C60A35300DDD73A /* FridgeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE113FBC1C60A35300DDD73A /* Build configuration list for PBXNativeTarget "FridgeUITests" */;
+			buildPhases = (
+				CE113FA91C60A35300DDD73A /* Sources */,
+				CE113FAA1C60A35300DDD73A /* Frameworks */,
+				CE113FAB1C60A35300DDD73A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE113FAF1C60A35300DDD73A /* PBXTargetDependency */,
+			);
+			name = FridgeUITests;
+			productName = FridgeUITests;
+			productReference = CE113FAD1C60A35300DDD73A /* FridgeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE113F7E1C60A35300DDD73A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = BZ;
+				TargetAttributes = {
+					CE113F851C60A35300DDD73A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = MR5E9K3P87;
+					};
+					CE113FA11C60A35300DDD73A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = MR5E9K3P87;
+						TestTargetID = CE113F851C60A35300DDD73A;
+					};
+					CE113FAC1C60A35300DDD73A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = MR5E9K3P87;
+						TestTargetID = CE113F851C60A35300DDD73A;
+					};
+				};
+			};
+			buildConfigurationList = CE113F811C60A35300DDD73A /* Build configuration list for PBXProject "Fridge" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE113F7D1C60A35300DDD73A;
+			productRefGroup = CE113F871C60A35300DDD73A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE113F851C60A35300DDD73A /* Fridge */,
+				CE113FA11C60A35300DDD73A /* FridgeTests */,
+				CE113FAC1C60A35300DDD73A /* FridgeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE113F841C60A35300DDD73A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE113F9C1C60A35300DDD73A /* LaunchScreen.storyboard in Resources */,
+				CE113F991C60A35300DDD73A /* Assets.xcassets in Resources */,
+				CE113F941C60A35300DDD73A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE113FA01C60A35300DDD73A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE113FAB1C60A35300DDD73A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE113F821C60A35300DDD73A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE113F971C60A35300DDD73A /* Fridge.xcdatamodeld in Sources */,
+				CE113F911C60A35300DDD73A /* ViewController.m in Sources */,
+				CE113F8E1C60A35300DDD73A /* AppDelegate.m in Sources */,
+				CE113F8B1C60A35300DDD73A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE113F9E1C60A35300DDD73A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE113FA71C60A35300DDD73A /* FridgeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE113FA91C60A35300DDD73A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE113FB21C60A35300DDD73A /* FridgeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE113FA41C60A35300DDD73A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE113F851C60A35300DDD73A /* Fridge */;
+			targetProxy = CE113FA31C60A35300DDD73A /* PBXContainerItemProxy */;
+		};
+		CE113FAF1C60A35300DDD73A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE113F851C60A35300DDD73A /* Fridge */;
+			targetProxy = CE113FAE1C60A35300DDD73A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE113F921C60A35300DDD73A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE113F931C60A35300DDD73A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE113F9A1C60A35300DDD73A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE113F9B1C60A35300DDD73A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE113FB41C60A35300DDD73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		CE113FB51C60A35300DDD73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE113FB71C60A35300DDD73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Fridge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BZ.Fridge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CE113FB81C60A35300DDD73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Fridge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BZ.Fridge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CE113FBA1C60A35300DDD73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FridgeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BZ.FridgeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fridge.app/Fridge";
+			};
+			name = Debug;
+		};
+		CE113FBB1C60A35300DDD73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FridgeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BZ.FridgeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fridge.app/Fridge";
+			};
+			name = Release;
+		};
+		CE113FBD1C60A35300DDD73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FridgeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BZ.FridgeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Fridge;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		CE113FBE1C60A35300DDD73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FridgeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BZ.FridgeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Fridge;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE113F811C60A35300DDD73A /* Build configuration list for PBXProject "Fridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE113FB41C60A35300DDD73A /* Debug */,
+				CE113FB51C60A35300DDD73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE113FB61C60A35300DDD73A /* Build configuration list for PBXNativeTarget "Fridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE113FB71C60A35300DDD73A /* Debug */,
+				CE113FB81C60A35300DDD73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CE113FB91C60A35300DDD73A /* Build configuration list for PBXNativeTarget "FridgeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE113FBA1C60A35300DDD73A /* Debug */,
+				CE113FBB1C60A35300DDD73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CE113FBC1C60A35300DDD73A /* Build configuration list for PBXNativeTarget "FridgeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE113FBD1C60A35300DDD73A /* Debug */,
+				CE113FBE1C60A35300DDD73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CE113F951C60A35300DDD73A /* Fridge.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CE113F961C60A35300DDD73A /* Fridge.xcdatamodel */,
+			);
+			currentVersion = CE113F961C60A35300DDD73A /* Fridge.xcdatamodel */;
+			path = Fridge.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CE113F7E1C60A35300DDD73A /* Project object */;
+}
