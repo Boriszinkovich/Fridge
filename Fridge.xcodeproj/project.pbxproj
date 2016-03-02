@@ -7,15 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57750996DA3C6B91808E226E /* libPods-Fridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF063E3FD2AAEDCFF07936F /* libPods-Fridge.a */; };
+		CE043C781C6A645600A5B3DE /* BZDynamicHeightUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE043C771C6A645600A5B3DE /* BZDynamicHeightUILabel.m */; };
+		CE04D1721C61E62300BBC1B3 /* BZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D1711C61E62300BBC1B3 /* BZUtils.m */; };
+		CE04D1751C61E8AE00BBC1B3 /* BZFridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D1741C61E8AE00BBC1B3 /* BZFridgeViewController.m */; };
+		CE04D1781C61EBE100BBC1B3 /* BZRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D1771C61EBE100BBC1B3 /* BZRecipeViewController.m */; };
+		CE04D17B1C61F35F00BBC1B3 /* BZHelpDevelopersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D17A1C61F35F00BBC1B3 /* BZHelpDevelopersViewController.m */; };
+		CE04D1891C62145500BBC1B3 /* BZRecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D1881C62145500BBC1B3 /* BZRecipeCell.m */; };
 		CE113F8B1C60A35300DDD73A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113F8A1C60A35300DDD73A /* main.m */; };
-		CE113F8E1C60A35300DDD73A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113F8D1C60A35300DDD73A /* AppDelegate.m */; };
-		CE113F911C60A35300DDD73A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113F901C60A35300DDD73A /* ViewController.m */; };
+		CE113F8E1C60A35300DDD73A /* BZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113F8D1C60A35300DDD73A /* BZAppDelegate.m */; };
 		CE113F941C60A35300DDD73A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE113F921C60A35300DDD73A /* Main.storyboard */; };
 		CE113F971C60A35300DDD73A /* Fridge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE113F951C60A35300DDD73A /* Fridge.xcdatamodeld */; };
 		CE113F991C60A35300DDD73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE113F981C60A35300DDD73A /* Assets.xcassets */; };
 		CE113F9C1C60A35300DDD73A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE113F9A1C60A35300DDD73A /* LaunchScreen.storyboard */; };
 		CE113FA71C60A35300DDD73A /* FridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FA61C60A35300DDD73A /* FridgeTests.m */; };
 		CE113FB21C60A35300DDD73A /* FridgeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FB11C60A35300DDD73A /* FridgeUITests.m */; };
+		CE113FDE1C6142FC00DDD73A /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FDD1C6142FC00DDD73A /* TGLGuillotineMenu.m */; };
+		CE78EB0C1C6B845800168088 /* Fridge.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CE78EB0B1C6B845800168088 /* Fridge.sqlite */; };
+		CEB4E2931C635EAA00F3BE7A /* BZAllRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */; };
+		CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2951C635ECD00F3BE7A /* BZFavouritesViewController.m */; };
+		CEB4E2981C6373F300F3BE7A /* BZAllRecipesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB4E2971C6373F300F3BE7A /* BZAllRecipesCell.xib */; };
+		CEB4E29A1C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB4E2991C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib */; };
+		CEB4E29D1C63782D00F3BE7A /* BZRecipeFavouritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E29C1C63782D00F3BE7A /* BZRecipeFavouritesCell.m */; };
+		CEBB9D511C662AE5000BC67B /* BZSearchRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D501C662AE5000BC67B /* BZSearchRecipesViewController.m */; };
+		CEBB9D641C668929000BC67B /* BZDish+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D5D1C668929000BC67B /* BZDish+CoreDataProperties.m */; };
+		CEBB9D651C668929000BC67B /* BZDish.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D5F1C668929000BC67B /* BZDish.m */; };
+		CEBB9D661C668929000BC67B /* BZIngridient+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D611C668929000BC67B /* BZIngridient+CoreDataProperties.m */; };
+		CEBB9D671C668929000BC67B /* BZIngridient.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D631C668929000BC67B /* BZIngridient.m */; };
+		CEE5C7D41C68A652009C85BC /* XLHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7D31C68A652009C85BC /* XLHeaderView.m */; };
+		CEE5C7D81C68A6B7009C85BC /* BZDetailReceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7D71C68A6B7009C85BC /* BZDetailReceptViewController.m */; };
+		CEE5C7E01C690CA0009C85BC /* BZDetailRecipeCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5C7DF1C690CA0009C85BC /* BZDetailRecipeCells.xib */; };
+		CEE5C7E31C6912A2009C85BC /* BZIngridientsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7E21C6912A2009C85BC /* BZIngridientsCell.m */; };
+		CEE5C7E61C6912E6009C85BC /* BZWayToCookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7E51C6912E6009C85BC /* BZWayToCookCell.m */; };
+		CEE5C7EE1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5C7ED1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib */; };
+		CEE5C7F31C6938F4009C85BC /* BZRecipeStepsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7F21C6938F4009C85BC /* BZRecipeStepsCell.m */; };
+		CEFD5FBA1C64C0E6001B1621 /* BZIngridientAddedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD5FB91C64C0E6001B1621 /* BZIngridientAddedCell.m */; };
+		CEFD5FBD1C64C145001B1621 /* BZIngridientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD5FBC1C64C145001B1621 /* BZIngridientCell.m */; };
+		CEFE7B2C1C6CAB25007C2D07 /* BZChoosePortionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFE7B2B1C6CAB25007C2D07 /* BZChoosePortionsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,12 +64,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AF063E3FD2AAEDCFF07936F /* libPods-Fridge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fridge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59EC0CDE40EE078B700F6355 /* Pods-Fridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fridge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fridge/Pods-Fridge.release.xcconfig"; sourceTree = "<group>"; };
+		94711F8C4D984F63C19E41B2 /* Pods-Fridge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fridge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fridge/Pods-Fridge.debug.xcconfig"; sourceTree = "<group>"; };
+		CE043C761C6A645600A5B3DE /* BZDynamicHeightUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDynamicHeightUILabel.h; sourceTree = "<group>"; };
+		CE043C771C6A645600A5B3DE /* BZDynamicHeightUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZDynamicHeightUILabel.m; sourceTree = "<group>"; };
+		CE04D1701C61E62300BBC1B3 /* BZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZUtils.h; path = TGLMenu/BZUtils.h; sourceTree = "<group>"; };
+		CE04D1711C61E62300BBC1B3 /* BZUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BZUtils.m; path = TGLMenu/BZUtils.m; sourceTree = "<group>"; };
+		CE04D1731C61E8AE00BBC1B3 /* BZFridgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFridgeViewController.h; sourceTree = "<group>"; };
+		CE04D1741C61E8AE00BBC1B3 /* BZFridgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZFridgeViewController.m; sourceTree = "<group>"; };
+		CE04D1761C61EBE100BBC1B3 /* BZRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRecipeViewController.h; sourceTree = "<group>"; };
+		CE04D1771C61EBE100BBC1B3 /* BZRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRecipeViewController.m; sourceTree = "<group>"; };
+		CE04D1791C61F35F00BBC1B3 /* BZHelpDevelopersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZHelpDevelopersViewController.h; sourceTree = "<group>"; };
+		CE04D17A1C61F35F00BBC1B3 /* BZHelpDevelopersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZHelpDevelopersViewController.m; sourceTree = "<group>"; };
+		CE04D1871C62145500BBC1B3 /* BZRecipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRecipeCell.h; sourceTree = "<group>"; };
+		CE04D1881C62145500BBC1B3 /* BZRecipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRecipeCell.m; sourceTree = "<group>"; };
 		CE113F861C60A35300DDD73A /* Fridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE113F8A1C60A35300DDD73A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CE113F8C1C60A35300DDD73A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CE113F8D1C60A35300DDD73A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CE113F8F1C60A35300DDD73A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CE113F901C60A35300DDD73A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CE113F8C1C60A35300DDD73A /* BZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BZAppDelegate.h; sourceTree = "<group>"; };
+		CE113F8D1C60A35300DDD73A /* BZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BZAppDelegate.m; sourceTree = "<group>"; };
 		CE113F931C60A35300DDD73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE113F961C60A35300DDD73A /* Fridge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fridge.xcdatamodel; sourceTree = "<group>"; };
 		CE113F981C60A35300DDD73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +94,48 @@
 		CE113FAD1C60A35300DDD73A /* FridgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FridgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE113FB11C60A35300DDD73A /* FridgeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FridgeUITests.m; sourceTree = "<group>"; };
 		CE113FB31C60A35300DDD73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE113FDC1C6142FC00DDD73A /* TGLGuillotineMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGLGuillotineMenu.h; sourceTree = "<group>"; };
+		CE113FDD1C6142FC00DDD73A /* TGLGuillotineMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGLGuillotineMenu.m; sourceTree = "<group>"; };
+		CE78EB0B1C6B845800168088 /* Fridge.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fridge.sqlite; sourceTree = "<group>"; };
+		CEB4E2911C635EAA00F3BE7A /* BZAllRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZAllRecipesViewController.h; sourceTree = "<group>"; };
+		CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZAllRecipesViewController.m; sourceTree = "<group>"; };
+		CEB4E2941C635ECD00F3BE7A /* BZFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFavouritesViewController.h; sourceTree = "<group>"; };
+		CEB4E2951C635ECD00F3BE7A /* BZFavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZFavouritesViewController.m; sourceTree = "<group>"; };
+		CEB4E2971C6373F300F3BE7A /* BZAllRecipesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZAllRecipesCell.xib; sourceTree = "<group>"; };
+		CEB4E2991C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZFavouriteRecipeCell.xib; sourceTree = "<group>"; };
+		CEB4E29B1C63782D00F3BE7A /* BZRecipeFavouritesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRecipeFavouritesCell.h; sourceTree = "<group>"; };
+		CEB4E29C1C63782D00F3BE7A /* BZRecipeFavouritesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRecipeFavouritesCell.m; sourceTree = "<group>"; };
+		CEB4E2A21C63E41800F3BE7A /* BZAddToFavouriteProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BZAddToFavouriteProtocol.h; sourceTree = "<group>"; };
+		CEB4E2A31C63FDE400F3BE7A /* BZDeleteFromFavouriteProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BZDeleteFromFavouriteProtocol.h; sourceTree = "<group>"; };
+		CEBB9D4F1C662AE5000BC67B /* BZSearchRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZSearchRecipesViewController.h; sourceTree = "<group>"; };
+		CEBB9D501C662AE5000BC67B /* BZSearchRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZSearchRecipesViewController.m; sourceTree = "<group>"; };
+		CEBB9D5C1C668929000BC67B /* BZDish+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BZDish+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CEBB9D5D1C668929000BC67B /* BZDish+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BZDish+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CEBB9D5E1C668929000BC67B /* BZDish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDish.h; sourceTree = "<group>"; };
+		CEBB9D5F1C668929000BC67B /* BZDish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZDish.m; sourceTree = "<group>"; };
+		CEBB9D601C668929000BC67B /* BZIngridient+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BZIngridient+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CEBB9D611C668929000BC67B /* BZIngridient+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BZIngridient+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CEBB9D621C668929000BC67B /* BZIngridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridient.h; sourceTree = "<group>"; };
+		CEBB9D631C668929000BC67B /* BZIngridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridient.m; sourceTree = "<group>"; };
+		CEE5C7D21C68A652009C85BC /* XLHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLHeaderView.h; path = TGLMenu/XLHeaderView.h; sourceTree = "<group>"; };
+		CEE5C7D31C68A652009C85BC /* XLHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLHeaderView.m; path = TGLMenu/XLHeaderView.m; sourceTree = "<group>"; };
+		CEE5C7D61C68A6B7009C85BC /* BZDetailReceptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDetailReceptViewController.h; sourceTree = "<group>"; };
+		CEE5C7D71C68A6B7009C85BC /* BZDetailReceptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZDetailReceptViewController.m; sourceTree = "<group>"; };
+		CEE5C7DA1C68C4D8009C85BC /* BZDetailDismissedProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BZDetailDismissedProtocol.h; sourceTree = "<group>"; };
+		CEE5C7DF1C690CA0009C85BC /* BZDetailRecipeCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZDetailRecipeCells.xib; sourceTree = "<group>"; };
+		CEE5C7E11C6912A2009C85BC /* BZIngridientsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridientsCell.h; sourceTree = "<group>"; };
+		CEE5C7E21C6912A2009C85BC /* BZIngridientsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridientsCell.m; sourceTree = "<group>"; };
+		CEE5C7E41C6912E6009C85BC /* BZWayToCookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZWayToCookCell.h; sourceTree = "<group>"; };
+		CEE5C7E51C6912E6009C85BC /* BZWayToCookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZWayToCookCell.m; sourceTree = "<group>"; };
+		CEE5C7ED1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZRecipeDetailCellWayToCook.xib; sourceTree = "<group>"; };
+		CEE5C7F11C6938F4009C85BC /* BZRecipeStepsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRecipeStepsCell.h; sourceTree = "<group>"; };
+		CEE5C7F21C6938F4009C85BC /* BZRecipeStepsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRecipeStepsCell.m; sourceTree = "<group>"; };
+		CEFD5FB81C64C0E6001B1621 /* BZIngridientAddedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridientAddedCell.h; sourceTree = "<group>"; };
+		CEFD5FB91C64C0E6001B1621 /* BZIngridientAddedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridientAddedCell.m; sourceTree = "<group>"; };
+		CEFD5FBB1C64C145001B1621 /* BZIngridientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridientCell.h; sourceTree = "<group>"; };
+		CEFD5FBC1C64C145001B1621 /* BZIngridientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridientCell.m; sourceTree = "<group>"; };
+		CEFE7B2A1C6CAB25007C2D07 /* BZChoosePortionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZChoosePortionsViewController.h; sourceTree = "<group>"; };
+		CEFE7B2B1C6CAB25007C2D07 /* BZChoosePortionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZChoosePortionsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57750996DA3C6B91808E226E /* libPods-Fridge.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +164,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D175F8F6BF96C90DAA3BD54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3AF063E3FD2AAEDCFF07936F /* libPods-Fridge.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7843F72FC5EA8D44E993A547 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94711F8C4D984F63C19E41B2 /* Pods-Fridge.debug.xcconfig */,
+				59EC0CDE40EE078B700F6355 /* Pods-Fridge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE04D17C1C61F36A00BBC1B3 /* HelpDevelopersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE04D1791C61F35F00BBC1B3 /* BZHelpDevelopersViewController.h */,
+				CE04D17A1C61F35F00BBC1B3 /* BZHelpDevelopersViewController.m */,
+			);
+			name = HelpDevelopersViewController;
+			sourceTree = "<group>";
+		};
+		CE04D17D1C61F37400BBC1B3 /* RecipeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE04D1761C61EBE100BBC1B3 /* BZRecipeViewController.h */,
+				CE04D1771C61EBE100BBC1B3 /* BZRecipeViewController.m */,
+			);
+			name = RecipeViewController;
+			sourceTree = "<group>";
+		};
+		CE04D17E1C61F38000BBC1B3 /* FridgeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE04D1731C61E8AE00BBC1B3 /* BZFridgeViewController.h */,
+				CE04D1741C61E8AE00BBC1B3 /* BZFridgeViewController.m */,
+			);
+			name = FridgeViewController;
+			sourceTree = "<group>";
+		};
 		CE113F7D1C60A35300DDD73A = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +215,8 @@
 				CE113FA51C60A35300DDD73A /* FridgeTests */,
 				CE113FB01C60A35300DDD73A /* FridgeUITests */,
 				CE113F871C60A35300DDD73A /* Products */,
+				7843F72FC5EA8D44E993A547 /* Pods */,
+				4D175F8F6BF96C90DAA3BD54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,16 +233,26 @@
 		CE113F881C60A35300DDD73A /* Fridge */ = {
 			isa = PBXGroup;
 			children = (
-				CE113F8C1C60A35300DDD73A /* AppDelegate.h */,
-				CE113F8D1C60A35300DDD73A /* AppDelegate.m */,
-				CE113F8F1C60A35300DDD73A /* ViewController.h */,
-				CE113F901C60A35300DDD73A /* ViewController.m */,
+				CEFE7B221C6CA814007C2D07 /* Source */,
+				CEE5C7D51C68A65A009C85BC /* XLHeaderView */,
+				CE113FDB1C6142FC00DDD73A /* TGLMenu */,
+				CE113F8C1C60A35300DDD73A /* BZAppDelegate.h */,
+				CE113F8D1C60A35300DDD73A /* BZAppDelegate.m */,
+				CE04D1701C61E62300BBC1B3 /* BZUtils.h */,
+				CE78EB0B1C6B845800168088 /* Fridge.sqlite */,
+				CE04D1711C61E62300BBC1B3 /* BZUtils.m */,
 				CE113F921C60A35300DDD73A /* Main.storyboard */,
 				CE113F981C60A35300DDD73A /* Assets.xcassets */,
 				CE113F9A1C60A35300DDD73A /* LaunchScreen.storyboard */,
 				CE113F9D1C60A35300DDD73A /* Info.plist */,
 				CE113F951C60A35300DDD73A /* Fridge.xcdatamodeld */,
 				CE113F891C60A35300DDD73A /* Supporting Files */,
+				CEB4E2971C6373F300F3BE7A /* BZAllRecipesCell.xib */,
+				CEB4E2991C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib */,
+				CEE5C7DF1C690CA0009C85BC /* BZDetailRecipeCells.xib */,
+				CEE5C7ED1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib */,
+				CE043C761C6A645600A5B3DE /* BZDynamicHeightUILabel.h */,
+				CE043C771C6A645600A5B3DE /* BZDynamicHeightUILabel.m */,
 			);
 			path = Fridge;
 			sourceTree = "<group>";
@@ -143,6 +283,213 @@
 			path = FridgeUITests;
 			sourceTree = "<group>";
 		};
+		CE113FDB1C6142FC00DDD73A /* TGLMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CE113FDC1C6142FC00DDD73A /* TGLGuillotineMenu.h */,
+				CE113FDD1C6142FC00DDD73A /* TGLGuillotineMenu.m */,
+			);
+			path = TGLMenu;
+			sourceTree = "<group>";
+		};
+		CEB4E29E1C63815500F3BE7A /* BZAllRecipesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEB4E2911C635EAA00F3BE7A /* BZAllRecipesViewController.h */,
+				CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */,
+			);
+			name = BZAllRecipesViewController;
+			sourceTree = "<group>";
+		};
+		CEB4E29F1C63816300F3BE7A /* BZFavouritesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEB4E2941C635ECD00F3BE7A /* BZFavouritesViewController.h */,
+				CEB4E2951C635ECD00F3BE7A /* BZFavouritesViewController.m */,
+			);
+			name = BZFavouritesViewController;
+			sourceTree = "<group>";
+		};
+		CEB4E2A01C63817A00F3BE7A /* BZRecipeCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE04D1871C62145500BBC1B3 /* BZRecipeCell.h */,
+				CE04D1881C62145500BBC1B3 /* BZRecipeCell.m */,
+				CEB4E2A21C63E41800F3BE7A /* BZAddToFavouriteProtocol.h */,
+			);
+			name = BZRecipeCell;
+			sourceTree = "<group>";
+		};
+		CEB4E2A11C63818600F3BE7A /* BZRecipeFavouritesCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEB4E2A31C63FDE400F3BE7A /* BZDeleteFromFavouriteProtocol.h */,
+				CEB4E29B1C63782D00F3BE7A /* BZRecipeFavouritesCell.h */,
+				CEB4E29C1C63782D00F3BE7A /* BZRecipeFavouritesCell.m */,
+			);
+			name = BZRecipeFavouritesCell;
+			sourceTree = "<group>";
+		};
+		CEE5C7CF1C68971C009C85BC /* BZIngridientAddedCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEFD5FB81C64C0E6001B1621 /* BZIngridientAddedCell.h */,
+				CEFD5FB91C64C0E6001B1621 /* BZIngridientAddedCell.m */,
+			);
+			name = BZIngridientAddedCell;
+			sourceTree = "<group>";
+		};
+		CEE5C7D01C689728009C85BC /* BZIngridientCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEFD5FBB1C64C145001B1621 /* BZIngridientCell.h */,
+				CEFD5FBC1C64C145001B1621 /* BZIngridientCell.m */,
+			);
+			name = BZIngridientCell;
+			sourceTree = "<group>";
+		};
+		CEE5C7D11C689732009C85BC /* BZSearchRecipesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB9D4F1C662AE5000BC67B /* BZSearchRecipesViewController.h */,
+				CEBB9D501C662AE5000BC67B /* BZSearchRecipesViewController.m */,
+			);
+			name = BZSearchRecipesViewController;
+			sourceTree = "<group>";
+		};
+		CEE5C7D51C68A65A009C85BC /* XLHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5C7D21C68A652009C85BC /* XLHeaderView.h */,
+				CEE5C7D31C68A652009C85BC /* XLHeaderView.m */,
+			);
+			name = XLHeaderView;
+			sourceTree = "<group>";
+		};
+		CEE5C7D91C68A6C4009C85BC /* BZDetailReceptViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5C7D61C68A6B7009C85BC /* BZDetailReceptViewController.h */,
+				CEE5C7D71C68A6B7009C85BC /* BZDetailReceptViewController.m */,
+				CEE5C7DA1C68C4D8009C85BC /* BZDetailDismissedProtocol.h */,
+			);
+			name = BZDetailReceptViewController;
+			sourceTree = "<group>";
+		};
+		CEE5C7EB1C691318009C85BC /* BZWayToCookCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5C7E41C6912E6009C85BC /* BZWayToCookCell.h */,
+				CEE5C7E51C6912E6009C85BC /* BZWayToCookCell.m */,
+			);
+			name = BZWayToCookCell;
+			sourceTree = "<group>";
+		};
+		CEE5C7EC1C691323009C85BC /* BZIngridientsCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5C7E11C6912A2009C85BC /* BZIngridientsCell.h */,
+				CEE5C7E21C6912A2009C85BC /* BZIngridientsCell.m */,
+			);
+			name = BZIngridientsCell;
+			sourceTree = "<group>";
+		};
+		CEFE7B221C6CA814007C2D07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE7B261C6CA859007C2D07 /* Presentation */,
+				CEFE7B231C6CA820007C2D07 /* Model */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		CEFE7B231C6CA820007C2D07 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE7B251C6CA841007C2D07 /* BZIngridient */,
+				CEFE7B241C6CA830007C2D07 /* BZDish */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CEFE7B241C6CA830007C2D07 /* BZDish */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB9D5C1C668929000BC67B /* BZDish+CoreDataProperties.h */,
+				CEBB9D5D1C668929000BC67B /* BZDish+CoreDataProperties.m */,
+				CEBB9D5E1C668929000BC67B /* BZDish.h */,
+				CEBB9D5F1C668929000BC67B /* BZDish.m */,
+			);
+			name = BZDish;
+			sourceTree = "<group>";
+		};
+		CEFE7B251C6CA841007C2D07 /* BZIngridient */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB9D601C668929000BC67B /* BZIngridient+CoreDataProperties.h */,
+				CEBB9D611C668929000BC67B /* BZIngridient+CoreDataProperties.m */,
+				CEBB9D621C668929000BC67B /* BZIngridient.h */,
+				CEBB9D631C668929000BC67B /* BZIngridient.m */,
+			);
+			name = BZIngridient;
+			sourceTree = "<group>";
+		};
+		CEFE7B261C6CA859007C2D07 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE7B281C6CA8A5007C2D07 /* Cells */,
+				CEFE7B271C6CA863007C2D07 /* ViewControllers */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		CEFE7B271C6CA863007C2D07 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5C7D11C689732009C85BC /* BZSearchRecipesViewController */,
+				CEE5C7D91C68A6C4009C85BC /* BZDetailReceptViewController */,
+				CEB4E29E1C63815500F3BE7A /* BZAllRecipesViewController */,
+				CEB4E29F1C63816300F3BE7A /* BZFavouritesViewController */,
+				CE04D17E1C61F38000BBC1B3 /* FridgeViewController */,
+				CE04D17D1C61F37400BBC1B3 /* RecipeViewController */,
+				CE04D17C1C61F36A00BBC1B3 /* HelpDevelopersViewController */,
+				CEFE7B2D1C6CAB2E007C2D07 /* BZChoosePortionsViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CEFE7B281C6CA8A5007C2D07 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CEB4E2A01C63817A00F3BE7A /* BZRecipeCell */,
+				CEB4E2A11C63818600F3BE7A /* BZRecipeFavouritesCell */,
+				CEE5C7CF1C68971C009C85BC /* BZIngridientAddedCell */,
+				CEE5C7D01C689728009C85BC /* BZIngridientCell */,
+				CEE5C7EC1C691323009C85BC /* BZIngridientsCell */,
+				CEE5C7EB1C691318009C85BC /* BZWayToCookCell */,
+				CEFE7B291C6CA8CB007C2D07 /* BZRecipeStepsCell */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		CEFE7B291C6CA8CB007C2D07 /* BZRecipeStepsCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5C7F11C6938F4009C85BC /* BZRecipeStepsCell.h */,
+				CEE5C7F21C6938F4009C85BC /* BZRecipeStepsCell.m */,
+			);
+			name = BZRecipeStepsCell;
+			sourceTree = "<group>";
+		};
+		CEFE7B2D1C6CAB2E007C2D07 /* BZChoosePortionsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE7B2A1C6CAB25007C2D07 /* BZChoosePortionsViewController.h */,
+				CEFE7B2B1C6CAB25007C2D07 /* BZChoosePortionsViewController.m */,
+			);
+			name = BZChoosePortionsViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,9 +497,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE113FB61C60A35300DDD73A /* Build configuration list for PBXNativeTarget "Fridge" */;
 			buildPhases = (
+				82BF2509E6E56E2D262A28EF /* Check Pods Manifest.lock */,
 				CE113F821C60A35300DDD73A /* Sources */,
 				CE113F831C60A35300DDD73A /* Frameworks */,
 				CE113F841C60A35300DDD73A /* Resources */,
+				4A42B4D555969D918FA59842 /* Embed Pods Frameworks */,
+				76244A4907968F9E7C992505 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,8 +600,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE113F9C1C60A35300DDD73A /* LaunchScreen.storyboard in Resources */,
+				CEB4E29A1C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib in Resources */,
+				CEB4E2981C6373F300F3BE7A /* BZAllRecipesCell.xib in Resources */,
 				CE113F991C60A35300DDD73A /* Assets.xcassets in Resources */,
+				CEE5C7E01C690CA0009C85BC /* BZDetailRecipeCells.xib in Resources */,
 				CE113F941C60A35300DDD73A /* Main.storyboard in Resources */,
+				CE78EB0C1C6B845800168088 /* Fridge.sqlite in Resources */,
+				CEE5C7EE1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,15 +626,85 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4A42B4D555969D918FA59842 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fridge/Pods-Fridge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76244A4907968F9E7C992505 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fridge/Pods-Fridge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82BF2509E6E56E2D262A28EF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE113F821C60A35300DDD73A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFD5FBD1C64C145001B1621 /* BZIngridientCell.m in Sources */,
+				CE04D1751C61E8AE00BBC1B3 /* BZFridgeViewController.m in Sources */,
+				CEE5C7D81C68A6B7009C85BC /* BZDetailReceptViewController.m in Sources */,
+				CEFD5FBA1C64C0E6001B1621 /* BZIngridientAddedCell.m in Sources */,
 				CE113F971C60A35300DDD73A /* Fridge.xcdatamodeld in Sources */,
-				CE113F911C60A35300DDD73A /* ViewController.m in Sources */,
-				CE113F8E1C60A35300DDD73A /* AppDelegate.m in Sources */,
+				CEE5C7F31C6938F4009C85BC /* BZRecipeStepsCell.m in Sources */,
+				CE113FDE1C6142FC00DDD73A /* TGLGuillotineMenu.m in Sources */,
+				CEE5C7D41C68A652009C85BC /* XLHeaderView.m in Sources */,
+				CEBB9D641C668929000BC67B /* BZDish+CoreDataProperties.m in Sources */,
+				CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */,
+				CE04D1891C62145500BBC1B3 /* BZRecipeCell.m in Sources */,
+				CEE5C7E31C6912A2009C85BC /* BZIngridientsCell.m in Sources */,
+				CEFE7B2C1C6CAB25007C2D07 /* BZChoosePortionsViewController.m in Sources */,
+				CE04D17B1C61F35F00BBC1B3 /* BZHelpDevelopersViewController.m in Sources */,
+				CE04D1721C61E62300BBC1B3 /* BZUtils.m in Sources */,
+				CEBB9D661C668929000BC67B /* BZIngridient+CoreDataProperties.m in Sources */,
+				CEB4E2931C635EAA00F3BE7A /* BZAllRecipesViewController.m in Sources */,
+				CE113F8E1C60A35300DDD73A /* BZAppDelegate.m in Sources */,
+				CE043C781C6A645600A5B3DE /* BZDynamicHeightUILabel.m in Sources */,
+				CEE5C7E61C6912E6009C85BC /* BZWayToCookCell.m in Sources */,
+				CE04D1781C61EBE100BBC1B3 /* BZRecipeViewController.m in Sources */,
 				CE113F8B1C60A35300DDD73A /* main.m in Sources */,
+				CEB4E29D1C63782D00F3BE7A /* BZRecipeFavouritesCell.m in Sources */,
+				CEBB9D671C668929000BC67B /* BZIngridient.m in Sources */,
+				CEBB9D651C668929000BC67B /* BZDish.m in Sources */,
+				CEBB9D511C662AE5000BC67B /* BZSearchRecipesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,23 +843,29 @@
 		};
 		CE113FB71C60A35300DDD73A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94711F8C4D984F63C19E41B2 /* Pods-Fridge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Fridge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BZ.Fridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		CE113FB81C60A35300DDD73A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59EC0CDE40EE078B700F6355 /* Pods-Fridge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Fridge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BZ.Fridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -505,6 +936,7 @@
 				CE113FB81C60A35300DDD73A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE113FB91C60A35300DDD73A /* Build configuration list for PBXNativeTarget "FridgeTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +945,7 @@
 				CE113FBB1C60A35300DDD73A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE113FBC1C60A35300DDD73A /* Build configuration list for PBXNativeTarget "FridgeUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +954,7 @@
 				CE113FBE1C60A35300DDD73A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

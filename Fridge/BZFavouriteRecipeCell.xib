@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="recipeCellIdentifier" selectionStyle="default" indentationWidth="50" reuseIdentifier="recipeFavouriteCellIdentifier" rowHeight="120" id="BIe-O6-u4W" customClass="BZRecipeFavouritesCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BIe-O6-u4W" id="CJk-sT-bSf">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epe-7z-jfh">
+                        <rect key="frame" x="16" y="4" width="524" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yzZ-oP-Un0">
+                        <rect key="frame" x="16" y="30" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="KQ7-jf-n2l">
+                                <variation key="widthClass=compact" constant="80"/>
+                            </constraint>
+                            <constraint firstAttribute="height" constant="80" id="MBx-qU-PpI">
+                                <variation key="widthClass=compact" constant="80"/>
+                            </constraint>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="827-Xo-olF">
+                        <rect key="frame" x="106" y="30" width="434" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="750" constant="250" id="8kK-8F-i0F">
+                                <variation key="widthClass=compact" constant="250"/>
+                            </constraint>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8kK-8F-i0F"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3B-EQ-Edf">
+                        <rect key="frame" x="560" y="8" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="9ka-vF-eyP"/>
+                            <constraint firstAttribute="width" constant="30" id="yT6-AR-OOs"/>
+                        </constraints>
+                        <connections>
+                            <action selector="deleteFromFavourite:" destination="BIe-O6-u4W" eventType="touchUpInside" id="hK0-jT-JQg"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="e3B-EQ-Edf" secondAttribute="trailing" constant="10" id="7Xm-v0-AW2"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="827-Xo-olF" secondAttribute="trailing" constant="40" id="8st-BJ-Y36"/>
+                    <constraint firstItem="yzZ-oP-Un0" firstAttribute="leading" secondItem="CJk-sT-bSf" secondAttribute="leading" constant="16" id="9PT-gw-2Au"/>
+                    <constraint firstItem="827-Xo-olF" firstAttribute="top" secondItem="epe-7z-jfh" secondAttribute="bottom" constant="5" id="CpM-wU-Rip"/>
+                    <constraint firstItem="epe-7z-jfh" firstAttribute="top" secondItem="CJk-sT-bSf" secondAttribute="top" constant="4" id="Dn5-7A-xcg"/>
+                    <constraint firstItem="epe-7z-jfh" firstAttribute="leading" secondItem="CJk-sT-bSf" secondAttribute="leading" constant="16" id="EPL-Ah-8PT"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="827-Xo-olF" secondAttribute="bottom" constant="20" id="MXi-Fz-4y3"/>
+                    <constraint firstItem="827-Xo-olF" firstAttribute="leading" secondItem="yzZ-oP-Un0" secondAttribute="trailing" constant="10" id="RVg-hR-fTQ">
+                        <variation key="widthClass=compact" constant="8"/>
+                    </constraint>
+                    <constraint firstItem="e3B-EQ-Edf" firstAttribute="top" secondItem="CJk-sT-bSf" secondAttribute="top" constant="8" id="TKv-bU-sQo"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="yzZ-oP-Un0" secondAttribute="bottom" priority="251" constant="10" id="W17-7E-iRN"/>
+                    <constraint firstItem="yzZ-oP-Un0" firstAttribute="top" secondItem="epe-7z-jfh" secondAttribute="bottom" constant="5" id="gZs-b6-I9V"/>
+                    <constraint firstItem="e3B-EQ-Edf" firstAttribute="leading" secondItem="827-Xo-olF" secondAttribute="trailing" constant="20" id="hM1-Cb-QxK">
+                        <variation key="widthClass=compact" constant="10"/>
+                    </constraint>
+                    <constraint firstItem="e3B-EQ-Edf" firstAttribute="leading" secondItem="epe-7z-jfh" secondAttribute="trailing" constant="20" id="yXA-XL-BeO"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="8st-BJ-Y36"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="recipeButton" destination="e3B-EQ-Edf" id="foc-Ha-vX6"/>
+                <outlet property="recipeDescription" destination="827-Xo-olF" id="3Ib-fl-dcB"/>
+                <outlet property="recipeImage" destination="yzZ-oP-Un0" id="GT2-Wt-hlT"/>
+                <outlet property="recipeName" destination="epe-7z-jfh" id="BsX-LS-xwr"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
