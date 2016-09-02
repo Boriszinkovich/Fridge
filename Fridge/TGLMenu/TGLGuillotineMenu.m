@@ -288,7 +288,7 @@ static NSInteger cellHeightForIphone = 55;
     CGVector vectorOpen;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     vectorOpen = CGVectorMake(0, 2200.0);
-    else vectorOpen = CGVectorMake(0, 9200.0);
+    else vectorOpen = CGVectorMake(0, 12000.0);
     pushOpen.pushDirection = vectorOpen;
     [animator addBehavior:pushOpen];
     
@@ -310,7 +310,7 @@ static NSInteger cellHeightForIphone = 55;
     // - Push Init
     pushInit = [[UIPushBehavior alloc] initWithItems:@[menuView] mode:UIPushBehaviorModeInstantaneous];
     CGVector vector;
-   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)  vector = CGVectorMake(800, 100);
+   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)  vector = CGVectorMake(900, 100);
    else  vector = CGVectorMake(2400, 300);
     pushInit.pushDirection = vector;
     UIOffset offsetPush = UIOffsetMake(0, screenH/2);
@@ -580,6 +580,19 @@ static NSInteger cellHeightForIphone = 55;
                             blue:((float) b / 255.0f)
                            alpha:1.0f];
 }
+
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator
+{
+    if (self.isOpen)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:keyNotifMenuDidOpen object:nil];
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:keyNotifMenuDidClose object:nil];
+    }
+}
+
 @end
 
 

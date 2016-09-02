@@ -39,10 +39,16 @@
     // Do any additional setup after loading the view.
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blueColor]];
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blueColor]];
-    
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
-- (void) dealloc
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (void)dealloc
 {
     NSLog(@"portions controller dismissed");
 }
@@ -109,6 +115,11 @@
 }
 
 #pragma mark - Standard Methods
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 @end
 

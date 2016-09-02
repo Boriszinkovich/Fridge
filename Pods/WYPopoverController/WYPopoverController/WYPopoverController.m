@@ -3148,23 +3148,23 @@ static CGPoint WYPointRelativeToOrientation(CGPoint origin, CGSize size, UIInter
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [backgroundView removeFromSuperview];
-    [backgroundView setDelegate:nil];
-    
-    [overlayView removeFromSuperview];
-    [overlayView setDelegate:nil];
-    
-    barButtonItem = nil;
-    passthroughViews = nil;
-    viewController = nil;
-    inView = nil;
-    overlayView = nil;
-    backgroundView = nil;
-    
-    [self unregisterTheme];
-    theme = nil;
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    
+//    [backgroundView removeFromSuperview];
+//    [backgroundView setDelegate:nil];
+//    
+//    [overlayView removeFromSuperview];
+//    [overlayView setDelegate:nil];
+//    
+//    barButtonItem = nil;
+//    passthroughViews = nil;
+//    viewController = nil;
+//    inView = nil;
+//    overlayView = nil;
+//    backgroundView = nil;
+//    
+//    [self unregisterTheme];
+//    theme = nil;
 }
 
 @end

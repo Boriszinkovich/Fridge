@@ -108,8 +108,14 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     NSLog(@"%@",self.dish.ingridients);
     self.listTableV.estimatedRowHeight = 60;
     self.listTableV.rowHeight = UITableViewAutomaticDimension;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
 #pragma mark - Create Views & Variables
 
 #pragma mark - Actions
@@ -487,6 +493,11 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     }
 
     NSLog(@"buttonClicked");
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

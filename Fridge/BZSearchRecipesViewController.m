@@ -60,7 +60,8 @@
     [self.tableView setNeedsLayout];
     [self.tableView layoutIfNeeded];
     [self.navigationItem setTitle:@"Рецепты"];
-    
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+
     [self methodLoadData];
 }
 
@@ -90,6 +91,7 @@
     [theNavigationBar setBackgroundImage:[UIImage imageNamed:@"patternNav"]
                  forBarMetrics:UIBarMetricsDefault];
     [theNavigationBar setShadowImage:[[UIImage alloc] init]];
+    [self setNeedsStatusBarAppearanceUpdate];
     if (!self.isLoading)
     {
         __weak BZSearchRecipesViewController* theWeakSelf = self;
@@ -287,8 +289,6 @@
         for(BZIngridient *theCurrentIngridient in theWeakSelf.theIngridientsArray)
         {
             NSSet *theDishesSet = theCurrentIngridient.arrayOfDishes;
-            NSLog(@"%d",[theCurrentIngridient.isMain integerValue]);
-            NSLog(@"%@",theCurrentIngridient.nameOfIngridient);
             for (BZDish *theCurrentDish in theDishesSet)
             {
                 NSNumber *theIngridientsNSNumber = [theIngridientsNameDictionary objectForKey:theCurrentDish.nameOfDish];
@@ -384,6 +384,11 @@
 #pragma mark - Methods (Private)
 
 #pragma mark - Standard Methods
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 @end
 

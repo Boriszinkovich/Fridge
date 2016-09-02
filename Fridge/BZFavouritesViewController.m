@@ -73,13 +73,16 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     
     [self.tableView setNeedsLayout];
     [self.tableView layoutIfNeeded];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
 }
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self setNeedsStatusBarAppearanceUpdate];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
     self.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
     if (self.numberOfFavourites != [self.arrayOfDishes count])
@@ -112,14 +115,26 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[[UIImage alloc] init]];
+}
+
+#pragma mark - Create Views & Variables
+
+#pragma mark - Actions
+
+#pragma mark - Notifications
+
+- (void)receiveMenuDidOpenNotification:(NSNotification *)theNotification
+{
+    
+}
+
+- (void)receiveMenuDidCloseNotification:(NSNotification *)theNotification
+{
     if (!self.isLoading)
     {
         __weak BZFavouritesViewController* weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                        {
-                           
-                           sleep(1);
-                           
                            
                            dispatch_async(dispatch_get_main_queue(), ^
                                           {
@@ -128,13 +143,9 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
                            
                            
                        });
-        
     }
 }
 
-#pragma mark - Create Views & Variables
-
-#pragma mark - Actions
 
 #pragma mark - Gestures
 
@@ -255,6 +266,11 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 }
 
 #pragma mark - Standard Methods
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 @end
 

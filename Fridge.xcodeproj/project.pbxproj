@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		57750996DA3C6B91808E226E /* libPods-Fridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF063E3FD2AAEDCFF07936F /* libPods-Fridge.a */; };
+		CE0047691D1DA3F700248262 /* RecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0047681D1DA3F700248262 /* RecipeCell.m */; };
 		CE043C781C6A645600A5B3DE /* BZDynamicHeightUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE043C771C6A645600A5B3DE /* BZDynamicHeightUILabel.m */; };
 		CE04D1721C61E62300BBC1B3 /* BZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D1711C61E62300BBC1B3 /* BZUtils.m */; };
 		CE04D1751C61E8AE00BBC1B3 /* BZFridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D1741C61E8AE00BBC1B3 /* BZFridgeViewController.m */; };
@@ -34,6 +35,37 @@
 		CEBB9D651C668929000BC67B /* BZDish.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D5F1C668929000BC67B /* BZDish.m */; };
 		CEBB9D661C668929000BC67B /* BZIngridient+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D611C668929000BC67B /* BZIngridient+CoreDataProperties.m */; };
 		CEBB9D671C668929000BC67B /* BZIngridient.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D631C668929000BC67B /* BZIngridient.m */; };
+		CEC63E931D6F6C1100C19668 /* BZAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E541D6F6C1000C19668 /* BZAnimation.m */; };
+		CEC63E941D6F6C1100C19668 /* BZByteBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E561D6F6C1000C19668 /* BZByteBuffer.m */; };
+		CEC63E951D6F6C1100C19668 /* BZDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E581D6F6C1000C19668 /* BZDeviceHardware.m */; };
+		CEC63E961D6F6C1100C19668 /* BZExtensionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E5A1D6F6C1000C19668 /* BZExtensionsManager.m */; };
+		CEC63E971D6F6C1100C19668 /* BZPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E5C1D6F6C1000C19668 /* BZPageView.m */; };
+		CEC63E981D6F6C1100C19668 /* BZSyncBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E5F1D6F6C1000C19668 /* BZSyncBackground.m */; };
+		CEC63E991D6F6C1100C19668 /* BZURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E611D6F6C1000C19668 /* BZURLSession.m */; };
+		CEC63E9A1D6F6C1100C19668 /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E641D6F6C1000C19668 /* CircleProgressBar.m */; };
+		CEC63E9B1D6F6C1100C19668 /* FDActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E661D6F6C1000C19668 /* FDActivityIndicatorView.m */; };
+		CEC63E9C1D6F6C1100C19668 /* NSArray+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E681D6F6C1000C19668 /* NSArray+BZExtensions.m */; };
+		CEC63E9D1D6F6C1100C19668 /* NSDate+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E6A1D6F6C1000C19668 /* NSDate+BZExtensions.m */; };
+		CEC63E9E1D6F6C1100C19668 /* NSDictionary+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E6C1D6F6C1000C19668 /* NSDictionary+BZExtensions.m */; };
+		CEC63E9F1D6F6C1100C19668 /* NSManagedObject+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E6E1D6F6C1000C19668 /* NSManagedObject+BZExtensions.m */; };
+		CEC63EA01D6F6C1100C19668 /* NSObject+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E701D6F6C1000C19668 /* NSObject+BZExtensions.m */; };
+		CEC63EA11D6F6C1100C19668 /* NSString+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E721D6F6C1000C19668 /* NSString+BZExtensions.m */; };
+		CEC63EA21D6F6C1100C19668 /* NumericKeypad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC63E741D6F6C1000C19668 /* NumericKeypad.xib */; };
+		CEC63EA31D6F6C1100C19668 /* NumericKeypadTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E771D6F6C1000C19668 /* NumericKeypadTextField.m */; };
+		CEC63EA41D6F6C1100C19668 /* NumericKeypadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E791D6F6C1000C19668 /* NumericKeypadView.m */; };
+		CEC63EA51D6F6C1100C19668 /* NumericKeypadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E7B1D6F6C1000C19668 /* NumericKeypadViewController.m */; };
+		CEC63EA61D6F6C1100C19668 /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC63E7D1D6F6C1100C19668 /* highlight.png */; };
+		CEC63EA71D6F6C1100C19668 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC63E7E1D6F6C1100C19668 /* normal.png */; };
+		CEC63EA81D6F6C1100C19668 /* ODTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E801D6F6C1100C19668 /* ODTableView.m */; };
+		CEC63EA91D6F6C1100C19668 /* PSTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E821D6F6C1100C19668 /* PSTAlertController.m */; };
+		CEC63EAA1D6F6C1100C19668 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E841D6F6C1100C19668 /* Reachability.m */; };
+		CEC63EAB1D6F6C1100C19668 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E861D6F6C1100C19668 /* SMPageControl.m */; };
+		CEC63EAC1D6F6C1100C19668 /* UIButton+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E881D6F6C1100C19668 /* UIButton+BZExtensions.m */; };
+		CEC63EAD1D6F6C1100C19668 /* UIColor+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E8A1D6F6C1100C19668 /* UIColor+BZExtensions.m */; };
+		CEC63EAE1D6F6C1100C19668 /* UIImage+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E8C1D6F6C1100C19668 /* UIImage+BZExtensions.m */; };
+		CEC63EAF1D6F6C1100C19668 /* UIScreen+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E8E1D6F6C1100C19668 /* UIScreen+BZExtensions.m */; };
+		CEC63EB01D6F6C1100C19668 /* UISlider+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E901D6F6C1100C19668 /* UISlider+BZExtensions.m */; };
+		CEC63EB11D6F6C1100C19668 /* UIView+BZExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E921D6F6C1100C19668 /* UIView+BZExtensions.m */; };
 		CEE5C7D41C68A652009C85BC /* XLHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7D31C68A652009C85BC /* XLHeaderView.m */; };
 		CEE5C7D81C68A6B7009C85BC /* BZDetailReceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7D71C68A6B7009C85BC /* BZDetailReceptViewController.m */; };
 		CEE5C7E01C690CA0009C85BC /* BZDetailRecipeCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5C7DF1C690CA0009C85BC /* BZDetailRecipeCells.xib */; };
@@ -67,6 +99,8 @@
 		3AF063E3FD2AAEDCFF07936F /* libPods-Fridge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fridge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59EC0CDE40EE078B700F6355 /* Pods-Fridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fridge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fridge/Pods-Fridge.release.xcconfig"; sourceTree = "<group>"; };
 		94711F8C4D984F63C19E41B2 /* Pods-Fridge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fridge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fridge/Pods-Fridge.debug.xcconfig"; sourceTree = "<group>"; };
+		CE0047671D1DA3F700248262 /* RecipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCell.h; sourceTree = "<group>"; };
+		CE0047681D1DA3F700248262 /* RecipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCell.m; sourceTree = "<group>"; };
 		CE043C761C6A645600A5B3DE /* BZDynamicHeightUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDynamicHeightUILabel.h; sourceTree = "<group>"; };
 		CE043C771C6A645600A5B3DE /* BZDynamicHeightUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZDynamicHeightUILabel.m; sourceTree = "<group>"; };
 		CE04D1701C61E62300BBC1B3 /* BZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BZUtils.h; path = TGLMenu/BZUtils.h; sourceTree = "<group>"; };
@@ -117,6 +151,68 @@
 		CEBB9D611C668929000BC67B /* BZIngridient+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BZIngridient+CoreDataProperties.m"; sourceTree = "<group>"; };
 		CEBB9D621C668929000BC67B /* BZIngridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridient.h; sourceTree = "<group>"; };
 		CEBB9D631C668929000BC67B /* BZIngridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridient.m; sourceTree = "<group>"; };
+		CEBCB6C61D6F606A00E38C38 /* Fridge.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fridge.pch; sourceTree = "<group>"; };
+		CEC63E531D6F6C1000C19668 /* BZAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZAnimation.h; sourceTree = "<group>"; };
+		CEC63E541D6F6C1000C19668 /* BZAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZAnimation.m; sourceTree = "<group>"; };
+		CEC63E551D6F6C1000C19668 /* BZByteBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZByteBuffer.h; sourceTree = "<group>"; };
+		CEC63E561D6F6C1000C19668 /* BZByteBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZByteBuffer.m; sourceTree = "<group>"; };
+		CEC63E571D6F6C1000C19668 /* BZDeviceHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDeviceHardware.h; sourceTree = "<group>"; };
+		CEC63E581D6F6C1000C19668 /* BZDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZDeviceHardware.m; sourceTree = "<group>"; };
+		CEC63E591D6F6C1000C19668 /* BZExtensionsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZExtensionsManager.h; sourceTree = "<group>"; };
+		CEC63E5A1D6F6C1000C19668 /* BZExtensionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZExtensionsManager.m; sourceTree = "<group>"; };
+		CEC63E5B1D6F6C1000C19668 /* BZPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZPageView.h; sourceTree = "<group>"; };
+		CEC63E5C1D6F6C1000C19668 /* BZPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZPageView.m; sourceTree = "<group>"; };
+		CEC63E5D1D6F6C1000C19668 /* BZScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZScope.h; sourceTree = "<group>"; };
+		CEC63E5E1D6F6C1000C19668 /* BZSyncBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZSyncBackground.h; sourceTree = "<group>"; };
+		CEC63E5F1D6F6C1000C19668 /* BZSyncBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZSyncBackground.m; sourceTree = "<group>"; };
+		CEC63E601D6F6C1000C19668 /* BZURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZURLSession.h; sourceTree = "<group>"; };
+		CEC63E611D6F6C1000C19668 /* BZURLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZURLSession.m; sourceTree = "<group>"; };
+		CEC63E631D6F6C1000C19668 /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
+		CEC63E641D6F6C1000C19668 /* CircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressBar.m; sourceTree = "<group>"; };
+		CEC63E651D6F6C1000C19668 /* FDActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDActivityIndicatorView.h; sourceTree = "<group>"; };
+		CEC63E661D6F6C1000C19668 /* FDActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDActivityIndicatorView.m; sourceTree = "<group>"; };
+		CEC63E671D6F6C1000C19668 /* NSArray+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E681D6F6C1000C19668 /* NSArray+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E691D6F6C1000C19668 /* NSDate+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E6A1D6F6C1000C19668 /* NSDate+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E6B1D6F6C1000C19668 /* NSDictionary+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E6C1D6F6C1000C19668 /* NSDictionary+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E6D1D6F6C1000C19668 /* NSManagedObject+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E6E1D6F6C1000C19668 /* NSManagedObject+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E6F1D6F6C1000C19668 /* NSObject+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E701D6F6C1000C19668 /* NSObject+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E711D6F6C1000C19668 /* NSString+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E721D6F6C1000C19668 /* NSString+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E741D6F6C1000C19668 /* NumericKeypad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericKeypad.xib; sourceTree = "<group>"; };
+		CEC63E751D6F6C1000C19668 /* NumericKeypadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumericKeypadDelegate.h; sourceTree = "<group>"; };
+		CEC63E761D6F6C1000C19668 /* NumericKeypadTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumericKeypadTextField.h; sourceTree = "<group>"; };
+		CEC63E771D6F6C1000C19668 /* NumericKeypadTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumericKeypadTextField.m; sourceTree = "<group>"; };
+		CEC63E781D6F6C1000C19668 /* NumericKeypadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumericKeypadView.h; sourceTree = "<group>"; };
+		CEC63E791D6F6C1000C19668 /* NumericKeypadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumericKeypadView.m; sourceTree = "<group>"; };
+		CEC63E7A1D6F6C1000C19668 /* NumericKeypadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumericKeypadViewController.h; sourceTree = "<group>"; };
+		CEC63E7B1D6F6C1000C19668 /* NumericKeypadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumericKeypadViewController.m; sourceTree = "<group>"; };
+		CEC63E7D1D6F6C1100C19668 /* highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight.png; sourceTree = "<group>"; };
+		CEC63E7E1D6F6C1100C19668 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
+		CEC63E7F1D6F6C1100C19668 /* ODTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODTableView.h; sourceTree = "<group>"; };
+		CEC63E801D6F6C1100C19668 /* ODTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODTableView.m; sourceTree = "<group>"; };
+		CEC63E811D6F6C1100C19668 /* PSTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTAlertController.h; sourceTree = "<group>"; };
+		CEC63E821D6F6C1100C19668 /* PSTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTAlertController.m; sourceTree = "<group>"; };
+		CEC63E831D6F6C1100C19668 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CEC63E841D6F6C1100C19668 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CEC63E851D6F6C1100C19668 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
+		CEC63E861D6F6C1100C19668 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
+		CEC63E871D6F6C1100C19668 /* UIButton+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E881D6F6C1100C19668 /* UIButton+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E891D6F6C1100C19668 /* UIColor+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E8A1D6F6C1100C19668 /* UIColor+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E8B1D6F6C1100C19668 /* UIImage+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E8C1D6F6C1100C19668 /* UIImage+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E8D1D6F6C1100C19668 /* UIScreen+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E8E1D6F6C1100C19668 /* UIScreen+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E8F1D6F6C1100C19668 /* UISlider+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISlider+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E901D6F6C1100C19668 /* UISlider+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISlider+BZExtensions.m"; sourceTree = "<group>"; };
+		CEC63E911D6F6C1100C19668 /* UIView+BZExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BZExtensions.h"; sourceTree = "<group>"; };
+		CEC63E921D6F6C1100C19668 /* UIView+BZExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BZExtensions.m"; sourceTree = "<group>"; };
 		CEE5C7D21C68A652009C85BC /* XLHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLHeaderView.h; path = TGLMenu/XLHeaderView.h; sourceTree = "<group>"; };
 		CEE5C7D31C68A652009C85BC /* XLHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLHeaderView.m; path = TGLMenu/XLHeaderView.m; sourceTree = "<group>"; };
 		CEE5C7D61C68A6B7009C85BC /* BZDetailReceptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDetailReceptViewController.h; sourceTree = "<group>"; };
@@ -233,6 +329,7 @@
 		CE113F881C60A35300DDD73A /* Fridge */ = {
 			isa = PBXGroup;
 			children = (
+				CEC63E521D6F6C1000C19668 /* BZExtensions */,
 				CEFE7B221C6CA814007C2D07 /* Source */,
 				CEE5C7D51C68A65A009C85BC /* XLHeaderView */,
 				CE113FDB1C6142FC00DDD73A /* TGLMenu */,
@@ -330,6 +427,98 @@
 			name = BZRecipeFavouritesCell;
 			sourceTree = "<group>";
 		};
+		CEC63E521D6F6C1000C19668 /* BZExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				CEC63E531D6F6C1000C19668 /* BZAnimation.h */,
+				CEC63E541D6F6C1000C19668 /* BZAnimation.m */,
+				CEC63E551D6F6C1000C19668 /* BZByteBuffer.h */,
+				CEC63E561D6F6C1000C19668 /* BZByteBuffer.m */,
+				CEC63E571D6F6C1000C19668 /* BZDeviceHardware.h */,
+				CEC63E581D6F6C1000C19668 /* BZDeviceHardware.m */,
+				CEC63E591D6F6C1000C19668 /* BZExtensionsManager.h */,
+				CEC63E5A1D6F6C1000C19668 /* BZExtensionsManager.m */,
+				CEC63E5B1D6F6C1000C19668 /* BZPageView.h */,
+				CEC63E5C1D6F6C1000C19668 /* BZPageView.m */,
+				CEC63E5D1D6F6C1000C19668 /* BZScope.h */,
+				CEC63E5E1D6F6C1000C19668 /* BZSyncBackground.h */,
+				CEC63E5F1D6F6C1000C19668 /* BZSyncBackground.m */,
+				CEC63E601D6F6C1000C19668 /* BZURLSession.h */,
+				CEC63E611D6F6C1000C19668 /* BZURLSession.m */,
+				CEC63E621D6F6C1000C19668 /* CircleProgressBar */,
+				CEC63E651D6F6C1000C19668 /* FDActivityIndicatorView.h */,
+				CEC63E661D6F6C1000C19668 /* FDActivityIndicatorView.m */,
+				CEC63E671D6F6C1000C19668 /* NSArray+BZExtensions.h */,
+				CEC63E681D6F6C1000C19668 /* NSArray+BZExtensions.m */,
+				CEC63E691D6F6C1000C19668 /* NSDate+BZExtensions.h */,
+				CEC63E6A1D6F6C1000C19668 /* NSDate+BZExtensions.m */,
+				CEC63E6B1D6F6C1000C19668 /* NSDictionary+BZExtensions.h */,
+				CEC63E6C1D6F6C1000C19668 /* NSDictionary+BZExtensions.m */,
+				CEC63E6D1D6F6C1000C19668 /* NSManagedObject+BZExtensions.h */,
+				CEC63E6E1D6F6C1000C19668 /* NSManagedObject+BZExtensions.m */,
+				CEC63E6F1D6F6C1000C19668 /* NSObject+BZExtensions.h */,
+				CEC63E701D6F6C1000C19668 /* NSObject+BZExtensions.m */,
+				CEC63E711D6F6C1000C19668 /* NSString+BZExtensions.h */,
+				CEC63E721D6F6C1000C19668 /* NSString+BZExtensions.m */,
+				CEC63E731D6F6C1000C19668 /* NumPadTextField */,
+				CEC63E7F1D6F6C1100C19668 /* ODTableView.h */,
+				CEC63E801D6F6C1100C19668 /* ODTableView.m */,
+				CEC63E811D6F6C1100C19668 /* PSTAlertController.h */,
+				CEC63E821D6F6C1100C19668 /* PSTAlertController.m */,
+				CEC63E831D6F6C1100C19668 /* Reachability.h */,
+				CEC63E841D6F6C1100C19668 /* Reachability.m */,
+				CEC63E851D6F6C1100C19668 /* SMPageControl.h */,
+				CEC63E861D6F6C1100C19668 /* SMPageControl.m */,
+				CEC63E871D6F6C1100C19668 /* UIButton+BZExtensions.h */,
+				CEC63E881D6F6C1100C19668 /* UIButton+BZExtensions.m */,
+				CEC63E891D6F6C1100C19668 /* UIColor+BZExtensions.h */,
+				CEC63E8A1D6F6C1100C19668 /* UIColor+BZExtensions.m */,
+				CEC63E8B1D6F6C1100C19668 /* UIImage+BZExtensions.h */,
+				CEC63E8C1D6F6C1100C19668 /* UIImage+BZExtensions.m */,
+				CEC63E8D1D6F6C1100C19668 /* UIScreen+BZExtensions.h */,
+				CEC63E8E1D6F6C1100C19668 /* UIScreen+BZExtensions.m */,
+				CEC63E8F1D6F6C1100C19668 /* UISlider+BZExtensions.h */,
+				CEC63E901D6F6C1100C19668 /* UISlider+BZExtensions.m */,
+				CEC63E911D6F6C1100C19668 /* UIView+BZExtensions.h */,
+				CEC63E921D6F6C1100C19668 /* UIView+BZExtensions.m */,
+			);
+			path = BZExtensions;
+			sourceTree = "<group>";
+		};
+		CEC63E621D6F6C1000C19668 /* CircleProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				CEC63E631D6F6C1000C19668 /* CircleProgressBar.h */,
+				CEC63E641D6F6C1000C19668 /* CircleProgressBar.m */,
+			);
+			path = CircleProgressBar;
+			sourceTree = "<group>";
+		};
+		CEC63E731D6F6C1000C19668 /* NumPadTextField */ = {
+			isa = PBXGroup;
+			children = (
+				CEC63E741D6F6C1000C19668 /* NumericKeypad.xib */,
+				CEC63E751D6F6C1000C19668 /* NumericKeypadDelegate.h */,
+				CEC63E761D6F6C1000C19668 /* NumericKeypadTextField.h */,
+				CEC63E771D6F6C1000C19668 /* NumericKeypadTextField.m */,
+				CEC63E781D6F6C1000C19668 /* NumericKeypadView.h */,
+				CEC63E791D6F6C1000C19668 /* NumericKeypadView.m */,
+				CEC63E7A1D6F6C1000C19668 /* NumericKeypadViewController.h */,
+				CEC63E7B1D6F6C1000C19668 /* NumericKeypadViewController.m */,
+				CEC63E7C1D6F6C1100C19668 /* Resource */,
+			);
+			path = NumPadTextField;
+			sourceTree = "<group>";
+		};
+		CEC63E7C1D6F6C1100C19668 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CEC63E7D1D6F6C1100C19668 /* highlight.png */,
+				CEC63E7E1D6F6C1100C19668 /* normal.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		CEE5C7CF1C68971C009C85BC /* BZIngridientAddedCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +586,7 @@
 		CEFE7B221C6CA814007C2D07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CEBCB6C61D6F606A00E38C38 /* Fridge.pch */,
 				CEFE7B261C6CA859007C2D07 /* Presentation */,
 				CEFE7B231C6CA820007C2D07 /* Model */,
 			);
@@ -468,6 +658,8 @@
 				CEE5C7EC1C691323009C85BC /* BZIngridientsCell */,
 				CEE5C7EB1C691318009C85BC /* BZWayToCookCell */,
 				CEFE7B291C6CA8CB007C2D07 /* BZRecipeStepsCell */,
+				CE0047671D1DA3F700248262 /* RecipeCell.h */,
+				CE0047681D1DA3F700248262 /* RecipeCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -560,7 +752,7 @@
 				TargetAttributes = {
 					CE113F851C60A35300DDD73A = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = MR5E9K3P87;
+						DevelopmentTeam = LXU9U5V765;
 					};
 					CE113FA11C60A35300DDD73A = {
 						CreatedOnToolsVersion = 7.2;
@@ -603,10 +795,13 @@
 				CEB4E29A1C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib in Resources */,
 				CEB4E2981C6373F300F3BE7A /* BZAllRecipesCell.xib in Resources */,
 				CE113F991C60A35300DDD73A /* Assets.xcassets in Resources */,
+				CEC63EA61D6F6C1100C19668 /* highlight.png in Resources */,
 				CEE5C7E01C690CA0009C85BC /* BZDetailRecipeCells.xib in Resources */,
 				CE113F941C60A35300DDD73A /* Main.storyboard in Resources */,
 				CE78EB0C1C6B845800168088 /* Fridge.sqlite in Resources */,
+				CEC63EA21D6F6C1100C19668 /* NumericKeypad.xib in Resources */,
 				CEE5C7EE1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib in Resources */,
+				CEC63EA71D6F6C1100C19668 /* normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,32 +874,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0047691D1DA3F700248262 /* RecipeCell.m in Sources */,
 				CEFD5FBD1C64C145001B1621 /* BZIngridientCell.m in Sources */,
 				CE04D1751C61E8AE00BBC1B3 /* BZFridgeViewController.m in Sources */,
 				CEE5C7D81C68A6B7009C85BC /* BZDetailReceptViewController.m in Sources */,
+				CEC63E991D6F6C1100C19668 /* BZURLSession.m in Sources */,
 				CEFD5FBA1C64C0E6001B1621 /* BZIngridientAddedCell.m in Sources */,
+				CEC63EA81D6F6C1100C19668 /* ODTableView.m in Sources */,
+				CEC63EAC1D6F6C1100C19668 /* UIButton+BZExtensions.m in Sources */,
+				CEC63E951D6F6C1100C19668 /* BZDeviceHardware.m in Sources */,
+				CEC63E9B1D6F6C1100C19668 /* FDActivityIndicatorView.m in Sources */,
 				CE113F971C60A35300DDD73A /* Fridge.xcdatamodeld in Sources */,
+				CEC63EAA1D6F6C1100C19668 /* Reachability.m in Sources */,
 				CEE5C7F31C6938F4009C85BC /* BZRecipeStepsCell.m in Sources */,
+				CEC63EA91D6F6C1100C19668 /* PSTAlertController.m in Sources */,
 				CE113FDE1C6142FC00DDD73A /* TGLGuillotineMenu.m in Sources */,
 				CEE5C7D41C68A652009C85BC /* XLHeaderView.m in Sources */,
 				CEBB9D641C668929000BC67B /* BZDish+CoreDataProperties.m in Sources */,
 				CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */,
 				CE04D1891C62145500BBC1B3 /* BZRecipeCell.m in Sources */,
+				CEC63EA51D6F6C1100C19668 /* NumericKeypadViewController.m in Sources */,
 				CEE5C7E31C6912A2009C85BC /* BZIngridientsCell.m in Sources */,
 				CEFE7B2C1C6CAB25007C2D07 /* BZChoosePortionsViewController.m in Sources */,
 				CE04D17B1C61F35F00BBC1B3 /* BZHelpDevelopersViewController.m in Sources */,
+				CEC63E9E1D6F6C1100C19668 /* NSDictionary+BZExtensions.m in Sources */,
+				CEC63EAF1D6F6C1100C19668 /* UIScreen+BZExtensions.m in Sources */,
+				CEC63E941D6F6C1100C19668 /* BZByteBuffer.m in Sources */,
 				CE04D1721C61E62300BBC1B3 /* BZUtils.m in Sources */,
+				CEC63E931D6F6C1100C19668 /* BZAnimation.m in Sources */,
 				CEBB9D661C668929000BC67B /* BZIngridient+CoreDataProperties.m in Sources */,
 				CEB4E2931C635EAA00F3BE7A /* BZAllRecipesViewController.m in Sources */,
+				CEC63EAE1D6F6C1100C19668 /* UIImage+BZExtensions.m in Sources */,
+				CEC63EA31D6F6C1100C19668 /* NumericKeypadTextField.m in Sources */,
+				CEC63EAB1D6F6C1100C19668 /* SMPageControl.m in Sources */,
 				CE113F8E1C60A35300DDD73A /* BZAppDelegate.m in Sources */,
+				CEC63E981D6F6C1100C19668 /* BZSyncBackground.m in Sources */,
+				CEC63E961D6F6C1100C19668 /* BZExtensionsManager.m in Sources */,
+				CEC63E9D1D6F6C1100C19668 /* NSDate+BZExtensions.m in Sources */,
 				CE043C781C6A645600A5B3DE /* BZDynamicHeightUILabel.m in Sources */,
+				CEC63EAD1D6F6C1100C19668 /* UIColor+BZExtensions.m in Sources */,
+				CEC63EA01D6F6C1100C19668 /* NSObject+BZExtensions.m in Sources */,
+				CEC63E9F1D6F6C1100C19668 /* NSManagedObject+BZExtensions.m in Sources */,
+				CEC63EA11D6F6C1100C19668 /* NSString+BZExtensions.m in Sources */,
+				CEC63EB11D6F6C1100C19668 /* UIView+BZExtensions.m in Sources */,
 				CEE5C7E61C6912E6009C85BC /* BZWayToCookCell.m in Sources */,
 				CE04D1781C61EBE100BBC1B3 /* BZRecipeViewController.m in Sources */,
 				CE113F8B1C60A35300DDD73A /* main.m in Sources */,
+				CEC63E971D6F6C1100C19668 /* BZPageView.m in Sources */,
 				CEB4E29D1C63782D00F3BE7A /* BZRecipeFavouritesCell.m in Sources */,
+				CEC63EA41D6F6C1100C19668 /* NumericKeypadView.m in Sources */,
 				CEBB9D671C668929000BC67B /* BZIngridient.m in Sources */,
 				CEBB9D651C668929000BC67B /* BZDish.m in Sources */,
+				CEC63E9C1D6F6C1100C19668 /* NSArray+BZExtensions.m in Sources */,
 				CEBB9D511C662AE5000BC67B /* BZSearchRecipesViewController.m in Sources */,
+				CEC63EB01D6F6C1100C19668 /* UISlider+BZExtensions.m in Sources */,
+				CEC63E9A1D6F6C1100C19668 /* CircleProgressBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,7 +1000,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zinkovich1996@mail.ru (7ZK4KL9Q83)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -795,7 +1019,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -820,7 +1044,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zinkovich1996@mail.ru (7ZK4KL9Q83)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -833,7 +1057,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -846,11 +1070,17 @@
 			baseConfigurationReference = 94711F8C4D984F63C19E41B2 /* Pods-Fridge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Fridge.pch";
 				INFOPLIST_FILE = Fridge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BZ.Fridge;
+				PRODUCT_BUNDLE_IDENTIFIER = BZ.FridgeSome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -860,11 +1090,17 @@
 			baseConfigurationReference = 59EC0CDE40EE078B700F6355 /* Pods-Fridge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Fridge.pch";
 				INFOPLIST_FILE = Fridge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BZ.Fridge;
+				PRODUCT_BUNDLE_IDENTIFIER = BZ.FridgeSome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

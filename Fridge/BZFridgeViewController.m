@@ -84,6 +84,16 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
     self.arrayOfSearchedIngridients = [NSMutableArray array];
     [self loadData];
     [self loadIngridientsDataWithSearchDescriptor:nil];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 #pragma mark - Create Views & Variables
@@ -98,6 +108,18 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     [self.arrayOfChosedIngridients removeObjectAtIndex:button.tag];
     [self.tableView reloadData];
+}
+
+#pragma mark - Notifications
+
+- (void)receiveMenuDidOpenNotification:(NSNotification *)theNotification
+{
+    
+}
+
+- (void)receiveMenuDidCloseNotification:(NSNotification *)theNotification
+{
+    
 }
 
 #pragma mark - Gestures
@@ -516,8 +538,12 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
 
 #pragma mark - Standard Methods
 
-#pragma mark - SearchBarDelegate
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
+#pragma mark - SearchBarDelegate
 
 - (IBAction)findRecipes:(id)sender
 {

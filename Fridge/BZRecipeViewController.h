@@ -27,8 +27,7 @@
 @end
 
 static NSString* recipeCellIdentifier = @"recipeCellIdentifier";
-const CGFloat cellSpacing = 20;
-const NSInteger recipesLoadNumber = 20;
+
 
 
 

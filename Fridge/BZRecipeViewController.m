@@ -17,6 +17,7 @@
 
 @end
 
+static CGFloat cellSpacing = 20;
 
 @implementation BZRecipeViewController
 
@@ -47,7 +48,13 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView setNeedsLayout];
     [self.tableView layoutIfNeeded];
-    
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)dealloc
@@ -122,7 +129,10 @@
 
 #pragma mark - Standard Methods
 
-#pragma mark - Table view data source
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 @end
 
