@@ -12,7 +12,7 @@
 
 #import "BZDetailDismissedProtocol.h"
 
-@interface BZRecipeViewController : UITableViewController <BZDetailDismissedProtocol>
+@interface BZRecipeViewController : UIViewController <BZDetailDismissedProtocol, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSOperation *currentOperation;
@@ -21,6 +21,8 @@
 @property (assign, nonatomic) NSInteger maxNumberOfDishes;
 @property (assign, nonatomic) BOOL nonFirstLoad;
 @property (assign, nonatomic) BOOL isLoading;
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 - (void)loadData;
 

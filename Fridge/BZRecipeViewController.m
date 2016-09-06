@@ -15,6 +15,7 @@
 
 @interface BZRecipeViewController ()
 
+
 @end
 
 static CGFloat cellSpacing = 20;
@@ -40,21 +41,25 @@ static CGFloat cellSpacing = 20;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UITableView *tableView = [UITableView new];
+    [self.view addSubview:tableView];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.theWidth = [UIScreen mainScreen].bounds.size.width;
+    tableView.theHeight = [UIScreen mainScreen].bounds.size.height - 64;
+    self.tableView = tableView;
+    
     self.maxNumberOfDishes = [BZDish MR_countOfEntities];
-    self.tableView.contentInset = UIEdgeInsetsMake(54,0,20,0);
     self.setWithDishes = [NSMutableSet set];
     self.arrayOfDishes = [NSMutableArray array];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    [self.tableView setNeedsLayout];
-    [self.tableView layoutIfNeeded];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)dealloc
@@ -110,7 +115,6 @@ static CGFloat cellSpacing = 20;
 
 - (void)detailViewDismissed
 {
-    self.tableView.contentInset = UIEdgeInsetsMake(0,0,20,0);
 }
 
 #pragma mark - Methods (Public)

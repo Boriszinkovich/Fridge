@@ -66,26 +66,6 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     UIBarButtonItem *theFavouriteBurButtonItem = [[UIBarButtonItem alloc] initWithCustomView:theFavouriteButton];
     self.navigationItem.rightBarButtonItem = theFavouriteBurButtonItem;
     
-    
-    
-    self.edgesForExtendedLayout = UIRectEdgeTop;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-    {
-        [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
-        NSArray *list=self.navigationController.navigationBar.subviews;
-        for (id obj in list)
-        {
-            if ([obj isKindOfClass:[UIImageView class]])
-            {
-                UIImageView *imageView=(UIImageView *)obj;
-                imageView.alpha=0;
-            }
-        }
-    }
-    
-    
     self.listTableV = [[UITableView alloc]initWithFrame:self.view.frame];
     self.listTableV.delegate = self;
     self.listTableV.dataSource = self;
@@ -110,6 +90,57 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     NSLog(@"%@",self.dish.ingridients);
     self.listTableV.estimatedRowHeight = 60;
     self.listTableV.rowHeight = UITableViewAutomaticDimension;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeTop;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+    {
+        [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
+        NSArray *list=self.navigationController.navigationBar.subviews;
+        for (id obj in list)
+        {
+            if ([obj isKindOfClass:[UIImageView class]])
+            {
+                UIImageView *imageView=(UIImageView *)obj;
+                imageView.alpha=0;
+            }
+        }
+    }
+}
+
+//- (void)viewDidLayoutSubviews
+//{
+//    [super viewDidLayoutSubviews];
+//    self.edgesForExtendedLayout = UIRectEdgeTop;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+//    {
+//        [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
+//        NSArray *list=self.navigationController.navigationBar.subviews;
+//        for (id obj in list)
+//        {
+//            if ([obj isKindOfClass:[UIImageView class]])
+//            {
+//                UIImageView *imageView=(UIImageView *)obj;
+//                imageView.alpha=0;
+//            }
+//        }
+//    }
+//}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (![self.navigationController.viewControllers containsObject:self])
+    {
+        [self.delegate detailViewDismissed];
+    }
 }
 
 #pragma mark - Create Views & Variables
@@ -264,24 +295,6 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     
     theTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
     return theTableViewCell;
-    
-}
-
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.delegate detailViewDismissed];
-    /*  if ([self.navigationController.navigationBar respondsToSelector:@selector( setBackgroundImage:forBarMetrics:)]){
-     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
-     NSArray *list=self.navigationController.navigationBar.subviews;
-     for (id obj in list) {
-     if ([obj isKindOfClass:[UIImageView class]]) {
-     UIImageView *imageView=(UIImageView *)obj;
-     imageView.alpha=1;
-     }
-     }
-     
-     }*/
     
 }
 

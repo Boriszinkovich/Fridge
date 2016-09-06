@@ -19,6 +19,8 @@
 @interface BZFavouritesViewController() <RecipeCellProtocol>
 
 @property (assign, nonatomic) NSInteger numberOfFavourites;
+@property (assign, nonatomic) BOOL isNeedUpdate;
+@property (strong, nonatomic) UIActivityIndicatorView *theProgressView;
 
 @end
 
@@ -44,6 +46,11 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     }
 }
 
+- (void)detailViewDismissed
+{
+    self.isNeedUpdate = YES;
+}
+
 #pragma mark - Init & Dealloc
 
 #pragma mark - Setters (Public)
@@ -59,45 +66,33 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.tableView registerNib:[UINib nibWithNibName:@"BZFavouriteRecipeCell" bundle:nil]
-//         forCellReuseIdentifier:recipeFavouriteCellIdentifier];
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.tableView addSubview:self.refreshControl];
-    [self.refreshControl beginRefreshing];
     
-    if (!self.isLoading)
-    {
-        self.isLoading = YES;
-        [self loadData];
-    }
-    self.tableView.estimatedRowHeight = 80;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self.tableView setNeedsLayout];
-    [self.tableView layoutIfNeeded];
+//    [self.tableView setNeedsLayout];
+//    [self.tableView layoutIfNeeded];
+    
+    UIActivityIndicatorView *theProgressView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:theProgressView];
+    self.theProgressView = theProgressView;
+    theProgressView.theWidth = 50;
+    theProgressView.theHeight = theProgressView.theWidth;
+    theProgressView.theMinY = 68;
+    theProgressView.theCenterX = [UIScreen mainScreen].bounds.size.width / 2;
+    [theProgressView startAnimating];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
+//    [self.tableView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+//    [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setNeedsStatusBarAppearanceUpdate];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
-    self.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
-    if (self.numberOfFavourites != [self.arrayOfDishes count])
-    {
-        [self.arrayOfDishes removeAllObjects];
-        if (!self.isLoading)
-        {
-            [self loadData];
-            self.isLoading = YES;
-        }
-    }
-    NSLog(@"%ld",(long)self.tableView.frame.origin.y);
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+
     if ([self.navigationController.navigationBar respondsToSelector:@selector( setBackgroundImage:forBarMetrics:)])
     {
         [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
@@ -117,6 +112,34 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     [navBar setBackgroundImage:[UIImage imageNamed:@"patternNav"] forBarMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[[UIImage alloc] init]];
+    NSLog(@"Frame %f",  [UIScreen mainScreen].applicationFrame.origin.y);
+    CGPoint theZeroPoint = [self.view convertPoint:CGPointMake(0, 0) toView:nil];
+    if (theZeroPoint.y != 0)
+    {
+        self.tableView.theMinY = 0;
+    }
+    else
+    {
+        self.tableView.theMinY = 64;
+    }
+//    NSLog(@"table view frame %ld",(long)self.tableView.frame.origin.y);
+//    NSLog(@"view frame %ld",(long)self.view.frame.origin.y);
+//    NSLog(@"view ZERO POINT %ld",(long)theZeroPoint.y);
+//    CGPoint theZeroPoint2 = [self.tableView convertPoint:CGPointMake(0, 0) toView:nil];
+//    NSLog(@"table view ZERO POINT %ld",(long)theZeroPoint2.y);
+//    NSLog(@"Table view top inset %ld",(long)self.tableView.contentInset.top);
+//    NSLog(@"Header height %ld",(long)self.tableView.tableHeaderView.bounds.size.height);
+
+
+////    NSLog(@"MinY %f", self.view.theMinY);
+//    self.isNeedUpdate = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.tableView.estimatedRowHeight = 80;
 }
 
 #pragma mark - Create Views & Variables
@@ -134,17 +157,40 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 {
     if (!self.isLoading)
     {
-        __weak BZFavouritesViewController* weakSelf = self;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-                       {
-                           
-                           dispatch_async(dispatch_get_main_queue(), ^
-                                          {
-                                              [weakSelf.tableView reloadData];
-                                          });
-                           
-                           
-                       });
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
+        self.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
+        if (self.numberOfFavourites != [self.arrayOfDishes count])
+        {
+            [self.arrayOfDishes removeAllObjects];
+            if (!self.isLoading)
+            {
+                [self loadData];
+                self.isLoading = YES;
+            }
+        }
+//        __weak BZFavouritesViewController* weakSelf = self;
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+//                       {
+//
+//                           dispatch_async(dispatch_get_main_queue(), ^
+//                                          {
+////                                              [weakSelf.tableView reloadData];
+//                                              NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
+//                                              weakSelf.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
+//                                              if (weakSelf.numberOfFavourites != [weakSelf.arrayOfDishes count])
+//                                              {
+//                                                  [weakSelf.arrayOfDishes removeAllObjects];
+//                                                  if (!weakSelf.isLoading)
+//                                                  {
+//                                                      [weakSelf loadData];
+//                                                      weakSelf.isLoading = YES;
+//                                                  }
+//                                              }
+//                                          });
+//                           
+//                           
+//                       });
+
     }
 }
 
@@ -222,6 +268,10 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (!self.nonFirstLoad)
+    {
+        return;
+    }
     if (!self.isLoading) if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height - 300)
     {
         if (self.numberOfFavourites > [self.arrayOfDishes count])
@@ -249,14 +299,20 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
                        
                        if (!weakSelf.nonFirstLoad)
                        {
-                           sleep(1);
+//                           sleep(1);
                            weakSelf.nonFirstLoad = YES;
                        }
                        
                        dispatch_async(dispatch_get_main_queue(), ^
                                       {
-                                          if ([self.refreshControl isRefreshing]) [self.refreshControl endRefreshing];
-                                          self.refreshControl= nil;
+//                                          if ([self.refreshControl isRefreshing])
+//                                          {
+//                                              [self.refreshControl endRefreshing];
+//                                          }
+//                                          [self.refreshControl removeFromSuperview];
+//                                          self.refreshControl = 4;
+                                          [self.theProgressView stopAnimating];
+                                          self.theProgressView.alpha = 0;
                                           weakSelf.isLoading = NO;
                                           [weakSelf.arrayOfDishes addObjectsFromArray:arrayOfLoadDishes];
                                           [weakSelf.tableView reloadData];

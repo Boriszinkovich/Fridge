@@ -16,7 +16,7 @@
 
 #import <MagicalRecord/MagicalRecord.h>
 
-@interface BZSearchRecipesViewController()
+@interface BZSearchRecipesViewController() <RecipeCellProtocol>
 
 @property (strong, nonatomic) UIColor *myColorBlack;
 @property (strong, nonatomic) UIColor *myColorGreen;
@@ -53,7 +53,7 @@
                                         green:191.f / 255.f
                                          blue:90.f / 255.f alpha:1.0];
     self.tableView.contentInset = UIEdgeInsetsMake(0,0,0,0);
-    [self.tableView registerNib:[UINib nibWithNibName:@"BZAllRecipesCell" bundle:nil] forCellReuseIdentifier:recipeCellIdentifier];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"BZAllRecipesCell" bundle:nil] forCellReuseIdentifier:recipeCellIdentifier];
     self.arrayOfDishes = [NSMutableArray array];
     self.tableView.estimatedRowHeight = 80;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -111,9 +111,20 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
 #pragma mark - Create Views & Variables
 
 #pragma mark - Actions
+
+- (void) detailViewDismissed
+{
+    
+}
 
 - (void) changedFavourite:(BOOL)theIsFavourite
 {
@@ -142,7 +153,47 @@
 
 #pragma mark - Gestures
 
+#pragma mark 
+
+- (void)recipeCellRightButtonWasTapped:(RecipeCell * _Nonnull)theCell
+{
+    if ([theCell.theRightButton isSelected])
+    {
+        [theCell.theRightButton setSelected:NO];
+        NSPredicate *thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+        NSArray *theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
+        BZDish *theBZDish = [theDishesArray objectAtIndex:0];
+        theBZDish.isFavourite = [NSNumber numberWithBool:NO];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    }
+    else
+    {
+        [theCell.theRightButton setSelected:YES];
+        NSPredicate* thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+        NSArray* theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
+        BZDish* theBZDish = theDishesArray[0];
+        theBZDish.isFavourite= [NSNumber numberWithBool:YES];
+        theBZDish.dateAddedToFavourites = [NSDate date];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    }
+}
+
 #pragma mark - Delegates (UITableViewDelegate & UIDataSource)
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RecipeCell *cell = [RecipeCell new];
+    if (indexPath.section > ([self.arrayOfDishes count]-1))
+    {
+        return 100;
+    }
+    BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
+    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
+    cell.theRecipeDescription = dish.ingridients;
+    double theHeight = [cell methodGetHeight];
+    return theHeight;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -257,11 +308,21 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BZRecipeCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.theOriginalNameString];
-    NSArray* dishes = [BZDish MR_findAllWithPredicate:predicate];
-    BZDish* dish = [dishes objectAtIndex:0];
-    BZDetailReceptViewController* detailRecept = [[BZDetailReceptViewController alloc] init];
+//    BZRecipeCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.theOriginalNameString];
+//    NSArray* dishes = [BZDish MR_findAllWithPredicate:predicate];
+//    BZDish* dish = [dishes objectAtIndex:0];
+//    BZDetailReceptViewController* detailRecept = [[BZDetailReceptViewController alloc] init];
+//    detailRecept.dish = dish;
+//    detailRecept.delegate = self;
+//    self.theCurrentSelecterRaw = indexPath.section;
+//    [self.navigationController pushViewController:detailRecept animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+    NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
+    BZDish *dish = [dishes objectAtIndex:0];
+    BZDetailReceptViewController *detailRecept = [[BZDetailReceptViewController alloc] init];
     detailRecept.dish = dish;
     detailRecept.delegate = self;
     self.theCurrentSelecterRaw = indexPath.section;
@@ -289,25 +350,25 @@
 
 -(void) addToFavouriteWithCell: (BZRecipeCell*) theCell
 {
-    if ([theCell.recipeButton isSelected])
-    {
-        [theCell.recipeButton setSelected:NO];
-        NSPredicate *thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalNameString];
-        NSArray *theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
-        BZDish *theBZDish = [theDishesArray objectAtIndex:0];
-        theBZDish.isFavourite= [NSNumber numberWithBool:NO];
-        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-    }
-    else
-    {
-        [theCell.recipeButton setSelected:YES];
-        NSPredicate* thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalNameString];
-        NSArray* theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
-        BZDish* theBZDish = theDishesArray[0];
-        theBZDish.isFavourite= [NSNumber numberWithBool:YES];
-        theBZDish.dateAddedToFavourites = [NSDate date];
-        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-    }
+//    if ([theCell.recipeButton isSelected])
+//    {
+//        [theCell.recipeButton setSelected:NO];
+//        NSPredicate *thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalNameString];
+//        NSArray *theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
+//        BZDish *theBZDish = [theDishesArray objectAtIndex:0];
+//        theBZDish.isFavourite= [NSNumber numberWithBool:NO];
+//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+//    }
+//    else
+//    {
+//        [theCell.recipeButton setSelected:YES];
+//        NSPredicate* thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalNameString];
+//        NSArray* theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
+//        BZDish* theBZDish = theDishesArray[0];
+//        theBZDish.isFavourite= [NSNumber numberWithBool:YES];
+//        theBZDish.dateAddedToFavourites = [NSDate date];
+//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+//    }
 }
 
 
