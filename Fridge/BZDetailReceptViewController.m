@@ -20,6 +20,8 @@
 @property (strong,nonatomic) NSString *dishSteps;
 @property (strong,nonatomic) NSString *ingridientsText;
 @property (assign, nonatomic) NSInteger portionsCount;
+@property (assign, nonatomic) BOOL isClosing;
+@property (assign, nonatomic) BOOL isPresenting;
 
 @end
 
@@ -108,14 +110,8 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     NSLog(@"%@",self.dish.ingridients);
     self.listTableV.estimatedRowHeight = 60;
     self.listTableV.rowHeight = UITableViewAutomaticDimension;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self setNeedsStatusBarAppearanceUpdate];
-}
 #pragma mark - Create Views & Variables
 
 #pragma mark - Actions
@@ -291,8 +287,14 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
 
 #pragma mark - Delegates (WYPopoverControllerDelegate)
 
+- (void)popoverControllerWasDeallocated
+{
+    self.isClosing = NO;
+}
+
 - (void)popoverControllerDidPresentPopover:(WYPopoverController *)controller
 {
+    self.isPresenting = NO;
     NSLog(@"popoverControllerDidPresentPopover");
 }
 
@@ -307,6 +309,7 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     {
         choosePortionsPopoverController.delegate = nil;
         choosePortionsPopoverController = nil;
+        self.isClosing = NO;
     }
 }
 
@@ -315,7 +318,7 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     return YES;
 }
 
-- (void)popoverController:(WYPopoverController *)popoverController willTranslatePopoverWithYOffset:(float *)value
+- (void)popoverController:(WYPopoverController *)popoverController willTranslatePopoverWithYOffset:(double *)value
 {
     // keyboard is shown and the popover will be moved up by 163 pixels for example ( *value = 163 )
     *value = 0; // set value to 0 if you want to avoid the popover to be moved
@@ -451,6 +454,10 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
 
 -(void)portionsChanged:(UIButton*)theChangeButton
 {
+    if (self.isPresenting)
+    {
+        return;
+    }
     if (choosePortionsPopoverController == nil)
     {
         UIView *theButtonView = theChangeButton;
@@ -479,8 +486,7 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
         choosePortionsPopoverController.passthroughViews = @[theButtonView];
         choosePortionsPopoverController.popoverLayoutMargins = UIEdgeInsetsMake(10, 10, 10, 10);
         choosePortionsPopoverController.wantsDefaultContentAppearance = NO;
-        
-        
+        self.isPresenting = YES;
         [choosePortionsPopoverController presentPopoverFromRect:theButtonView.bounds
                                                          inView:theButtonView
                                        permittedArrowDirections:WYPopoverArrowDirectionAny
@@ -489,15 +495,15 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     }
     else
     {
+        if (self.isClosing)
+        {
+            return;
+        }
+        self.isClosing = YES;
         [self close:nil];
     }
-
+    
     NSLog(@"buttonClicked");
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
 }
 
 @end

@@ -211,6 +211,7 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
 - (BOOL)popoverControllerShouldIgnoreKeyboardBounds:(WYPopoverController *)popoverController;
 
 - (void)popoverController:(WYPopoverController *)popoverController willTranslatePopoverWithYOffset:(CGFloat *)value;
+- (void)popoverControllerWasDeallocated;
 
 @end
 

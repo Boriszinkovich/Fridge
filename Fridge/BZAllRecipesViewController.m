@@ -302,7 +302,7 @@
 //
 //@end
 
-@interface BZAllRecipesViewController ()<RecipeCellProtocol>
+@interface BZAllRecipesViewController() <RecipeCellProtocol>
 
 @end
 
@@ -319,15 +319,24 @@ const NSInteger recipesLoadNumber = 20;
 - (void)changedFavourite:(BOOL) isFavourite
 {
     [super changedFavourite:isFavourite];
-    BZRecipeCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.currentSelecterRaw]];
+    RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.currentSelecterRaw]];
     if (isFavourite)
     {
-        [cell.recipeButton setSelected:YES];
+        [theCell.theRightButton setSelected:YES];
     }
     else
     {
-        [cell.recipeButton setSelected:NO];
+        [theCell.theRightButton setSelected:NO];
     }
+//    BZRecipeCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.currentSelecterRaw]];
+//    if (isFavourite)
+//    {
+//        [cell.recipeButton setSelected:YES];
+//    }
+//    else
+//    {
+//        [cell.recipeButton setSelected:NO];
+//    }
 }
 
 #pragma mark - Init & Dealloc
@@ -420,10 +429,7 @@ const NSInteger recipesLoadNumber = 20;
                                           {
                                               [weakSelf.tableView reloadData];
                                           });
-                           
-                           
                        });
-        
     }
 }
 
@@ -497,6 +503,7 @@ const NSInteger recipesLoadNumber = 20;
     detailRecept.delegate = self;
     self.currentSelecterRaw = indexPath.section;
     [self.navigationController pushViewController:detailRecept animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -24,6 +24,7 @@
 		CE113FA71C60A35300DDD73A /* FridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FA61C60A35300DDD73A /* FridgeTests.m */; };
 		CE113FB21C60A35300DDD73A /* FridgeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FB11C60A35300DDD73A /* FridgeUITests.m */; };
 		CE113FDE1C6142FC00DDD73A /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FDD1C6142FC00DDD73A /* TGLGuillotineMenu.m */; };
+		CE2FAF9F1D7DE14400A5E22D /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2FAF9E1D7DE14400A5E22D /* MenuCell.m */; };
 		CE78EB0C1C6B845800168088 /* Fridge.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CE78EB0B1C6B845800168088 /* Fridge.sqlite */; };
 		CEB4E2931C635EAA00F3BE7A /* BZAllRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */; };
 		CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2951C635ECD00F3BE7A /* BZFavouritesViewController.m */; };
@@ -130,6 +131,8 @@
 		CE113FB31C60A35300DDD73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE113FDC1C6142FC00DDD73A /* TGLGuillotineMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGLGuillotineMenu.h; sourceTree = "<group>"; };
 		CE113FDD1C6142FC00DDD73A /* TGLGuillotineMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGLGuillotineMenu.m; sourceTree = "<group>"; };
+		CE2FAF9D1D7DE14400A5E22D /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
+		CE2FAF9E1D7DE14400A5E22D /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		CE78EB0B1C6B845800168088 /* Fridge.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fridge.sqlite; sourceTree = "<group>"; };
 		CEB4E2911C635EAA00F3BE7A /* BZAllRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZAllRecipesViewController.h; sourceTree = "<group>"; };
 		CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZAllRecipesViewController.m; sourceTree = "<group>"; };
@@ -660,6 +663,8 @@
 				CEFE7B291C6CA8CB007C2D07 /* BZRecipeStepsCell */,
 				CE0047671D1DA3F700248262 /* RecipeCell.h */,
 				CE0047681D1DA3F700248262 /* RecipeCell.m */,
+				CE2FAF9D1D7DE14400A5E22D /* MenuCell.h */,
+				CE2FAF9E1D7DE14400A5E22D /* MenuCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -924,6 +929,7 @@
 				CEB4E29D1C63782D00F3BE7A /* BZRecipeFavouritesCell.m in Sources */,
 				CEC63EA41D6F6C1100C19668 /* NumericKeypadView.m in Sources */,
 				CEBB9D671C668929000BC67B /* BZIngridient.m in Sources */,
+				CE2FAF9F1D7DE14400A5E22D /* MenuCell.m in Sources */,
 				CEBB9D651C668929000BC67B /* BZDish.m in Sources */,
 				CEC63E9C1D6F6C1100C19668 /* NSArray+BZExtensions.m in Sources */,
 				CEBB9D511C662AE5000BC67B /* BZSearchRecipesViewController.m in Sources */,

@@ -48,6 +48,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+static theUpdateCount = 0;
+
 @interface UIColor (WYPopover)
 
 - (BOOL)getValueOfRed:(CGFloat*)red green:(CGFloat*)green blue:(CGFloat*)blue alpha:(CGFloat*)apha;
@@ -1649,7 +1651,6 @@ static WYPopoverTheme *defaultTheme_ = nil;
         [self setTheme:[WYPopoverController defaultTheme]];
         
         themeIsUpdating = YES;
-        
         WYPopoverBackgroundView *appearance = [WYPopoverBackgroundView appearance];
         theme.tintColor = appearance.tintColor;
         theme.outerStrokeColor = appearance.outerStrokeColor;
@@ -1675,6 +1676,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
         theme.overlayColor = appearance.overlayColor;
 
         themeIsUpdating = NO;
+        theUpdateCount++;
         themeUpdatesEnabled = YES;
         
         popoverContentSize_ = CGSizeZero;
@@ -3148,23 +3150,23 @@ static CGPoint WYPointRelativeToOrientation(CGPoint origin, CGSize size, UIInter
 
 - (void)dealloc
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    
-//    [backgroundView removeFromSuperview];
-//    [backgroundView setDelegate:nil];
-//    
-//    [overlayView removeFromSuperview];
-//    [overlayView setDelegate:nil];
-//    
-//    barButtonItem = nil;
-//    passthroughViews = nil;
-//    viewController = nil;
-//    inView = nil;
-//    overlayView = nil;
-//    backgroundView = nil;
-//    
-//    [self unregisterTheme];
-//    theme = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [backgroundView removeFromSuperview];
+    [backgroundView setDelegate:nil];
+    
+    [overlayView removeFromSuperview];
+    [overlayView setDelegate:nil];
+    
+    barButtonItem = nil;
+    passthroughViews = nil;
+    viewController = nil;
+    inView = nil;
+    overlayView = nil;
+    backgroundView = nil;
+    
+    [self unregisterTheme];
+    theme = nil;
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "BZDish.h"
 #import "BZDetailReceptViewController.h"
 #import "BZIngridient.h"
+#import "RecipeCell.h"
 
 #import <MagicalRecord/MagicalRecord.h>
 
@@ -116,16 +117,26 @@
 
 - (void) changedFavourite:(BOOL)theIsFavourite
 {
+//    [super changedFavourite:theIsFavourite];
+//    BZRecipeCell* theBZRecipeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0
+//                                                                                             inSection:self.theCurrentSelecterRaw]];
+//    if (theIsFavourite)
+//    {
+//        [theBZRecipeCell.recipeButton setSelected:YES];
+//    }
+//    else
+//    {
+//       [theBZRecipeCell.recipeButton setSelected:NO];
+//    }
     [super changedFavourite:theIsFavourite];
-    BZRecipeCell* theBZRecipeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0
-                                                                                             inSection:self.theCurrentSelecterRaw]];
+    RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.theCurrentSelecterRaw]];
     if (theIsFavourite)
     {
-        [theBZRecipeCell.recipeButton setSelected:YES];
+        [theCell.theRightButton setSelected:YES];
     }
     else
     {
-       [theBZRecipeCell.recipeButton setSelected:NO];
+        [theCell.theRightButton setSelected:NO];
     }
 }
 
@@ -135,31 +146,57 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BZRecipeCell* theBZRecipeCell = (BZRecipeCell*)[tableView dequeueReusableCellWithIdentifier:recipeCellIdentifier];
-    if (!theBZRecipeCell)
+//    BZRecipeCell* theBZRecipeCell = (BZRecipeCell*)[tableView dequeueReusableCellWithIdentifier:recipeCellIdentifier];
+//    if (!theBZRecipeCell)
+//    {
+//        theBZRecipeCell = [[BZRecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recipeCellIdentifier];
+//        
+//    }
+//    BZDish *theCurrentBZDish = [self.arrayOfDishes objectAtIndex:indexPath.section];
+//    theBZRecipeCell.theOriginalNameString = theCurrentBZDish.nameOfDish;
+//    theBZRecipeCell.recipeName.text = theCurrentBZDish.nameOfDish;
+//    theBZRecipeCell.recipeDescription.text = theCurrentBZDish.ingridients;
+//    NSString* theIngridientNameString = theCurrentBZDish.ingridients;
+//    theBZRecipeCell.recipeImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",theCurrentBZDish.image]];
+//    theBZRecipeCell.recipeImage.contentMode = UIViewContentModeScaleToFill;
+//    theBZRecipeCell.theDelegate = self;
+//    if ([theCurrentBZDish.isFavourite boolValue])
+//    {
+//        [theBZRecipeCell.recipeButton setSelected:YES];
+//    }
+//    else
+//    {
+//        [theBZRecipeCell.recipeButton setSelected:NO];
+//    }
+    RecipeCell *cell = (RecipeCell*)[tableView dequeueReusableCellWithIdentifier:recipeCellIdentifier];
+    if (!cell)
     {
-        theBZRecipeCell = [[BZRecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recipeCellIdentifier];
-        
+        cell = [[RecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recipeCellIdentifier];
     }
-    BZDish *theCurrentBZDish = [self.arrayOfDishes objectAtIndex:indexPath.section];
-    theBZRecipeCell.theOriginalNameString = theCurrentBZDish.nameOfDish;
-    theBZRecipeCell.recipeName.text = theCurrentBZDish.nameOfDish;
-    theBZRecipeCell.recipeDescription.text = theCurrentBZDish.ingridients;
-    NSString* theIngridientNameString = theCurrentBZDish.ingridients;
-    theBZRecipeCell.recipeImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",theCurrentBZDish.image]];
-    theBZRecipeCell.recipeImage.contentMode = UIViewContentModeScaleToFill;
-    theBZRecipeCell.theDelegate = self;
-    if ([theCurrentBZDish.isFavourite boolValue])
+    cell.theDelegate = self;
+    if (indexPath.section > ([self.arrayOfDishes count]-1))
     {
-        [theBZRecipeCell.recipeButton setSelected:YES];
+        return cell;
+    }
+    BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
+    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
+    cell.theRecipeDescription = dish.ingridients;
+    [cell.theRightButton setImage:[UIImage imageNamed:@"likeEmpty"] forState:UIControlStateNormal];
+    [cell.theRightButton setImage:[UIImage imageNamed:@"likeFull"] forState:UIControlStateSelected];
+    if ([dish.isFavourite boolValue])
+    {
+        [cell.theRightButton setSelected:YES];
     }
     else
     {
-        [theBZRecipeCell.recipeButton setSelected:NO];
+        [cell.theRightButton setSelected:NO];
     }
-    NSLog(@"%f",theBZRecipeCell.recipeDescription.frame.size.width);
+        NSString* theIngridientNameString = dish.ingridients;
+
+//    NSLog(@"%f",theBZRecipeCell.recipeDescription.frame.size.width);
     NSMutableSet *theIngridientsIntersectionNSSet = [NSMutableSet setWithArray:self.theIngridientsArray];
-    [theIngridientsIntersectionNSSet intersectSet:theCurrentBZDish.arrayOfIngridients];
+    [theIngridientsIntersectionNSSet intersectSet:dish.arrayOfIngridients];
     NSMutableAttributedString *theAttributedString = [[NSMutableAttributedString alloc]  initWithString:theIngridientNameString];
     for (BZIngridient* ingredient in theIngridientsIntersectionNSSet)
     {
@@ -215,8 +252,8 @@
         }
         
     }
-    theBZRecipeCell.recipeDescription.attributedText= theAttributedString;
-    return theBZRecipeCell;
+    cell.theDescriptionLabel.attributedText= theAttributedString;
+    return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -229,6 +266,7 @@
     detailRecept.delegate = self;
     self.theCurrentSelecterRaw = indexPath.section;
     [self.navigationController pushViewController:detailRecept animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

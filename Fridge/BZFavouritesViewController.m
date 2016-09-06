@@ -11,10 +11,12 @@
 #import "BZDish.h"
 #import "BZRecipeFavouritesCell.h"
 #import "BZDetailReceptViewController.h"
+#import "RecipeCell.h"
+#import "BZAddToFavouriteProtocol.h"
 
 #import <MagicalRecord/MagicalRecord.h>
 
-@interface BZFavouritesViewController ()
+@interface BZFavouritesViewController() <RecipeCellProtocol>
 
 @property (assign, nonatomic) NSInteger numberOfFavourites;
 
@@ -57,8 +59,8 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"BZFavouriteRecipeCell" bundle:nil]
-         forCellReuseIdentifier:recipeFavouriteCellIdentifier];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"BZFavouriteRecipeCell" bundle:nil]
+//         forCellReuseIdentifier:recipeFavouriteCellIdentifier];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl beginRefreshing];
@@ -146,6 +148,23 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     }
 }
 
+#pragma mark - RecipeCellDelegate
+
+- (void)recipeCellRightButtonWasTapped:(RecipeCell * _Nonnull)theCell
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+    NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
+    BZDish *dish = [dishes objectAtIndex:0];
+    NSInteger dd = [self.arrayOfDishes indexOfObject:dish];
+    
+    
+    [self.arrayOfDishes removeObjectAtIndex:dd];
+    dish.isFavourite= [NSNumber numberWithBool:NO];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    self.numberOfFavourites--;
+    
+    [self.tableView reloadData];
+}
 
 #pragma mark - Gestures
 
@@ -153,33 +172,29 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier";
-    BZRecipeFavouritesCell *cell = (BZRecipeFavouritesCell*)[tableView dequeueReusableCellWithIdentifier:recipeFavouriteCellIdentifier];
+    RecipeCell *cell = (RecipeCell*)[tableView dequeueReusableCellWithIdentifier:recipeFavouriteCellIdentifier];
     if (!cell)
     {
-        cell = [[BZRecipeFavouritesCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                             reuseIdentifier:recipeFavouriteCellIdentifier];
-        
+        cell = [[RecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recipeFavouriteCellIdentifier];
+    }
+    cell.theDelegate = self;
+    if (indexPath.section > ([self.arrayOfDishes count]-1))
+    {
+        return cell;
     }
     BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
-    NSLog(@"%@",dish);
-    cell.originalName = dish.nameOfDish;
-    cell.recipeName.text = dish.nameOfDish;
-    cell.recipeDescription.text = dish.ingridients;
-    NSLog(@"%@",dish.image);
-    cell.recipeImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
-    cell.recipeImage.contentMode = UIViewContentModeScaleToFill;
-    [cell.recipeButton setImage:[UIImage imageNamed:@"closeViolet.png"]
-                       forState:UIControlStateNormal]; //  CloseGray
-    cell.delegate = self;
-    NSLog(@"%f",cell.recipeDescription.frame.size.width);
+    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
+    cell.theRecipeDescription = dish.ingridients;
+    [cell.theRightButton setImage:[UIImage imageNamed:@"closeViolet.png"]
+                           forState:UIControlStateNormal];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BZRecipeFavouritesCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.originalName];
+    RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
     NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
     BZDish *dish = dishes[0];
     BZDetailReceptViewController *detailRecept = [[BZDetailReceptViewController alloc] init];
@@ -187,6 +202,22 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     detailRecept.delegate = self;
     self.currentSelecterRaw = indexPath.section;
     [self.navigationController pushViewController:detailRecept animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RecipeCell *cell = [RecipeCell new];
+    if (indexPath.section > ([self.arrayOfDishes count]-1))
+    {
+        return 100;
+    }
+    BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
+    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
+    cell.theRecipeDescription = dish.ingridients;
+    double theHeight = [cell methodGetHeight];
+    return theHeight;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -248,22 +279,22 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 }
 
 
-- (void)deleteFromFavouriteWithCell: (BZRecipeFavouritesCell*) cell
-{
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.originalName];
-    NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
-    BZDish *dish = [dishes objectAtIndex:0];
-    NSInteger dd = [self.arrayOfDishes indexOfObject:dish];
-    
-    
-    [self.arrayOfDishes removeObjectAtIndex:dd];
-    dish.isFavourite= [NSNumber numberWithBool:NO];
-    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-    self.numberOfFavourites--;
-    
-    [self.tableView reloadData];
-}
+//- (void)deleteFromFavouriteWithCell: (BZRecipeFavouritesCell*) cell
+//{
+//    
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.originalName];
+//    NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
+//    BZDish *dish = [dishes objectAtIndex:0];
+//    NSInteger dd = [self.arrayOfDishes indexOfObject:dish];
+//    
+//    
+//    [self.arrayOfDishes removeObjectAtIndex:dd];
+//    dish.isFavourite= [NSNumber numberWithBool:NO];
+//    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+//    self.numberOfFavourites--;
+//    
+//    [self.tableView reloadData];
+//}
 
 #pragma mark - Standard Methods
 

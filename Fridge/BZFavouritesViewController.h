@@ -9,7 +9,7 @@
 #import "BZRecipeViewController.h"
 #import "BZDeleteFromFavouriteProtocol.h"
 
-@interface BZFavouritesViewController : BZRecipeViewController <BZDeleteFromFavouriteProtocol>
+@interface BZFavouritesViewController : BZRecipeViewController
 
 @property (assign, nonatomic) NSInteger currentSelecterRaw;
 

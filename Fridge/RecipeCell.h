@@ -17,6 +17,7 @@
 @property (nonatomic, strong, nonnull) UIImage *theRecipeImage;
 @property (nonatomic, strong, nonnull) UIImage *theRecipeButtonImage;
 @property (nonatomic, strong, nonnull) UIButton *theRightButton;
+@property (nonatomic, strong, nonnull) UILabel *theDescriptionLabel;
 @property (nonatomic, weak, nullable) id<RecipeCellProtocol> theDelegate;
 
 - (CGFloat)methodGetHeight;

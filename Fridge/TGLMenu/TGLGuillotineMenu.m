@@ -8,6 +8,8 @@
 
 #import "TGLGuillotineMenu.h"
 
+#import "MenuCell.h"
+
 @interface CustomCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView *imageView;
@@ -18,8 +20,8 @@
 @implementation CustomCollectionViewCell
 
 @end
-static NSInteger cellHeightForIpad = 100;
-static NSInteger cellHeightForIphone = 55;
+static NSInteger cellHeightForIpad = 300;
+static NSInteger cellHeightForIphone = 110;
 
 @implementation TGLGuillotineMenu
 
@@ -135,14 +137,16 @@ static NSInteger cellHeightForIphone = 55;
     else {
     //    menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2, tableViewMarginTop + navBarH, tableViewW , screenH - 200.0 - tableViewMarginTop)];
     //    menuTableView.center = self.view.center;
-        NSInteger tableViewInset = (screenH - 4* self.cellHeight)/2;
+        NSInteger tableViewInset = (screenH -  self.menuTitles.count * [MenuCell methodGetHeight])/2;
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         {
-             menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 , tableViewInset - 80 , tableViewW + 50, 4*self.cellHeight)];
+//             menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 , tableViewInset - 80 , tableViewW + 50, 4*self.cellHeight)];
+                         menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 , tableViewInset - 80 , tableViewW + 50, self.menuTitles.count * [MenuCell methodGetHeight])];
         }
         else
         {
-            menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 , tableViewInset , tableViewW , 4*self.cellHeight)];
+//            menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 , tableViewInset , tableViewW , 4*self.cellHeight)];
+                        menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 , tableViewInset , tableViewW , self.menuTitles.count * [MenuCell methodGetHeight])];
         }
         menuTableView.backgroundColor = [UIColor clearColor];
         menuTableView.delegate = self;
@@ -380,35 +384,45 @@ static NSInteger cellHeightForIphone = 55;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
-    
-    if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menuCell"];
-    }
-    
-    cell.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.textAlignment = NSTextAlignmentLeft;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
+//    
+//    if(cell == nil){
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menuCell"];
+//    }
+//    
+//    cell.backgroundColor = [UIColor clearColor];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    
+//    cell.textLabel.textColor = [UIColor whiteColor];
+//    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//    {
+//         cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:28.f];
+//    }
+//    else
+//    {
+//         cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:19.f];
+//    }
+//   
+//    cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
+//    cell.textLabel.numberOfLines = 0;
+//    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imagesTitles objectAtIndex:indexPath.row]]];
+//    return cell;
+
+    NSString *theMenuCellIdentifier = @"menuCell";
+    MenuCell *theMenuCell = [tableView dequeueReusableCellWithIdentifier:theMenuCellIdentifier];
+    if (!theMenuCell)
     {
-         cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:28.f];
+        theMenuCell = [[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:theMenuCellIdentifier];
     }
-    else
-    {
-         cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:19.f];
-    }
-   
-    cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
-    cell.textLabel.numberOfLines = 0;
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imagesTitles objectAtIndex:indexPath.row]]];
-    
-    return cell;
+    theMenuCell.theMenuImageName = [NSString stringWithFormat:@"%@", [self.imagesTitles objectAtIndex:indexPath.row]];
+    theMenuCell.theMenuName = self.menuTitles[indexPath.row];
+    return theMenuCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.cellHeight;
+//    return self.cellHeight;
+    return [MenuCell methodGetHeight];
 }
 
 #pragma mark - Table view delegate

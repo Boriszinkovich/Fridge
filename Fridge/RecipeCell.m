@@ -13,10 +13,11 @@
 @interface RecipeCell ()
 
 @property (nonatomic, strong, nonnull) UILabel *theTitleLabel;
-@property (nonatomic, strong, nonnull) UILabel *theDescriptionLabel;
 @property (nonatomic, strong, nonnull) UIImageView *theRecipeImageView;
 
 @end
+
+const NSString * theLabelsMaxXInset = @"28 25 20 18 15 12";
 
 @implementation RecipeCell
 
@@ -62,7 +63,7 @@
     _theRecipeName = theRecipeName;
     [self createAllViews];
     self.theTitleLabel.text = theRecipeName;
-    self.theTitleLabel.theWidth = self.theRightButton.theMinX - self.theTitleLabel.theMinX - @"30 28 26 22 20 20".theDeviceValue;
+    self.theTitleLabel.theWidth = self.theRightButton.theMinX - self.theTitleLabel.theMinX - theLabelsMaxXInset.theDeviceValue;
     [self.theTitleLabel sizeToFit];
 }
 
@@ -104,7 +105,7 @@
     self.theDescriptionLabel.theMinX = self.theRecipeImageView.theMaxX + 10;
     self.theDescriptionLabel.theMinY = self.theRecipeImageView.theMinY + @"5 3 2 2 2 2".theDeviceValue;
     NSLog(@"%f", self.theRightButton.theMinY);
-    self.theDescriptionLabel.theWidth = self.theRightButton.theMinX - @"30 25 23 22 20 18".theDeviceValue - self.theDescriptionLabel.theMinX;
+    self.theDescriptionLabel.theWidth = self.theRightButton.theMinX - theLabelsMaxXInset.theDeviceValue - self.theDescriptionLabel.theMinX;
     [self.theDescriptionLabel sizeToFit];
 
 }

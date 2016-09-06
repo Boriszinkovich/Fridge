@@ -69,15 +69,18 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
-    BZHelpDevelopersViewController *helpDev = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:helpDevelopersControllerIdentifier];
+
    // BZAllRecipesViewController* recipeController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:recipeViewControllerIdentifier];
     BZAllRecipesViewController *recipeController = [[BZAllRecipesViewController alloc] init];
     BZFavouritesViewController *favouritesController = [[BZFavouritesViewController alloc] init];
     BZFridgeViewController *fridgeViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:fridgeViewControllerIdentifier];
-    NSArray *vcArray        = [[NSArray alloc] initWithObjects:fridgeViewController, recipeController, favouritesController, helpDev, nil];
-    NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"Холодильник", @"Рецепты", @"Избранное", @"Помощь разработчикам", nil];
-    NSArray *imagesArray    = [[NSArray alloc] initWithObjects:@"bz_fridge", @"bz_recipes", @"bz_favourite", @"bz_helpForDev", nil];
-    
+//        BZHelpDevelopersViewController *helpDev = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:helpDevelopersControllerIdentifier];
+//    NSArray *vcArray        = [[NSArray alloc] initWithObjects:fridgeViewController, recipeController, favouritesController, helpDev, nil];
+//    NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"Холодильник", @"Рецепты", @"Избранное", @"Помощь разработчикам", nil];
+//    NSArray *imagesArray    = [[NSArray alloc] initWithObjects:@"bz_fridge", @"bz_recipes", @"bz_favourite", @"bz_helpForDev", nil];
+    NSArray *vcArray        = [[NSArray alloc] initWithObjects:fridgeViewController, recipeController, favouritesController, nil];
+    NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"Холодильник", @"Рецепты", @"Избранное", nil];
+    NSArray *imagesArray    = [[NSArray alloc] initWithObjects:@"bz_fridge", @"bz_recipes", @"bz_favourite", nil];
     TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titlesArray andImagesTitles:imagesArray andStyle:TGLGuillotineMenuStyleTable];
     menuVC.delegate = self;
     
@@ -167,6 +170,10 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
                            green:((float) g / 255.0f)
                             blue:((float) b / 255.0f)
                            alpha:1.0f];
+}
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationPortrait) ;
 }
 
 @end

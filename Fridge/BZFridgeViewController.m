@@ -444,6 +444,20 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
     
 }
 
+- (void)methodShowNoIngridientsDialog
+{
+    UIAlertController *theAlert = [UIAlertController alertControllerWithTitle:@"Нет ингридиентов"
+                                                                      message:@"Выберите ингридиенты чтобы приступить к поиску рецептов"
+                                                               preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *theDefaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * action) {}];
+    
+    [theAlert addAction:theDefaultAction];
+    [self presentViewController:theAlert animated:YES completion:nil];
+}
+
 #pragma mark - Methods (Public)
 
 #pragma mark - Methods (Private)
@@ -547,9 +561,16 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
 
 - (IBAction)findRecipes:(id)sender
 {
-    BZSearchRecipesViewController *searchRecipesController = [BZSearchRecipesViewController new];
-    searchRecipesController.theIngridientsArray = self.arrayOfChosedIngridients;
-    [self.navigationController pushViewController:searchRecipesController animated:YES];
+    if (!self.arrayOfChosedIngridients || !self.arrayOfChosedIngridients.count)
+    {
+        [self methodShowNoIngridientsDialog];
+    }
+    else
+    {
+        BZSearchRecipesViewController *searchRecipesController = [BZSearchRecipesViewController new];
+        searchRecipesController.theIngridientsArray = self.arrayOfChosedIngridients;
+        [self.navigationController pushViewController:searchRecipesController animated:YES];
+    }
 }
 
 @end
