@@ -136,7 +136,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSS-DE-Lcb">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                        <color key="backgroundColor" red="0.62745098039215685" green="0.63921568627450975" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.63137254901960782" green="0.63921568627450975" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Найти рецепты">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,6 +186,7 @@
                     <connections>
                         <outlet property="searchIngridient" destination="crT-vw-bAl" id="uZS-rJ-cOI"/>
                         <outlet property="tableView" destination="Qm5-K1-WKt" id="K27-60-Lo2"/>
+                        <outlet property="theFindButton" destination="xSS-DE-Lcb" id="XcT-ew-d6o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t12-JI-BXd" userLabel="First Responder" sceneMemberID="firstResponder"/>

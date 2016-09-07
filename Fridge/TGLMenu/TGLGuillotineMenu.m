@@ -47,8 +47,10 @@ static NSInteger cellHeightForIphone = 110;
         self.imagesTitles       = [imgTitles copy];
         
        // self.menuColor = [UIColor colorWithRed:65.0 / 255.0 green:62.f / 255.f blue:79.f / 255.f alpha:1];
-        self.menuColor = [self colorWithHexString:@"7388A4"];
-        
+//        self.menuColor = [self colorWithHexString:@"7388A4"];
+        self.menuColor = [self colorWithHexString:@"739DC4"];
+//        self.menuColor = [self colorWithHexString:@"F2890A"];
+
         screenW = [[UIScreen mainScreen] bounds].size.width;
         screenH = [[UIScreen mainScreen] bounds].size.height;
         

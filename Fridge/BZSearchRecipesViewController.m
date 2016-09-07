@@ -62,7 +62,9 @@
     [self.tableView layoutIfNeeded];
     [self.navigationItem setTitle:@"Рецепты"];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"                         "
+                                                                    style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = rightButton;
     [self methodLoadData];
 }
 

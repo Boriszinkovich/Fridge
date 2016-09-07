@@ -98,6 +98,7 @@ const NSInteger recipesLoadNumber = 20;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
+    [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -147,6 +148,15 @@ const NSInteger recipesLoadNumber = 20;
 #pragma mark - Create Views & Variables
 
 #pragma mark - Actions
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if (isEqual(keyPath, @"contentInset"))
+    {
+        NSLog(@"%@", object);
+        NSLog(@"%@", change);
+    }
+}
 
 #pragma mark - Notifications
 

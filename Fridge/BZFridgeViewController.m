@@ -60,7 +60,8 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.estimatedRowHeight = 50;
-    
+    self.theFindButton.backgroundColor = [UIColor getColorWithHexString:@"507299"];
+//    self.searchIngridient.barTintColor = [UIColor getColorWithHexString:@"F4AA2A"];
     [self.tableView setNeedsLayout];
     [self.tableView layoutIfNeeded];
     

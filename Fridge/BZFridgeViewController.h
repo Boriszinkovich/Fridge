@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchIngridient;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *theFindButton;
 
 - (IBAction)findRecipes:(id)sender;
 
