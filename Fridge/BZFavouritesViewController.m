@@ -21,6 +21,7 @@
 @property (assign, nonatomic) NSInteger numberOfFavourites;
 @property (assign, nonatomic) BOOL isNeedUpdate;
 @property (strong, nonatomic) UIActivityIndicatorView *theProgressView;
+@property (assign, nonatomic) CGPoint theLastContentOffset;
 
 @end
 
@@ -83,6 +84,7 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
+    [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
 //    [self.tableView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
 //    [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
 }
@@ -138,8 +140,8 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.tableView.estimatedRowHeight = 80;
+//    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//    self.tableView.estimatedRowHeight = 80;
 }
 
 #pragma mark - Create Views & Variables
@@ -225,6 +227,10 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     }
     cell.theDelegate = self;
     if (indexPath.section > ([self.arrayOfDishes count]-1))
+    {
+        return cell;
+    }
+    if (!self.arrayOfDishes || !self.arrayOfDishes.count || self.arrayOfDishes.count <= indexPath.section)
     {
         return cell;
     }
@@ -335,22 +341,27 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 }
 
 
-//- (void)deleteFromFavouriteWithCell: (BZRecipeFavouritesCell*) cell
-//{
-//    
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.originalName];
-//    NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
-//    BZDish *dish = [dishes objectAtIndex:0];
-//    NSInteger dd = [self.arrayOfDishes indexOfObject:dish];
-//    
-//    
-//    [self.arrayOfDishes removeObjectAtIndex:dd];
-//    dish.isFavourite= [NSNumber numberWithBool:NO];
-//    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-//    self.numberOfFavourites--;
-//    
-//    [self.tableView reloadData];
-//}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if (isEqual(keyPath, @"contentInset"))
+    {
+        NSLog(@"%@", object);
+        NSLog(@"%@", change);
+        NSLog(@"%@", change[@"new"]);
+        NSValue *theInsetsValue = (NSValue *)change[@"new"];
+        UIEdgeInsets theEdgeInsets = [theInsetsValue UIEdgeInsetsValue];
+        if (theEdgeInsets.top != 0)
+        {
+            self.tableView.contentInset = UIEdgeInsetsZero;
+            //            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+            if (!self.currentSelecterRaw)
+            {
+                //                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                [self.tableView setContentOffset:self.theLastContentOffset];
+            }
+        }
+    }
+}
 
 #pragma mark - Standard Methods
 

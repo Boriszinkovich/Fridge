@@ -29,7 +29,7 @@
 @end
 
 static NSString* recipeCellIdentifier = @"recipeCellIdentifier";
-
+static NSString* hideRecipeCellIdentifier = @"hideRecipeCellIdentifier";
 
 
 

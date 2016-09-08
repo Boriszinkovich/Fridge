@@ -13,6 +13,7 @@
 #import "BZDetailReceptViewController.h"
 #import "BZIngridient.h"
 #import "RecipeCell.h"
+#import "HideRecipeCell.h"
 
 #import <MagicalRecord/MagicalRecord.h>
 
@@ -221,6 +222,26 @@
 //    {
 //        [theBZRecipeCell.recipeButton setSelected:NO];
 //    }
+    if (!indexPath.section)
+    {
+        HideRecipeCell *cell = (HideRecipeCell *)[tableView dequeueReusableCellWithIdentifier:hideRecipeCellIdentifier];
+        if (!cell)
+        {
+            cell = [[HideRecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:hideRecipeCellIdentifier];
+        }
+        if (indexPath.section > ([self.arrayOfDishes count]-1))
+        {
+            return cell;
+        }
+        BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
+        cell.theRecipeName = dish.nameOfDish;
+        cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
+        cell.theRecipeDescription = dish.ingridients;
+        [cell.theRightButton setImage:[UIImage imageNamed:@"likeEmpty"] forState:UIControlStateNormal];
+        [cell.theRightButton setImage:[UIImage imageNamed:@"likeFull"] forState:UIControlStateSelected];
+        cell.theRightButton.alpha = 0;
+        return cell;
+    }
     RecipeCell *cell = (RecipeCell*)[tableView dequeueReusableCellWithIdentifier:recipeCellIdentifier];
     if (!cell)
     {

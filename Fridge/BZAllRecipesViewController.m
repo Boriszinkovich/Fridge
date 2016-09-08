@@ -18,6 +18,7 @@
 @interface BZAllRecipesViewController() <RecipeCellProtocol>
 
 @property (assign, nonatomic) BOOL isNeedUpdate;
+@property (assign, nonatomic) CGPoint theLastContentOffset;
 @property (strong, nonatomic) UIActivityIndicatorView *theProgressView;
 
 @end
@@ -104,8 +105,8 @@ const NSInteger recipesLoadNumber = 20;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.tableView.estimatedRowHeight = 80;
+//    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//    self.tableView.estimatedRowHeight = 80;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -155,6 +156,19 @@ const NSInteger recipesLoadNumber = 20;
     {
         NSLog(@"%@", object);
         NSLog(@"%@", change);
+        NSLog(@"%@", change[@"new"]);
+        NSValue *theInsetsValue = (NSValue *)change[@"new"];
+        UIEdgeInsets theEdgeInsets = [theInsetsValue UIEdgeInsetsValue];
+        if (theEdgeInsets.top != 0)
+        {
+            self.tableView.contentInset = UIEdgeInsetsZero;
+//            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+            if (!self.currentSelecterRaw)
+            {
+//                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                [self.tableView setContentOffset:self.theLastContentOffset];
+            }
+        }
     }
 }
 
@@ -251,6 +265,7 @@ const NSInteger recipesLoadNumber = 20;
     detailRecept.dish = dish;
     detailRecept.delegate = self;
     self.currentSelecterRaw = indexPath.section;
+    self.theLastContentOffset = tableView.contentOffset;
     [self.navigationController pushViewController:detailRecept animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
