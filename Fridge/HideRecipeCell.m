@@ -15,6 +15,8 @@
 @property (nonatomic, strong, nonnull) UILabel *theTitleLabel;
 @property (nonatomic, strong, nonnull) UIImageView *theRecipeImageView;
 @property (nonatomic, strong, nonnull) UIView *theBackgroundView;
+@property (nonatomic, strong, nonnull) UILabel *theTitleUnavailableLabel;
+@property (nonatomic, strong, nonnull) UILabel *theDescriptionUnavailableLabel;
 
 @end
 
@@ -67,19 +69,6 @@ const NSString * theHideCellLabelsMaxXInset = @"28 25 20 18 15 12";
     self.theTitleLabel.theWidth = self.theRightButton.theMinX - self.theTitleLabel.theMinX - theHideCellLabelsMaxXInset.theDeviceValue;
     [self.theTitleLabel sizeToFit];
 }
-
-//- (void)setTheRecipeButtonImage:(UIImage *)theRecipeButtonImage
-//{
-//    if (isEqual(_theRecipeButtonImage, theRecipeButtonImage))
-//    {
-//        return;
-//    }
-//    _theRecipeButtonImage = theRecipeButtonImage;
-//    self.theReCip
-//    self.theRecipeImageView.image = theRecipeButtonImage;
-//    self.theRecipeImageView.contentMode = UIViewContentModeScaleToFill;
-//    self.theRecipeImageView.theMinY = self.theTitleLabel.theMaxY + @"9 8 6 5 5 5".theDeviceValue;
-//}
 
 - (void)setTheRecipeImage:(UIImage *)theRecipeImage
 {
@@ -171,7 +160,34 @@ const NSString * theHideCellLabelsMaxXInset = @"28 25 20 18 15 12";
     theBackgroundHideView.theWidth = [UIScreen mainScreen].bounds.size.width - cellMargin * 2;
     theBackgroundHideView.layer.cornerRadius = 5;
     theBackgroundHideView.backgroundColor = [UIColor yellowColor];
-    theBackgroundHideView.alpha = 0.95;
+    theBackgroundHideView.alpha = 0.9;
+    
+    UILabel *theTitleUnavailableLabel = [UILabel new];
+    self.theTitleUnavailableLabel = theTitleUnavailableLabel;
+    [theBackgroundHideView addSubview:theTitleUnavailableLabel];
+    theTitleUnavailableLabel.numberOfLines = 0;
+    theTitleUnavailableLabel.text = @"Лучшие 3 рецепта скрыты";
+    theTitleUnavailableLabel.font = [UIFont systemFontOfSize:@"25 24 22 21 20 19".theDeviceValue];
+    theTitleUnavailableLabel.theWidth = theTitleUnavailableLabel.superview.theWidth - 20;
+    [theTitleUnavailableLabel sizeToFit];
+    theTitleUnavailableLabel.theMinY = 10;
+    theTitleUnavailableLabel.theCenterX = theTitleUnavailableLabel.superview.theWidth / 2;
+    theTitleUnavailableLabel.textAlignment = NSTextAlignmentCenter;
+    theTitleUnavailableLabel.textColor = [UIColor orangeColor];
+    
+    UILabel *theDescriptionUnavailableLabel = [UILabel new];
+    self.theDescriptionUnavailableLabel = theDescriptionUnavailableLabel;
+    [theBackgroundHideView addSubview:theDescriptionUnavailableLabel];
+    theDescriptionUnavailableLabel.numberOfLines = 0;
+    theDescriptionUnavailableLabel.text = @"Приобретите пакет \"Полный холодильник\" и получите доступ ко всем рецептам";
+    theDescriptionUnavailableLabel.font = [UIFont systemFontOfSize:@"20 19 17 16 15 14".theDeviceValue];
+    theDescriptionUnavailableLabel.theWidth = theDescriptionUnavailableLabel.superview.theWidth - 20;
+    [theDescriptionUnavailableLabel sizeToFit];
+    theDescriptionUnavailableLabel.theMinX = 15;
+    theDescriptionUnavailableLabel.theMinY = theTitleUnavailableLabel.theMaxY + 10;
+    theDescriptionUnavailableLabel.textColor = [UIColor orangeColor];
+    
+    self.theBackgroundView.theHeight = [self methodGetHeight] - 2;
 }
 
 #pragma mark - Actions
@@ -189,16 +205,18 @@ const NSString * theHideCellLabelsMaxXInset = @"28 25 20 18 15 12";
 
 - (CGFloat)methodGetHeight
 {
-    double theHeight = self.theTitleLabel.theMinY + self.theTitleLabel.theHeight + 16;
+    double theFirstHeight = self.theTitleLabel.theMinY + self.theTitleLabel.theHeight + 16;
     if (self.theRecipeImageView.theHeight > self.theDescriptionLabel.theHeight)
     {
-        theHeight = theHeight + 10 + self.theRecipeImageView.theHeight;
+        theFirstHeight = theFirstHeight + 10 + self.theRecipeImageView.theHeight;
     }
     else
     {
-        theHeight = theHeight + 10 + self.theDescriptionLabel.theHeight;
+        theFirstHeight = theFirstHeight + 10 + self.theDescriptionLabel.theHeight;
     }
-    return theHeight;
+    double theHeight = self.theTitleUnavailableLabel.theHeight + self.theDescriptionUnavailableLabel.theHeight + 35;
+//    return theHeight;
+    return theFirstHeight > theHeight ? theFirstHeight : theHeight;
 }
 
 #pragma mark - Methods (Private)

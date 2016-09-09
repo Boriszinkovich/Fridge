@@ -59,8 +59,6 @@
     self.tableView.estimatedRowHeight = 80;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self.tableView setNeedsLayout];
-    [self.tableView layoutIfNeeded];
     [self.navigationItem setTitle:@"Рецепты"];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"                         "
@@ -183,14 +181,57 @@
 
 #pragma mark - Delegates (UITableViewDelegate & UIDataSource)
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if (isWithPurchase && ![[MKStoreKit sharedKit] isProductPurchased:keyInAppPurchaseIdentifier])
+    {
+        return self.arrayOfDishes.count > 3 ? [self.arrayOfDishes count] - 2 : 0;
+    }
+    else
+    {
+        return [self.arrayOfDishes count];
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (isWithPurchase && ![[MKStoreKit sharedKit] isProductPurchased:keyInAppPurchaseIdentifier] && !indexPath.section)
+    {
+        HideRecipeCell *cell = (HideRecipeCell *)[tableView dequeueReusableCellWithIdentifier:hideRecipeCellIdentifier];
+        if (!cell)
+        {
+            cell = [[HideRecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:hideRecipeCellIdentifier];
+        }
+        if (indexPath.section > ([self.arrayOfDishes count]-1))
+        {
+            return 100;
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
+        cell.theRecipeName = dish.nameOfDish;
+        cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
+        cell.theRecipeDescription = dish.ingridients;
+        [cell.theRightButton setImage:[UIImage imageNamed:@"likeEmpty"] forState:UIControlStateNormal];
+        [cell.theRightButton setImage:[UIImage imageNamed:@"likeFull"] forState:UIControlStateSelected];
+        cell.theRightButton.alpha = 0;
+        return [cell methodGetHeight];
+    }
+    NSInteger theCurrentDishIndex = 0;
+    if (isWithPurchase && ![[MKStoreKit sharedKit] isProductPurchased:keyInAppPurchaseIdentifier])
+    {
+        theCurrentDishIndex = indexPath.section + 2;
+    }
+    else
+    {
+        theCurrentDishIndex = indexPath.section;
+    }
+    
     RecipeCell *cell = [RecipeCell new];
-    if (indexPath.section > ([self.arrayOfDishes count]-1))
+    if (theCurrentDishIndex > ([self.arrayOfDishes count]-1))
     {
         return 100;
     }
-    BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
+    BZDish *dish = [self.arrayOfDishes objectAtIndex:theCurrentDishIndex];
     cell.theRecipeName = dish.nameOfDish;
     cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
     cell.theRecipeDescription = dish.ingridients;
@@ -200,29 +241,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    BZRecipeCell* theBZRecipeCell = (BZRecipeCell*)[tableView dequeueReusableCellWithIdentifier:recipeCellIdentifier];
-//    if (!theBZRecipeCell)
-//    {
-//        theBZRecipeCell = [[BZRecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recipeCellIdentifier];
-//        
-//    }
-//    BZDish *theCurrentBZDish = [self.arrayOfDishes objectAtIndex:indexPath.section];
-//    theBZRecipeCell.theOriginalNameString = theCurrentBZDish.nameOfDish;
-//    theBZRecipeCell.recipeName.text = theCurrentBZDish.nameOfDish;
-//    theBZRecipeCell.recipeDescription.text = theCurrentBZDish.ingridients;
-//    NSString* theIngridientNameString = theCurrentBZDish.ingridients;
-//    theBZRecipeCell.recipeImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",theCurrentBZDish.image]];
-//    theBZRecipeCell.recipeImage.contentMode = UIViewContentModeScaleToFill;
-//    theBZRecipeCell.theDelegate = self;
-//    if ([theCurrentBZDish.isFavourite boolValue])
-//    {
-//        [theBZRecipeCell.recipeButton setSelected:YES];
-//    }
-//    else
-//    {
-//        [theBZRecipeCell.recipeButton setSelected:NO];
-//    }
-    if (!indexPath.section)
+    if (isWithPurchase && ![[MKStoreKit sharedKit] isProductPurchased:keyInAppPurchaseIdentifier] && !indexPath.section)
     {
         HideRecipeCell *cell = (HideRecipeCell *)[tableView dequeueReusableCellWithIdentifier:hideRecipeCellIdentifier];
         if (!cell)
@@ -233,6 +252,7 @@
         {
             return cell;
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
         cell.theRecipeName = dish.nameOfDish;
         cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
@@ -242,17 +262,26 @@
         cell.theRightButton.alpha = 0;
         return cell;
     }
+    NSInteger theCurrentDishIndex = 0;
+    if (isWithPurchase && ![[MKStoreKit sharedKit] isProductPurchased:keyInAppPurchaseIdentifier])
+    {
+        theCurrentDishIndex = indexPath.section + 2;
+    }
+    else
+    {
+        theCurrentDishIndex = indexPath.section;
+    }
     RecipeCell *cell = (RecipeCell*)[tableView dequeueReusableCellWithIdentifier:recipeCellIdentifier];
     if (!cell)
     {
         cell = [[RecipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:recipeCellIdentifier];
     }
     cell.theDelegate = self;
-    if (indexPath.section > ([self.arrayOfDishes count]-1))
+    if (theCurrentDishIndex > ([self.arrayOfDishes count]-1))
     {
         return cell;
     }
-    BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
+    BZDish *dish = [self.arrayOfDishes objectAtIndex:theCurrentDishIndex];
     cell.theRecipeName = dish.nameOfDish;
     cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
     cell.theRecipeDescription = dish.ingridients;
@@ -341,6 +370,10 @@
 //    self.theCurrentSelecterRaw = indexPath.section;
 //    [self.navigationController pushViewController:detailRecept animated:YES];
 //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (isWithPurchase && ![[MKStoreKit sharedKit] isProductPurchased:keyInAppPurchaseIdentifier] && !indexPath.section)
+    {
+        return;
+    }
     RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
     NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
@@ -351,12 +384,6 @@
     self.theCurrentSelecterRaw = indexPath.section;
     [self.navigationController pushViewController:detailRecept animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    
-    return [self.arrayOfDishes count];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

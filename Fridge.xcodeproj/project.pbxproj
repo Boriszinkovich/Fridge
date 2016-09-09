@@ -27,6 +27,8 @@
 		CE2FAF9F1D7DE14400A5E22D /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2FAF9E1D7DE14400A5E22D /* MenuCell.m */; };
 		CE78EB0C1C6B845800168088 /* Fridge.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CE78EB0B1C6B845800168088 /* Fridge.sqlite */; };
 		CE794F3A1D8192880059B94D /* HideRecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE794F391D8192880059B94D /* HideRecipeCell.m */; };
+		CE8D0C7C1D82B77A00694B44 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */; };
+		CE8D0C7E1D82B78D00694B44 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */; };
 		CEB4E2931C635EAA00F3BE7A /* BZAllRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */; };
 		CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2951C635ECD00F3BE7A /* BZFavouritesViewController.m */; };
 		CEB4E2981C6373F300F3BE7A /* BZAllRecipesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB4E2971C6373F300F3BE7A /* BZAllRecipesCell.xib */; };
@@ -137,6 +139,9 @@
 		CE78EB0B1C6B845800168088 /* Fridge.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fridge.sqlite; sourceTree = "<group>"; };
 		CE794F381D8192880059B94D /* HideRecipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HideRecipeCell.h; sourceTree = "<group>"; };
 		CE794F391D8192880059B94D /* HideRecipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HideRecipeCell.m; sourceTree = "<group>"; };
+		CE8D0C7A1D82B77A00694B44 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
+		CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
+		CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CEB4E2911C635EAA00F3BE7A /* BZAllRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZAllRecipesViewController.h; sourceTree = "<group>"; };
 		CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZAllRecipesViewController.m; sourceTree = "<group>"; };
 		CEB4E2941C635ECD00F3BE7A /* BZFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFavouritesViewController.h; sourceTree = "<group>"; };
@@ -245,6 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8D0C7E1D82B78D00694B44 /* StoreKit.framework in Frameworks */,
 				57750996DA3C6B91808E226E /* libPods-Fridge.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +275,7 @@
 		4D175F8F6BF96C90DAA3BD54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */,
 				3AF063E3FD2AAEDCFF07936F /* libPods-Fridge.a */,
 			);
 			name = Frameworks;
@@ -592,6 +599,8 @@
 		CEFE7B221C6CA814007C2D07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CE8D0C7A1D82B77A00694B44 /* MKStoreKit.h */,
+				CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */,
 				CEBCB6C61D6F606A00E38C38 /* Fridge.pch */,
 				CEFE7B261C6CA859007C2D07 /* Presentation */,
 				CEFE7B231C6CA820007C2D07 /* Model */,
@@ -902,6 +911,7 @@
 				CEE5C7D41C68A652009C85BC /* XLHeaderView.m in Sources */,
 				CEBB9D641C668929000BC67B /* BZDish+CoreDataProperties.m in Sources */,
 				CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */,
+				CE8D0C7C1D82B77A00694B44 /* MKStoreKit.m in Sources */,
 				CE04D1891C62145500BBC1B3 /* BZRecipeCell.m in Sources */,
 				CEC63EA51D6F6C1100C19668 /* NumericKeypadViewController.m in Sources */,
 				CEE5C7E31C6912A2009C85BC /* BZIngridientsCell.m in Sources */,

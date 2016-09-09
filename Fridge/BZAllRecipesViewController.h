@@ -9,7 +9,7 @@
 #import "BZRecipeViewController.h"
 #import "BZAddToFavouriteProtocol.h"
 
-@interface BZAllRecipesViewController : BZRecipeViewController<BZAddToFavouriteProtocol>
+@interface BZAllRecipesViewController : BZRecipeViewController
 
 @property (assign, nonatomic) NSInteger currentSelecterRaw;
 

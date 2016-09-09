@@ -33,19 +33,19 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 #pragma mark - Class Methods (Private)
 
-- (void)changedFavourite:(BOOL)isFavourite
-{
-    [super changedFavourite:isFavourite];
-    BZRecipeFavouritesCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.currentSelecterRaw]];
-    if (isFavourite)
-    {
-        [cell.recipeButton setSelected:YES];
-    }
-    else
-    {
-        [cell.recipeButton setSelected:NO];
-    }
-}
+//- (void)changedFavourite:(BOOL)isFavourite
+//{
+//    [super changedFavourite:isFavourite];
+//    BZRecipeFavouritesCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.currentSelecterRaw]];
+//    if (isFavourite)
+//    {
+//        [cell.recipeButton setSelected:YES];
+//    }
+//    else
+//    {
+//        [cell.recipeButton setSelected:NO];
+//    }
+//}
 
 - (void)detailViewDismissed
 {
@@ -84,6 +84,7 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFavouriteChangeNotification:) name:theDishFavouriteKey object:nil];
     [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
 //    [self.tableView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
 //    [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
@@ -150,6 +151,27 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 #pragma mark - Notifications
 
+- (void)receiveFavouriteChangeNotification:(NSNotification *)theNotification
+{
+    BZDish *theDish = theNotification.object;
+    if ([theDish.isFavourite boolValue])
+    {
+        if (self.arrayOfDishes && ![self.arrayOfDishes containsObject:theDish])
+        {
+            [self.arrayOfDishes insertObject:theDish atIndex:0];
+            [self.tableView reloadData];
+        }
+    }
+    else
+    {
+        if (self.arrayOfDishes && [self.arrayOfDishes containsObject:theDish])
+        {
+            [self.arrayOfDishes removeObject:theDish];
+            [self.tableView reloadData];
+        }
+    }
+}
+
 - (void)receiveMenuDidOpenNotification:(NSNotification *)theNotification
 {
     
@@ -169,6 +191,10 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
                 [self loadData];
                 self.isLoading = YES;
             }
+        }
+        else
+        {
+            [self.theProgressView stopAnimating];
         }
 //        __weak BZFavouritesViewController* weakSelf = self;
 //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
@@ -293,6 +319,10 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 - (void)loadData
 {
+    if (!(self.isViewLoaded && self.view.window))
+    {
+        return;
+    }
     self.isLoading = YES;
     __weak BZRecipeViewController *weakSelf = self;
     /*  NSPredicate* predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];

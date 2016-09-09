@@ -7,6 +7,7 @@
 //
 
 #import "BZAppDelegate.h"
+
 #import "TGLGuillotineMenu.h"
 #import "BZIngridient.h"
 #import "BZHelpDevelopersViewController.h"
@@ -15,6 +16,7 @@
 #import "BZAllRecipesViewController.h"
 #import "BZDish.h"
 #import "BZFavouritesViewController.h"
+
 @interface BZAppDelegate ()<TGLGuillotineMenuDelegate>
 
 @end
@@ -68,6 +70,8 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
     
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self methodInitStoreKit];
+    
     
 
    // BZAllRecipesViewController* recipeController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:recipeViewControllerIdentifier];
@@ -174,6 +178,48 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait) ;
+}
+
+- (void)methodInitStoreKit
+{
+    [[MKStoreKit sharedKit] startProductRequest];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitProductsAvailableNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note)
+     {
+         
+         NSLog(@"Products available: %@", [[MKStoreKit sharedKit] availableProducts]);
+     }];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitProductPurchasedNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note)
+     {
+         
+         NSLog(@"Purchased/Subscribed to product with id: %@", [note object]);
+     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoredPurchasesNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note)
+     {
+         
+         NSLog(@"Restored Purchases");
+     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoringPurchasesFailedNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note)
+     {
+         
+         NSLog(@"Failed restoring purchases with error: %@", [note object]);
+     }];
 }
 
 @end

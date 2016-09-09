@@ -210,6 +210,7 @@ const NSInteger recipesLoadNumber = 20;
         BZDish *dish = [dishes objectAtIndex:0];
         dish.isFavourite= [NSNumber numberWithBool:NO];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        [[NSNotificationCenter defaultCenter] postNotificationName:theDishFavouriteKey object:dish];
     }
     else
     {
@@ -220,6 +221,7 @@ const NSInteger recipesLoadNumber = 20;
         dish.isFavourite= [NSNumber numberWithBool:YES];
         dish.dateAddedToFavourites = [NSDate date];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        [[NSNotificationCenter defaultCenter] postNotificationName:theDishFavouriteKey object:dish];
     }
 }
 
@@ -315,6 +317,10 @@ const NSInteger recipesLoadNumber = 20;
 
 - (void)loadData
 {
+    if (!(self.isViewLoaded && self.view.window))
+    {
+        return;
+    }
     self.isLoading = YES;
     __weak BZRecipeViewController *weakSelf = self;
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)0]];
@@ -369,28 +375,28 @@ const NSInteger recipesLoadNumber = 20;
                    });
 }
 
-- (void)addToFavouriteWithCell: (BZRecipeCell*) cell
-{
-    if ([cell.recipeButton isSelected])
-    {
-        [cell.recipeButton setSelected:NO];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.theOriginalNameString];
-        NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
-        BZDish *dish = [dishes objectAtIndex:0];
-        dish.isFavourite= [NSNumber numberWithBool:NO];
-        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-    }
-    else
-    {
-        [cell.recipeButton setSelected:YES];
-        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.theOriginalNameString];
-        NSArray* dishes = [BZDish MR_findAllWithPredicate:predicate];
-        BZDish* dish = [dishes objectAtIndex:0];
-        dish.isFavourite= [NSNumber numberWithBool:YES];
-        dish.dateAddedToFavourites = [NSDate date];
-        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-    }
-}
+//- (void)addToFavouriteWithCell: (BZRecipeCell*) cell
+//{
+//    if ([cell.recipeButton isSelected])
+//    {
+//        [cell.recipeButton setSelected:NO];
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.theOriginalNameString];
+//        NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
+//        BZDish *dish = [dishes objectAtIndex:0];
+//        dish.isFavourite= [NSNumber numberWithBool:NO];
+//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+//    }
+//    else
+//    {
+//        [cell.recipeButton setSelected:YES];
+//        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.theOriginalNameString];
+//        NSArray* dishes = [BZDish MR_findAllWithPredicate:predicate];
+//        BZDish* dish = [dishes objectAtIndex:0];
+//        dish.isFavourite= [NSNumber numberWithBool:YES];
+//        dish.dateAddedToFavourites = [NSDate date];
+//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+//    }
+//}
 
 #pragma mark - Standard Methods
 

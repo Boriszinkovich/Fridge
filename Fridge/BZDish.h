@@ -12,6 +12,7 @@
 @class BZIngridient;
 
 NS_ASSUME_NONNULL_BEGIN
+static NSString *theDishFavouriteKey = @"theDishFavouriteKey";
 
 @interface BZDish : NSManagedObject
 

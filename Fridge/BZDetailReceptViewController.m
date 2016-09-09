@@ -187,6 +187,7 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
         theBZDish.isFavourite= [NSNumber numberWithBool:NO];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
         [self.delegate changedFavourite:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:theDishFavouriteKey object:theBZDish];
     }
     else
     {
@@ -198,6 +199,7 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
         theBZDish.dateAddedToFavourites = [NSDate date];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
         [self.delegate changedFavourite:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:theDishFavouriteKey object:theBZDish];
     }
 }
 
