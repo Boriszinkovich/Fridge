@@ -14,6 +14,7 @@
 #import "BZIngridient.h"
 #import "RecipeCell.h"
 #import "HideRecipeCell.h"
+#import "BuyVC.h"
 
 #import <MagicalRecord/MagicalRecord.h>
 
@@ -296,7 +297,7 @@
         [cell.theRightButton setSelected:NO];
     }
         NSString* theIngridientNameString = dish.ingridients;
-
+    NSLog(@"%@", theIngridientNameString);
 //    NSLog(@"%f",theBZRecipeCell.recipeDescription.frame.size.width);
     NSMutableSet *theIngridientsIntersectionNSSet = [NSMutableSet setWithArray:self.theIngridientsArray];
     [theIngridientsIntersectionNSSet intersectSet:dish.arrayOfIngridients];
@@ -372,6 +373,9 @@
 //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (isWithPurchase && ![[MKStoreKit sharedKit] isProductPurchased:keyInAppPurchaseIdentifier] && !indexPath.section)
     {
+        BuyVC *theBuyVC = [BuyVC new];
+        UINavigationController *theNavVC = [[UINavigationController alloc] initWithRootViewController:theBuyVC];
+        [self presentViewController:theNavVC animated:YES completion:nil];
         return;
     }
     RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:indexPath];

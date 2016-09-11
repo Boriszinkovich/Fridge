@@ -29,6 +29,7 @@
 		CE794F3A1D8192880059B94D /* HideRecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE794F391D8192880059B94D /* HideRecipeCell.m */; };
 		CE8D0C7C1D82B77A00694B44 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */; };
 		CE8D0C7E1D82B78D00694B44 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */; };
+		CE9098851D8541CD0037F631 /* BuyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098841D8541CD0037F631 /* BuyVC.m */; };
 		CEB4E2931C635EAA00F3BE7A /* BZAllRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */; };
 		CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2951C635ECD00F3BE7A /* BZFavouritesViewController.m */; };
 		CEB4E2981C6373F300F3BE7A /* BZAllRecipesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB4E2971C6373F300F3BE7A /* BZAllRecipesCell.xib */; };
@@ -142,6 +143,8 @@
 		CE8D0C7A1D82B77A00694B44 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
 		CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
 		CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CE9098831D8541CD0037F631 /* BuyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyVC.h; sourceTree = "<group>"; };
+		CE9098841D8541CD0037F631 /* BuyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyVC.m; sourceTree = "<group>"; };
 		CEB4E2911C635EAA00F3BE7A /* BZAllRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZAllRecipesViewController.h; sourceTree = "<group>"; };
 		CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZAllRecipesViewController.m; sourceTree = "<group>"; };
 		CEB4E2941C635ECD00F3BE7A /* BZFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFavouritesViewController.h; sourceTree = "<group>"; };
@@ -659,6 +662,8 @@
 				CE04D17D1C61F37400BBC1B3 /* RecipeViewController */,
 				CE04D17C1C61F36A00BBC1B3 /* HelpDevelopersViewController */,
 				CEFE7B2D1C6CAB2E007C2D07 /* BZChoosePortionsViewController */,
+				CE9098831D8541CD0037F631 /* BuyVC.h */,
+				CE9098841D8541CD0037F631 /* BuyVC.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -895,6 +900,7 @@
 			files = (
 				CE0047691D1DA3F700248262 /* RecipeCell.m in Sources */,
 				CEFD5FBD1C64C145001B1621 /* BZIngridientCell.m in Sources */,
+				CE9098851D8541CD0037F631 /* BuyVC.m in Sources */,
 				CE04D1751C61E8AE00BBC1B3 /* BZFridgeViewController.m in Sources */,
 				CEE5C7D81C68A6B7009C85BC /* BZDetailReceptViewController.m in Sources */,
 				CEC63E991D6F6C1100C19668 /* BZURLSession.m in Sources */,

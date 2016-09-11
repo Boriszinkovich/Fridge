@@ -72,7 +72,22 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self methodInitStoreKit];
     
+    BZURLSession *theSession = [BZURLSession new];
+    NSString *theSpecialString = @"рафинированное растительное масло – поллитра\nуксус – полторы столовые ложки\nсоль – одна чайная ложка\nсахар – полторы чайные ложки\nяйца – три штуки\nготовая горчица – половина чайной ложки\nблендер для взбивания";
     
+    NSString *theLoadUrlString =  [NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160911T105655Z.6116b12d6a1d3bee.fff9014233dacb60650ba28f6b8f1c2d28136cb3&lang=ru-en&text=%@", [theSpecialString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]] ;
+    //    NSURL *theNSURL = [NSURL URLWithString:[theLoadUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    NSURL *theNSURL = [NSURL URLWithString:theLoadUrlString];
+    NSDictionary *theMapDictionary = [NSDictionary new];
+    NSData *thePostData = [NSJSONSerialization dataWithJSONObject:theMapDictionary options:0 error:nil];
+    [theSession methodStartPostTaskWithURL:theNSURL withPostData:thePostData progressBlock:nil completionBlockWithData:^(NSData * _Nullable data, NSError * _Nullable theError)
+    {
+        NSDictionary *theResultDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                            options:kNilOptions
+                                                                              error:&theError];
+        NSLog(@"%@", theResultDictionary);
+        NSLog(@"%@", theResultDictionary[@"text"][0]);
+    }];
 
    // BZAllRecipesViewController* recipeController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:recipeViewControllerIdentifier];
     BZAllRecipesViewController *recipeController = [[BZAllRecipesViewController alloc] init];
