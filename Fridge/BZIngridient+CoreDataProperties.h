@@ -2,7 +2,7 @@
 //  BZIngridient+CoreDataProperties.h
 //  
 //
-//  Created by User on 06.02.16.
+//  Created by User on 11.09.16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,12 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BZIngridient (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSDate *dateAddedToFridge;
+@property (nullable, nonatomic, retain) NSNumber *dishNumber;
 @property (nullable, nonatomic, retain) NSString *imageOfIngridient;
 @property (nullable, nonatomic, retain) NSNumber *isInFridge;
-@property (nullable, nonatomic, retain) NSString *nameOfIngridient;
-@property (nullable, nonatomic, retain) NSNumber *usedCount;
 @property (nullable, nonatomic, retain) NSNumber *isMain;
+@property (nullable, nonatomic, retain) NSString *nameOfIngridient;
 @property (nullable, nonatomic, retain) NSSet<BZDish *> *arrayOfDishes;
+@property (nullable, nonatomic, retain) EnIngridient *toEnIngridient;
 
 @end
 

@@ -30,16 +30,20 @@
 		CE8D0C7C1D82B77A00694B44 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */; };
 		CE8D0C7E1D82B78D00694B44 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */; };
 		CE9098851D8541CD0037F631 /* BuyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098841D8541CD0037F631 /* BuyVC.m */; };
+		CE9098A81D8586EA0037F631 /* BZDish+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098991D8586EA0037F631 /* BZDish+CoreDataProperties.m */; };
+		CE9098A91D8586EA0037F631 /* BZDish.m in Sources */ = {isa = PBXBuildFile; fileRef = CE90989A1D8586EA0037F631 /* BZDish.m */; };
+		CE9098AA1D8586EA0037F631 /* BZIngridient+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CE90989D1D8586EA0037F631 /* BZIngridient+CoreDataProperties.m */; };
+		CE9098AB1D8586EA0037F631 /* BZIngridient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE90989F1D8586EA0037F631 /* BZIngridient.m */; };
+		CE9098AC1D8586EA0037F631 /* EnDish+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098A11D8586EA0037F631 /* EnDish+CoreDataProperties.m */; };
+		CE9098AD1D8586EA0037F631 /* EnDish.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098A31D8586EA0037F631 /* EnDish.m */; };
+		CE9098AE1D8586EA0037F631 /* EnIngridient+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098A51D8586EA0037F631 /* EnIngridient+CoreDataProperties.m */; };
+		CE9098AF1D8586EA0037F631 /* EnIngridient.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098A71D8586EA0037F631 /* EnIngridient.m */; };
 		CEB4E2931C635EAA00F3BE7A /* BZAllRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */; };
 		CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E2951C635ECD00F3BE7A /* BZFavouritesViewController.m */; };
 		CEB4E2981C6373F300F3BE7A /* BZAllRecipesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB4E2971C6373F300F3BE7A /* BZAllRecipesCell.xib */; };
 		CEB4E29A1C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB4E2991C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib */; };
 		CEB4E29D1C63782D00F3BE7A /* BZRecipeFavouritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E29C1C63782D00F3BE7A /* BZRecipeFavouritesCell.m */; };
 		CEBB9D511C662AE5000BC67B /* BZSearchRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D501C662AE5000BC67B /* BZSearchRecipesViewController.m */; };
-		CEBB9D641C668929000BC67B /* BZDish+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D5D1C668929000BC67B /* BZDish+CoreDataProperties.m */; };
-		CEBB9D651C668929000BC67B /* BZDish.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D5F1C668929000BC67B /* BZDish.m */; };
-		CEBB9D661C668929000BC67B /* BZIngridient+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D611C668929000BC67B /* BZIngridient+CoreDataProperties.m */; };
-		CEBB9D671C668929000BC67B /* BZIngridient.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9D631C668929000BC67B /* BZIngridient.m */; };
 		CEC63E931D6F6C1100C19668 /* BZAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E541D6F6C1000C19668 /* BZAnimation.m */; };
 		CEC63E941D6F6C1100C19668 /* BZByteBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E561D6F6C1000C19668 /* BZByteBuffer.m */; };
 		CEC63E951D6F6C1100C19668 /* BZDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC63E581D6F6C1000C19668 /* BZDeviceHardware.m */; };
@@ -145,6 +149,22 @@
 		CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CE9098831D8541CD0037F631 /* BuyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyVC.h; sourceTree = "<group>"; };
 		CE9098841D8541CD0037F631 /* BuyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyVC.m; sourceTree = "<group>"; };
+		CE9098981D8586EA0037F631 /* BZDish+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BZDish+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CE9098991D8586EA0037F631 /* BZDish+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BZDish+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CE90989A1D8586EA0037F631 /* BZDish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZDish.m; sourceTree = "<group>"; };
+		CE90989B1D8586EA0037F631 /* BZDish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDish.h; sourceTree = "<group>"; };
+		CE90989C1D8586EA0037F631 /* BZIngridient+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BZIngridient+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CE90989D1D8586EA0037F631 /* BZIngridient+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BZIngridient+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CE90989E1D8586EA0037F631 /* BZIngridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridient.h; sourceTree = "<group>"; };
+		CE90989F1D8586EA0037F631 /* BZIngridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridient.m; sourceTree = "<group>"; };
+		CE9098A01D8586EA0037F631 /* EnDish+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EnDish+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CE9098A11D8586EA0037F631 /* EnDish+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EnDish+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CE9098A21D8586EA0037F631 /* EnDish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnDish.h; sourceTree = "<group>"; };
+		CE9098A31D8586EA0037F631 /* EnDish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnDish.m; sourceTree = "<group>"; };
+		CE9098A41D8586EA0037F631 /* EnIngridient+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EnIngridient+CoreDataProperties.h"; sourceTree = "<group>"; };
+		CE9098A51D8586EA0037F631 /* EnIngridient+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EnIngridient+CoreDataProperties.m"; sourceTree = "<group>"; };
+		CE9098A61D8586EA0037F631 /* EnIngridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnIngridient.h; sourceTree = "<group>"; };
+		CE9098A71D8586EA0037F631 /* EnIngridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnIngridient.m; sourceTree = "<group>"; };
 		CEB4E2911C635EAA00F3BE7A /* BZAllRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZAllRecipesViewController.h; sourceTree = "<group>"; };
 		CEB4E2921C635EAA00F3BE7A /* BZAllRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZAllRecipesViewController.m; sourceTree = "<group>"; };
 		CEB4E2941C635ECD00F3BE7A /* BZFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFavouritesViewController.h; sourceTree = "<group>"; };
@@ -157,14 +177,6 @@
 		CEB4E2A31C63FDE400F3BE7A /* BZDeleteFromFavouriteProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BZDeleteFromFavouriteProtocol.h; sourceTree = "<group>"; };
 		CEBB9D4F1C662AE5000BC67B /* BZSearchRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZSearchRecipesViewController.h; sourceTree = "<group>"; };
 		CEBB9D501C662AE5000BC67B /* BZSearchRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZSearchRecipesViewController.m; sourceTree = "<group>"; };
-		CEBB9D5C1C668929000BC67B /* BZDish+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BZDish+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CEBB9D5D1C668929000BC67B /* BZDish+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BZDish+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CEBB9D5E1C668929000BC67B /* BZDish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDish.h; sourceTree = "<group>"; };
-		CEBB9D5F1C668929000BC67B /* BZDish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZDish.m; sourceTree = "<group>"; };
-		CEBB9D601C668929000BC67B /* BZIngridient+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BZIngridient+CoreDataProperties.h"; sourceTree = "<group>"; };
-		CEBB9D611C668929000BC67B /* BZIngridient+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BZIngridient+CoreDataProperties.m"; sourceTree = "<group>"; };
-		CEBB9D621C668929000BC67B /* BZIngridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridient.h; sourceTree = "<group>"; };
-		CEBB9D631C668929000BC67B /* BZIngridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridient.m; sourceTree = "<group>"; };
 		CEBCB6C61D6F606A00E38C38 /* Fridge.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Fridge.pch; sourceTree = "<group>"; };
 		CEC63E531D6F6C1000C19668 /* BZAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZAnimation.h; sourceTree = "<group>"; };
 		CEC63E541D6F6C1000C19668 /* BZAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZAnimation.m; sourceTree = "<group>"; };
@@ -614,32 +626,24 @@
 		CEFE7B231C6CA820007C2D07 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEFE7B251C6CA841007C2D07 /* BZIngridient */,
-				CEFE7B241C6CA830007C2D07 /* BZDish */,
+				CE9098981D8586EA0037F631 /* BZDish+CoreDataProperties.h */,
+				CE9098991D8586EA0037F631 /* BZDish+CoreDataProperties.m */,
+				CE90989A1D8586EA0037F631 /* BZDish.m */,
+				CE90989B1D8586EA0037F631 /* BZDish.h */,
+				CE90989C1D8586EA0037F631 /* BZIngridient+CoreDataProperties.h */,
+				CE90989D1D8586EA0037F631 /* BZIngridient+CoreDataProperties.m */,
+				CE90989E1D8586EA0037F631 /* BZIngridient.h */,
+				CE90989F1D8586EA0037F631 /* BZIngridient.m */,
+				CE9098A01D8586EA0037F631 /* EnDish+CoreDataProperties.h */,
+				CE9098A11D8586EA0037F631 /* EnDish+CoreDataProperties.m */,
+				CE9098A21D8586EA0037F631 /* EnDish.h */,
+				CE9098A31D8586EA0037F631 /* EnDish.m */,
+				CE9098A41D8586EA0037F631 /* EnIngridient+CoreDataProperties.h */,
+				CE9098A51D8586EA0037F631 /* EnIngridient+CoreDataProperties.m */,
+				CE9098A61D8586EA0037F631 /* EnIngridient.h */,
+				CE9098A71D8586EA0037F631 /* EnIngridient.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		CEFE7B241C6CA830007C2D07 /* BZDish */ = {
-			isa = PBXGroup;
-			children = (
-				CEBB9D5C1C668929000BC67B /* BZDish+CoreDataProperties.h */,
-				CEBB9D5D1C668929000BC67B /* BZDish+CoreDataProperties.m */,
-				CEBB9D5E1C668929000BC67B /* BZDish.h */,
-				CEBB9D5F1C668929000BC67B /* BZDish.m */,
-			);
-			name = BZDish;
-			sourceTree = "<group>";
-		};
-		CEFE7B251C6CA841007C2D07 /* BZIngridient */ = {
-			isa = PBXGroup;
-			children = (
-				CEBB9D601C668929000BC67B /* BZIngridient+CoreDataProperties.h */,
-				CEBB9D611C668929000BC67B /* BZIngridient+CoreDataProperties.m */,
-				CEBB9D621C668929000BC67B /* BZIngridient.h */,
-				CEBB9D631C668929000BC67B /* BZIngridient.m */,
-			);
-			name = BZIngridient;
 			sourceTree = "<group>";
 		};
 		CEFE7B261C6CA859007C2D07 /* Presentation */ = {
@@ -903,19 +907,21 @@
 				CE9098851D8541CD0037F631 /* BuyVC.m in Sources */,
 				CE04D1751C61E8AE00BBC1B3 /* BZFridgeViewController.m in Sources */,
 				CEE5C7D81C68A6B7009C85BC /* BZDetailReceptViewController.m in Sources */,
+				CE9098AD1D8586EA0037F631 /* EnDish.m in Sources */,
 				CEC63E991D6F6C1100C19668 /* BZURLSession.m in Sources */,
+				CE9098AF1D8586EA0037F631 /* EnIngridient.m in Sources */,
 				CEFD5FBA1C64C0E6001B1621 /* BZIngridientAddedCell.m in Sources */,
 				CEC63EA81D6F6C1100C19668 /* ODTableView.m in Sources */,
 				CEC63EAC1D6F6C1100C19668 /* UIButton+BZExtensions.m in Sources */,
 				CEC63E951D6F6C1100C19668 /* BZDeviceHardware.m in Sources */,
 				CEC63E9B1D6F6C1100C19668 /* FDActivityIndicatorView.m in Sources */,
 				CE113F971C60A35300DDD73A /* Fridge.xcdatamodeld in Sources */,
+				CE9098AC1D8586EA0037F631 /* EnDish+CoreDataProperties.m in Sources */,
 				CEC63EAA1D6F6C1100C19668 /* Reachability.m in Sources */,
 				CEE5C7F31C6938F4009C85BC /* BZRecipeStepsCell.m in Sources */,
 				CEC63EA91D6F6C1100C19668 /* PSTAlertController.m in Sources */,
 				CE113FDE1C6142FC00DDD73A /* TGLGuillotineMenu.m in Sources */,
 				CEE5C7D41C68A652009C85BC /* XLHeaderView.m in Sources */,
-				CEBB9D641C668929000BC67B /* BZDish+CoreDataProperties.m in Sources */,
 				CEB4E2961C635ECD00F3BE7A /* BZFavouritesViewController.m in Sources */,
 				CE8D0C7C1D82B77A00694B44 /* MKStoreKit.m in Sources */,
 				CE04D1891C62145500BBC1B3 /* BZRecipeCell.m in Sources */,
@@ -929,7 +935,6 @@
 				CE04D1721C61E62300BBC1B3 /* BZUtils.m in Sources */,
 				CE794F3A1D8192880059B94D /* HideRecipeCell.m in Sources */,
 				CEC63E931D6F6C1100C19668 /* BZAnimation.m in Sources */,
-				CEBB9D661C668929000BC67B /* BZIngridient+CoreDataProperties.m in Sources */,
 				CEB4E2931C635EAA00F3BE7A /* BZAllRecipesViewController.m in Sources */,
 				CEC63EAE1D6F6C1100C19668 /* UIImage+BZExtensions.m in Sources */,
 				CEC63EA31D6F6C1100C19668 /* NumericKeypadTextField.m in Sources */,
@@ -937,9 +942,12 @@
 				CE113F8E1C60A35300DDD73A /* BZAppDelegate.m in Sources */,
 				CEC63E981D6F6C1100C19668 /* BZSyncBackground.m in Sources */,
 				CEC63E961D6F6C1100C19668 /* BZExtensionsManager.m in Sources */,
+				CE9098A81D8586EA0037F631 /* BZDish+CoreDataProperties.m in Sources */,
 				CEC63E9D1D6F6C1100C19668 /* NSDate+BZExtensions.m in Sources */,
 				CE043C781C6A645600A5B3DE /* BZDynamicHeightUILabel.m in Sources */,
+				CE9098AA1D8586EA0037F631 /* BZIngridient+CoreDataProperties.m in Sources */,
 				CEC63EAD1D6F6C1100C19668 /* UIColor+BZExtensions.m in Sources */,
+				CE9098AB1D8586EA0037F631 /* BZIngridient.m in Sources */,
 				CEC63EA01D6F6C1100C19668 /* NSObject+BZExtensions.m in Sources */,
 				CEC63E9F1D6F6C1100C19668 /* NSManagedObject+BZExtensions.m in Sources */,
 				CEC63EA11D6F6C1100C19668 /* NSString+BZExtensions.m in Sources */,
@@ -948,11 +956,11 @@
 				CE04D1781C61EBE100BBC1B3 /* BZRecipeViewController.m in Sources */,
 				CE113F8B1C60A35300DDD73A /* main.m in Sources */,
 				CEC63E971D6F6C1100C19668 /* BZPageView.m in Sources */,
+				CE9098AE1D8586EA0037F631 /* EnIngridient+CoreDataProperties.m in Sources */,
+				CE9098A91D8586EA0037F631 /* BZDish.m in Sources */,
 				CEB4E29D1C63782D00F3BE7A /* BZRecipeFavouritesCell.m in Sources */,
 				CEC63EA41D6F6C1100C19668 /* NumericKeypadView.m in Sources */,
-				CEBB9D671C668929000BC67B /* BZIngridient.m in Sources */,
 				CE2FAF9F1D7DE14400A5E22D /* MenuCell.m in Sources */,
-				CEBB9D651C668929000BC67B /* BZDish.m in Sources */,
 				CEC63E9C1D6F6C1100C19668 /* NSArray+BZExtensions.m in Sources */,
 				CEBB9D511C662AE5000BC67B /* BZSearchRecipesViewController.m in Sources */,
 				CEC63EB01D6F6C1100C19668 /* UISlider+BZExtensions.m in Sources */,

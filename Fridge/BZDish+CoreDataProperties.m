@@ -2,7 +2,7 @@
 //  BZDish+CoreDataProperties.m
 //  
 //
-//  Created by User on 06.02.16.
+//  Created by User on 11.09.16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,13 +14,14 @@
 @implementation BZDish (CoreDataProperties)
 
 @dynamic countOfIngridients;
+@dynamic countOfMainIngridients;
 @dynamic dateAddedToFavourites;
 @dynamic image;
 @dynamic ingridients;
 @dynamic isFavourite;
 @dynamic nameOfDish;
 @dynamic steps;
-@dynamic countOfMainIngridients;
 @dynamic arrayOfIngridients;
+@dynamic toEnDish;
 
 @end

@@ -56,7 +56,7 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
 
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Fridge.sqlite"];
     
-    [[UINavigationBar appearance] setBarTintColor:[self colorWithHexString:@"728AA8"]];
+//    [[UINavigationBar appearance] setBarTintColor:[self colorWithHexString:@"728AA8"]];
     NSLog(@"%ld",(long)[BZDish MR_countOfEntities]);
     
     
@@ -69,7 +69,7 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
     
     
     
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self methodInitStoreKit];
     
     BZURLSession *theSession = [BZURLSession new];

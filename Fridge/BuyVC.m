@@ -40,6 +40,8 @@
     [super loadView];
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+
 }
 
 - (void)viewDidLoad
@@ -50,6 +52,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self setNeedsStatusBarAppearanceUpdate];
     if (self.isFirstLoad)
     {
         [self createAllViews];

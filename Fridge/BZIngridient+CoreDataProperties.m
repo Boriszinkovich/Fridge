@@ -2,7 +2,7 @@
 //  BZIngridient+CoreDataProperties.m
 //  
 //
-//  Created by User on 06.02.16.
+//  Created by User on 11.09.16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,11 +14,12 @@
 @implementation BZIngridient (CoreDataProperties)
 
 @dynamic dateAddedToFridge;
+@dynamic dishNumber;
 @dynamic imageOfIngridient;
 @dynamic isInFridge;
-@dynamic nameOfIngridient;
-@dynamic usedCount;
 @dynamic isMain;
+@dynamic nameOfIngridient;
 @dynamic arrayOfDishes;
+@dynamic toEnIngridient;
 
 @end

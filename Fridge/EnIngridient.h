@@ -1,5 +1,5 @@
 //
-//  BZDish.h
+//  EnIngridient.h
 //  
 //
 //  Created by User on 11.09.16.
@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class BZIngridient, EnDish;
+@class BZIngridient;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BZDish : NSManagedObject
+@interface EnIngridient : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -21,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "BZDish+CoreDataProperties.h"
+#import "EnIngridient+CoreDataProperties.h"

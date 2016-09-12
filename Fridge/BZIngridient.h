@@ -2,14 +2,14 @@
 //  BZIngridient.h
 //  
 //
-//  Created by User on 06.02.16.
+//  Created by User on 11.09.16.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class BZDish;
+@class BZDish, EnIngridient;
 
 NS_ASSUME_NONNULL_BEGIN
 

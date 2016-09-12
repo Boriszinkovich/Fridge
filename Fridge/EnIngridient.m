@@ -1,16 +1,15 @@
 //
-//  BZIngridient.m
+//  EnIngridient.m
 //  
 //
 //  Created by User on 11.09.16.
 //
 //
 
-#import "BZIngridient.h"
-#import "BZDish.h"
 #import "EnIngridient.h"
+#import "BZIngridient.h"
 
-@implementation BZIngridient
+@implementation EnIngridient
 
 // Insert code here to add functionality to your managed object subclass
 

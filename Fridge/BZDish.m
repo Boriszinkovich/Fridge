@@ -2,12 +2,13 @@
 //  BZDish.m
 //  
 //
-//  Created by User on 06.02.16.
+//  Created by User on 11.09.16.
 //
 //
 
 #import "BZDish.h"
 #import "BZIngridient.h"
+#import "EnDish.h"
 
 @implementation BZDish
 

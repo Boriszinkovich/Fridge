@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fridge/BuyVC.m"
-            timestampString = "495283754.189203"
+            timestampString = "495291157.398296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-actionBuyButtonDidTouchedUpInside:"
             landmarkType = "5">
          </BreakpointContent>
@@ -249,13 +249,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fridge/BZSearchRecipesViewController.m"
-            timestampString = "495286414.417201"
+            filePath = "Fridge/BuyVC.m"
+            timestampString = "495291157.398296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-preferredStatusBarStyle"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -265,13 +265,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fridge/BZAppDelegate.m"
-            timestampString = "495287981.556274"
+            filePath = "Fridge/BZFavouritesViewController.m"
+            timestampString = "495290602.768885"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
+            landmarkName = "-preferredStatusBarStyle"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

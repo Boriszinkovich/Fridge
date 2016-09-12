@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15D21" minimumToolsVersion="Automatic">
     <entity name="BZDish" representedClassName="BZDish" syncable="YES">
         <attribute name="countOfIngridients" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="countOfMainIngridients" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -10,6 +10,7 @@
         <attribute name="nameOfDish" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="steps" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="arrayOfIngridients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BZIngridient" inverseName="arrayOfDishes" inverseEntity="BZIngridient" syncable="YES"/>
+        <relationship name="toEnDish" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EnDish" inverseName="toBZDish" inverseEntity="EnDish" syncable="YES"/>
     </entity>
     <entity name="BZIngridient" representedClassName="BZIngridient" syncable="YES">
         <attribute name="dateAddedToFridge" optional="YES" attributeType="Date" syncable="YES"/>
@@ -19,9 +20,22 @@
         <attribute name="isMain" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="nameOfIngridient" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="arrayOfDishes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BZDish" inverseName="arrayOfIngridients" inverseEntity="BZDish" syncable="YES"/>
+        <relationship name="toEnIngridient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EnIngridient" inverseName="toBZIngridient" inverseEntity="EnIngridient" syncable="YES"/>
+    </entity>
+    <entity name="EnDish" representedClassName="EnDish" syncable="YES">
+        <attribute name="enIngridients" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="enNameOfDish" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="enSteps" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toBZDish" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BZDish" inverseName="toEnDish" inverseEntity="BZDish" syncable="YES"/>
+    </entity>
+    <entity name="EnIngridient" representedClassName="EnIngridient" syncable="YES">
+        <attribute name="enNameOfIngridient" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toBZIngridient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BZIngridient" inverseName="toEnIngridient" inverseEntity="BZIngridient" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BZDish" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="BZIngridient" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BZDish" positionX="0" positionY="0" width="128" height="193"/>
+        <element name="BZIngridient" positionX="-335" positionY="-0" width="128" height="163"/>
+        <element name="EnIngridient" positionX="-342" positionY="234" width="128" height="58"/>
+        <element name="EnDish" positionX="-173" positionY="254" width="128" height="103"/>
     </elements>
 </model>
