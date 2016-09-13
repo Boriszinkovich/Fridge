@@ -7,10 +7,12 @@
 //
 
 #import "EnDish.h"
-#import "BZDish.h"
 
+#import "BZDish.h"
+#import "BZAppDelegate.h"
 @implementation EnDish
 
 // Insert code here to add functionality to your managed object subclass
+
 
 @end

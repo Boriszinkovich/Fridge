@@ -162,7 +162,7 @@
     if ([theCell.theRightButton isSelected])
     {
         [theCell.theRightButton setSelected:NO];
-        NSPredicate *thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+        NSPredicate *thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalRecipeName];
         NSArray *theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
         BZDish *theBZDish = [theDishesArray objectAtIndex:0];
         theBZDish.isFavourite = [NSNumber numberWithBool:NO];
@@ -171,7 +171,7 @@
     else
     {
         [theCell.theRightButton setSelected:YES];
-        NSPredicate* thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+        NSPredicate* thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalRecipeName];
         NSArray* theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
         BZDish* theBZDish = theDishesArray[0];
         theBZDish.isFavourite= [NSNumber numberWithBool:YES];
@@ -209,9 +209,10 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
-        cell.theRecipeName = dish.nameOfDish;
+        cell.theRecipeName = [dish methodGetLocalizedName];
+        cell.theOriginalRecipeName = [dish nameOfDish];
         cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
-        cell.theRecipeDescription = dish.ingridients;
+        cell.theRecipeDescription = [dish methodGetLocalizedIngridients];
         [cell.theRightButton setImage:[UIImage imageNamed:@"likeEmpty"] forState:UIControlStateNormal];
         [cell.theRightButton setImage:[UIImage imageNamed:@"likeFull"] forState:UIControlStateSelected];
         cell.theRightButton.alpha = 0;
@@ -233,9 +234,10 @@
         return 100;
     }
     BZDish *dish = [self.arrayOfDishes objectAtIndex:theCurrentDishIndex];
-    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeName = [dish methodGetLocalizedName];
+    cell.theOriginalRecipeName = dish.nameOfDish;
     cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
-    cell.theRecipeDescription = dish.ingridients;
+    cell.theRecipeDescription = [dish methodGetLocalizedIngridients];
     double theHeight = [cell methodGetHeight];
     return theHeight;
 }
@@ -255,9 +257,10 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
-        cell.theRecipeName = dish.nameOfDish;
+        cell.theRecipeName = [dish methodGetLocalizedName];
+        cell.theOriginalRecipeName = dish.nameOfDish;
         cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
-        cell.theRecipeDescription = dish.ingridients;
+        cell.theRecipeDescription = [dish methodGetLocalizedIngridients];
         [cell.theRightButton setImage:[UIImage imageNamed:@"likeEmpty"] forState:UIControlStateNormal];
         [cell.theRightButton setImage:[UIImage imageNamed:@"likeFull"] forState:UIControlStateSelected];
         cell.theRightButton.alpha = 0;
@@ -283,9 +286,10 @@
         return cell;
     }
     BZDish *dish = [self.arrayOfDishes objectAtIndex:theCurrentDishIndex];
-    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeName = [dish methodGetLocalizedName];
+    cell.theOriginalRecipeName = dish.nameOfDish;
     cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
-    cell.theRecipeDescription = dish.ingridients;
+    cell.theRecipeDescription = [dish methodGetLocalizedIngridients];
     [cell.theRightButton setImage:[UIImage imageNamed:@"likeEmpty"] forState:UIControlStateNormal];
     [cell.theRightButton setImage:[UIImage imageNamed:@"likeFull"] forState:UIControlStateSelected];
     if ([dish.isFavourite boolValue])
@@ -296,7 +300,7 @@
     {
         [cell.theRightButton setSelected:NO];
     }
-        NSString* theIngridientNameString = dish.ingridients;
+        NSString* theIngridientNameString = [dish methodGetLocalizedIngridients];
     NSLog(@"%@", theIngridientNameString);
 //    NSLog(@"%f",theBZRecipeCell.recipeDescription.frame.size.width);
     NSMutableSet *theIngridientsIntersectionNSSet = [NSMutableSet setWithArray:self.theIngridientsArray];
@@ -304,20 +308,20 @@
     NSMutableAttributedString *theAttributedString = [[NSMutableAttributedString alloc]  initWithString:theIngridientNameString];
     for (BZIngridient* ingredient in theIngridientsIntersectionNSSet)
     {
-        NSRange theIngridientNameRange = [theIngridientNameString rangeOfString:ingredient.nameOfIngridient options:NSCaseInsensitiveSearch];
+        NSRange theIngridientNameRange = [theIngridientNameString rangeOfString:[ingredient methodGetLocalizedName] options:NSCaseInsensitiveSearch];
         if (theIngridientNameRange.location == NSNotFound)
         {
-            theIngridientNameRange = [theIngridientNameString rangeOfString:[ingredient.nameOfIngridient substringToIndex:[ingredient.nameOfIngridient length] - 1]
+            theIngridientNameRange = [theIngridientNameString rangeOfString:[[ingredient methodGetLocalizedName] substringToIndex:[[ingredient methodGetLocalizedName] length] - 1]
                                           options:NSCaseInsensitiveSearch];
         }
         if (theIngridientNameRange.location == NSNotFound)
         {
-           theIngridientNameRange = [theIngridientNameString rangeOfString:[ingredient.nameOfIngridient substringToIndex:[ingredient.nameOfIngridient length] - 2]
+           theIngridientNameRange = [theIngridientNameString rangeOfString:[[ingredient methodGetLocalizedName] substringToIndex:[[ingredient methodGetLocalizedName] length] - 2]
                                          options:NSCaseInsensitiveSearch];
         }
         if (theIngridientNameRange.location == NSNotFound)
         {
-            NSArray* words = [ingredient.nameOfIngridient componentsSeparatedByString:@" "];
+            NSArray* words = [[ingredient methodGetLocalizedName] componentsSeparatedByString:@" "];
             if ([words count] > 1)
             {
                 NSString* firstWord = [words objectAtIndex:0];
@@ -379,7 +383,7 @@
         return;
     }
     RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalRecipeName];
     NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
     BZDish *dish = [dishes objectAtIndex:0];
     BZDetailReceptViewController *detailRecept = [[BZDetailReceptViewController alloc] init];

@@ -7,9 +7,12 @@
 //
 
 #import "BZDetailReceptViewController.h"
+
 #import "BZIngridientsCell.h"
 #import "BZWayToCookCell.h"
 #import "BZRecipeStepsCell.h"
+#import "BZAppDelegate.h"
+
 #import <MagicalRecord/MagicalRecord.h>
 
 @interface BZDetailReceptViewController () <WYPopoverControllerDelegate>
@@ -53,7 +56,7 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
 {
     [super viewDidLoad];
     self.portionsCount = 1;
-    self.ingridientsText = [NSString stringWithFormat:@"%@",self.dish.ingridients];
+    self.ingridientsText = [NSString stringWithFormat:@"%@",[self.dish methodGetLocalizedIngridients]];
     UIImage *theNotSelectedImage = [UIImage imageNamed:@"likeWhiteEmpty.png"];
     UIImage *theSelectedImage = [UIImage imageNamed:@"likeWhiteFull.png"];
     UIButton *theFavouriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -73,7 +76,7 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     self.listTableV.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.listTableV];
     
-    NSString* theRecipeName = [self.dish.nameOfDish stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+    NSString* theRecipeName = [[self.dish methodGetLocalizedName] stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         self.headerView = [[XLHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) backGroudImageName:[NSString stringWithFormat:@"c%@",self.dish.image] subTitle:theRecipeName];
     else self.headerView = [[XLHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 300) backGroudImageName:[NSString stringWithFormat:@"c%@",self.dish.image] subTitle:theRecipeName];
@@ -82,12 +85,20 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     
     [self.listTableV registerNib:[UINib nibWithNibName:@"BZDetailRecipeCells" bundle:nil] forCellReuseIdentifier:ingrsCellIdentidier];
     [self.listTableV registerNib:[UINib nibWithNibName:@"BZRecipeDetailCellWayToCook" bundle:nil] forCellReuseIdentifier:wayToCookCellIdentidier];
-    NSString* theDishStepsString = [NSString stringWithString:self.dish.steps];
-    theDishStepsString =  [theDishStepsString stringByReplacingOccurrencesOfString:@"&" withString:@"\n\n• "];
+    NSString* theDishStepsString = [NSString stringWithString:[self.dish methodGetLocalizedSteps]];
+    BZAppDelegate *appDelegate = (BZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (appDelegate.isRussian)
+    {
+        theDishStepsString =  [theDishStepsString stringByReplacingOccurrencesOfString:@"&" withString:@"\n\n• "];
+    }
+    else
+    {
+        theDishStepsString =  [theDishStepsString stringByReplacingOccurrencesOfString:@"\n" withString:@"\n\n• "];
+    }
     theDishStepsString = [theDishStepsString substringToIndex:[theDishStepsString length] - 2];
     theDishStepsString = [NSString stringWithFormat:@"• %@",theDishStepsString];
     self.dishSteps = theDishStepsString;
-    NSLog(@"%@",self.dish.ingridients);
+    NSLog(@"%@",[self.dish methodGetLocalizedIngridients]);
     self.listTableV.estimatedRowHeight = 60;
     self.listTableV.rowHeight = UITableViewAutomaticDimension;
 }
@@ -346,7 +357,7 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
 - (void)methodChangePortions
 {
     NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789/,-%"];
-    NSString *ingrStr = self.dish.ingridients;
+    NSString *ingrStr = [self.dish methodGetLocalizedIngridients];
     NSRange searchRange = NSMakeRange(0, [ingrStr length]);
     NSRange range;
     NSMutableArray *arrayOfRanges = [NSMutableArray array];

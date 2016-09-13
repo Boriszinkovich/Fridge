@@ -16,6 +16,8 @@
 #import "BZAllRecipesViewController.h"
 #import "BZDish.h"
 #import "BZFavouritesViewController.h"
+#import "EnDish.h"
+#import "EnIngridient.h"
 
 @interface BZAppDelegate ()<TGLGuillotineMenuDelegate>
 
@@ -31,7 +33,7 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    UIDevice *theDevice = [UIDevice currentDevice];
+    [self methodConfigureLocale];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
         [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
@@ -41,21 +43,40 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
     NSURL *defaultStorePath = [NSPersistentStore MR_defaultLocalStoreUrl];
     defaultStorePath = [[defaultStorePath URLByDeletingLastPathComponent] URLByAppendingPathComponent:[MagicalRecord defaultStoreName]];
     NSFileManager *fileManager = [NSFileManager defaultManager];
+//    NSURL *seedPath = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Fridge" ofType:@"sqlite"]];
+    NSLog(@"%@", [defaultStorePath path]);
     if (![fileManager fileExistsAtPath:[defaultStorePath path]])
     {
+        NSError *err = nil;
+//        NSURL *seedPath2 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Fridge" ofType:@"sqlite-shm"]];
+//        if (![fileManager copyItemAtURL:seedPath2 toURL:defaultStorePath error:&err])
+//        {
+//            NSLog(@"Could not copy seed data. error: %@", err);
+//        }
+//        NSURL *seedPath3 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Fridge" ofType:@"sqlite-val"]];
+//        if (![fileManager copyItemAtURL:seedPath3 toURL:defaultStorePath error:&err])
+//        {
+//            NSLog(@"Could not copy seed data. error: %@", err);
+//        }
         NSURL *seedPath = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Fridge" ofType:@"sqlite"]];
         NSLog(@"Core data store does not yet exist at: %@. Attempting to copy from seed db %@.", [defaultStorePath path], [seedPath path]);
         [self createPathToStoreFileIfNeccessary:defaultStorePath];
         
-        NSError *err = nil;
         if (![fileManager copyItemAtURL:seedPath toURL:defaultStorePath error:&err])
         {
             NSLog(@"Could not copy seed data. error: %@", err);
         }
+
     }
 
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Fridge.sqlite"];
     
+    NSArray *theDishArray = [BZDish MR_findAll];
+//    [self methodLoadDishFromDishArray:theDishArray withindex:0];
+//    [self methodLoadDishStepsFromDishArray:theDishArray withindex:0];
+//    [self methodLoadRealDishStepsFromDishArray:theDishArray withindex:0];
+//    NSArray *theIngridientsArray = [BZIngridient MR_findAll];
+//    [self methodLoadIndgridientFromIngridientsArray:theIngridientsArray withindex:0];
 //    [[UINavigationBar appearance] setBarTintColor:[self colorWithHexString:@"728AA8"]];
     NSLog(@"%ld",(long)[BZDish MR_countOfEntities]);
     
@@ -72,22 +93,7 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self methodInitStoreKit];
     
-    BZURLSession *theSession = [BZURLSession new];
-    NSString *theSpecialString = @"рафинированное растительное масло – поллитра\nуксус – полторы столовые ложки\nсоль – одна чайная ложка\nсахар – полторы чайные ложки\nяйца – три штуки\nготовая горчица – половина чайной ложки\nблендер для взбивания";
-    
-    NSString *theLoadUrlString =  [NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160911T105655Z.6116b12d6a1d3bee.fff9014233dacb60650ba28f6b8f1c2d28136cb3&lang=ru-en&text=%@", [theSpecialString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]] ;
-    //    NSURL *theNSURL = [NSURL URLWithString:[theLoadUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
-    NSURL *theNSURL = [NSURL URLWithString:theLoadUrlString];
-    NSDictionary *theMapDictionary = [NSDictionary new];
-    NSData *thePostData = [NSJSONSerialization dataWithJSONObject:theMapDictionary options:0 error:nil];
-    [theSession methodStartPostTaskWithURL:theNSURL withPostData:thePostData progressBlock:nil completionBlockWithData:^(NSData * _Nullable data, NSError * _Nullable theError)
-    {
-        NSDictionary *theResultDictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                            options:kNilOptions
-                                                                              error:&theError];
-        NSLog(@"%@", theResultDictionary);
-        NSLog(@"%@", theResultDictionary[@"text"][0]);
-    }];
+
 
    // BZAllRecipesViewController* recipeController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:recipeViewControllerIdentifier];
     BZAllRecipesViewController *recipeController = [[BZAllRecipesViewController alloc] init];
@@ -235,6 +241,189 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
          
          NSLog(@"Failed restoring purchases with error: %@", [note object]);
      }];
+}
+
+- (void)methodLoadIndgridientFromIngridientsArray:(NSArray *)theIngridientsArray withindex:(NSInteger)theIndex
+{
+    BZURLSession *theSession = [BZURLSession new];
+    NSString *theSpecialString = ((BZIngridient *)theIngridientsArray[theIndex]).nameOfIngridient;
+    
+    NSString *theLoadUrlString =  [NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160911T105655Z.6116b12d6a1d3bee.fff9014233dacb60650ba28f6b8f1c2d28136cb3&lang=ru-en&text=%@", [theSpecialString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]] ;
+    //    NSURL *theNSURL = [NSURL URLWithString:[theLoadUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    NSURL *theNSURL = [NSURL URLWithString:theLoadUrlString];
+    NSDictionary *theMapDictionary = [NSDictionary new];
+    NSData *thePostData = [NSJSONSerialization dataWithJSONObject:theMapDictionary options:0 error:nil];
+    [theSession methodStartPostTaskWithURL:theNSURL withPostData:thePostData progressBlock:nil completionBlockWithData:^(NSData * _Nullable data, NSError * _Nullable theError)
+     {
+         [BZExtensionsManager methodAsyncMainWithBlock:^
+         {
+             NSDictionary *theResultDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                 options:kNilOptions
+                                                                                   error:nil];
+             NSLog(@"%@", theResultDictionary);
+             NSLog(@"%@", theResultDictionary[@"text"][0]);
+             BZIngridient *theCurrentingridient = theIngridientsArray[theIndex];
+             NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
+             
+             
+             // Somewhere else
+             EnIngridient *p = [EnIngridient MR_createEntityInContext:context];
+             
+             // And in yet another method
+             p.enNameOfIngridient = theResultDictionary[@"text"][0];
+             p.toBZIngridient = theCurrentingridient;
+             [context MR_saveToPersistentStoreAndWait];
+             NSInteger theNewIndex = theIndex + 1;
+             if (theNewIndex >= theIngridientsArray.count)
+             {
+                 return ;
+             }
+             [self methodLoadIndgridientFromIngridientsArray:theIngridientsArray withindex:theNewIndex];
+         }];
+     }];
+}
+
+- (void)methodLoadDishFromDishArray:(NSArray *)theDishArray withindex:(NSInteger)theIndex
+{
+    BZURLSession *theSession = [BZURLSession new];
+    BZDish *theCurrentDish = theDishArray[theIndex];
+    NSString *theSpecialString = theCurrentDish.nameOfDish;
+    
+    NSString *theLoadUrlString =  [NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160911T105655Z.6116b12d6a1d3bee.fff9014233dacb60650ba28f6b8f1c2d28136cb3&lang=ru-en&text=%@", [theSpecialString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]] ;
+    //    NSURL *theNSURL = [NSURL URLWithString:[theLoadUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    NSURL *theNSURL = [NSURL URLWithString:theLoadUrlString];
+    NSDictionary *theMapDictionary = [NSDictionary new];
+    NSData *thePostData = [NSJSONSerialization dataWithJSONObject:theMapDictionary options:0 error:nil];
+    [theSession methodStartPostTaskWithURL:theNSURL withPostData:thePostData progressBlock:nil completionBlockWithData:^(NSData * _Nullable data, NSError * _Nullable theError)
+     {
+         [BZExtensionsManager methodAsyncMainWithBlock:^
+          {
+              NSDictionary *theResultDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                  options:kNilOptions
+                                                                                    error:nil];
+              NSLog(@"%@", theResultDictionary);
+              NSLog(@"%@", theResultDictionary[@"text"][0]);
+              NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
+              
+              
+              // Somewhere else
+              EnDish *p = [EnDish MR_createEntityInContext:context];
+              
+              // And in yet another method
+              p.enNameOfDish = theResultDictionary[@"text"][0];
+              p.toBZDish = theCurrentDish;
+              [context MR_saveToPersistentStoreAndWait];
+              NSInteger theNewIndex = theIndex + 1;
+              if (theNewIndex >= theDishArray.count)
+              {
+                  return ;
+              }
+              [self methodLoadDishFromDishArray:theDishArray withindex:theNewIndex];
+          }];
+     }];
+}
+
+- (void)methodLoadDishStepsFromDishArray:(NSArray *)theDishArray withindex:(NSInteger)theIndex
+{
+    BZURLSession *theSession = [BZURLSession new];
+    BZDish *theCurrentDish = theDishArray[theIndex];
+    NSString *theSpecialString = theCurrentDish.ingridients;
+    
+    NSString *theLoadUrlString =  [NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160911T105655Z.6116b12d6a1d3bee.fff9014233dacb60650ba28f6b8f1c2d28136cb3&lang=ru-en&text=%@", [theSpecialString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]] ;
+    //    NSURL *theNSURL = [NSURL URLWithString:[theLoadUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    NSURL *theNSURL = [NSURL URLWithString:theLoadUrlString];
+    NSDictionary *theMapDictionary = [NSDictionary new];
+    NSData *thePostData = [NSJSONSerialization dataWithJSONObject:theMapDictionary options:0 error:nil];
+    [theSession methodStartPostTaskWithURL:theNSURL withPostData:thePostData progressBlock:nil completionBlockWithData:^(NSData * _Nullable data, NSError * _Nullable theError)
+     {
+         [BZExtensionsManager methodAsyncMainWithBlock:^
+          {
+              NSDictionary *theResultDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                  options:kNilOptions
+                                                                                    error:nil];
+              NSLog(@"%@", theResultDictionary);
+              NSLog(@"%@", theResultDictionary[@"text"][0]);
+              NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
+              
+              
+              // Somewhere else
+              EnDish *p = theCurrentDish.toEnDish;
+              
+              // And in yet another method
+              p.enIngridients = theResultDictionary[@"text"][0];
+              [context MR_saveToPersistentStoreAndWait];
+              NSInteger theNewIndex = theIndex + 1;
+              if (theNewIndex >= theDishArray.count)
+              {
+                  return ;
+              }
+              [self methodLoadDishStepsFromDishArray:theDishArray withindex:theNewIndex];
+          }];
+     }];
+}
+
+
+- (void)methodLoadRealDishStepsFromDishArray:(NSArray *)theDishArray withindex:(NSInteger)theIndex
+{
+    BZURLSession *theSession = [BZURLSession new];
+    BZDish *theCurrentDish = theDishArray[theIndex];
+    NSString *theSpecialString = theCurrentDish.steps;
+    theSpecialString = [theSpecialString stringByReplacingOccurrencesOfString:@"&" withString:@"\n"];
+    NSLog(@"%@", theSpecialString);
+    NSString *theLoadUrlString =  [NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160911T105655Z.6116b12d6a1d3bee.fff9014233dacb60650ba28f6b8f1c2d28136cb3&lang=ru-en&text=%@", [theSpecialString stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]] ;
+    //    NSURL *theNSURL = [NSURL URLWithString:[theLoadUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]];
+    NSURL *theNSURL = [NSURL URLWithString:theLoadUrlString];
+    NSDictionary *theMapDictionary = [NSDictionary new];
+    NSData *thePostData = [NSJSONSerialization dataWithJSONObject:theMapDictionary options:0 error:nil];
+    [theSession methodStartPostTaskWithURL:theNSURL withPostData:thePostData progressBlock:nil completionBlockWithData:^(NSData * _Nullable data, NSError * _Nullable theError)
+     {
+         [BZExtensionsManager methodAsyncMainWithBlock:^
+          {
+              NSDictionary *theResultDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                  options:kNilOptions
+                                                                                    error:nil];
+              NSLog(@"%@", theResultDictionary);
+              NSLog(@"%@", theResultDictionary[@"text"][0]);
+              if (!theResultDictionary[@"text"])
+              {
+                  return;
+              }
+              NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
+              
+              
+              // Somewhere else
+              EnDish *p = theCurrentDish.toEnDish;
+              if (!p)
+              {
+                  return;
+              }
+              // And in yet another method
+              p.enSteps = theResultDictionary[@"text"][0];
+              [context MR_saveToPersistentStoreAndWait];
+              NSInteger theNewIndex = theIndex + 1;
+              if (theNewIndex >= theDishArray.count)
+              {
+                  return ;
+              }
+              [self methodLoadRealDishStepsFromDishArray:theDishArray withindex:theNewIndex];
+          }];
+     }];
+}
+
+- (void)methodConfigureLocale
+{
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if (!language || isEqual(language, @""))
+    {
+        return;
+    }
+    NSArray *theArray = [language componentsSeparatedByString:@"-"];
+    language = theArray[0];
+    if (isEqual(language, @"ru") || isEqual(language, @"uk"))
+    {
+        self.isRussian = YES;
+    }
+    NSLog(@"%@", language);
 }
 
 @end

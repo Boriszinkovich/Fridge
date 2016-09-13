@@ -11,6 +11,7 @@
 @interface HideRecipeCell : UITableViewCell
 
 @property (nonatomic, strong, nonnull) NSString *theRecipeName;
+@property (nonatomic, strong, nonnull) NSString *theOriginalRecipeName;
 @property (nonatomic, strong, nonnull) NSString *theRecipeDescription;
 @property (nonatomic, strong, nonnull) UIImage *theRecipeImage;
 @property (nonatomic, strong, nonnull) UIImage *theRecipeButtonImage;

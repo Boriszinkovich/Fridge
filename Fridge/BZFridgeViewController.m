@@ -12,6 +12,7 @@
 #import "BZIngridientCell.h"
 #import "BZIngridientAddedCell.h"
 #import "BZSearchRecipesViewController.h"
+#import "BZAppDelegate.h"
 
 #import <MagicalRecord/MagicalRecord.h>
 
@@ -274,7 +275,7 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
             }
             BZIngridient *currentIngridient = [self.arrayOfChosedIngridients objectAtIndex:indexPath.row];
             currentCell.ingridientImage.image = [UIImage imageNamed:currentIngridient.imageOfIngridient];
-            currentCell.ingridientNameLabel.text = currentIngridient.nameOfIngridient;
+            currentCell.ingridientNameLabel.text = [currentIngridient methodGetLocalizedName];
             [currentCell.deleteButton addTarget:self
                                          action:@selector(close:)
                                forControlEvents:UIControlEventTouchDown];
@@ -290,7 +291,7 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
             }
             BZIngridient *currentIngridient = [self.arrayOfSearchedIngridients objectAtIndex:indexPath.row];
             currentCell.ingridientImage.image = [UIImage imageNamed:currentIngridient.imageOfIngridient];
-            currentCell.ingridientNameLabel.text = currentIngridient.nameOfIngridient;
+            currentCell.ingridientNameLabel.text = [currentIngridient methodGetLocalizedName];
             if ([currentIngridient.isInFridge boolValue])
             {
                 currentCell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -303,8 +304,8 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
             if([self.searchIngridient.text length])
             {
                 
-                NSRange range = [currentIngridient.nameOfIngridient rangeOfString:self.searchIngridient.text options:NSCaseInsensitiveSearch];
-                NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]  initWithString:currentIngridient.nameOfIngridient];
+                NSRange range = [[currentIngridient methodGetLocalizedName] rangeOfString:self.searchIngridient.text options:NSCaseInsensitiveSearch];
+                NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]  initWithString:[currentIngridient methodGetLocalizedName]];
                 [attributedString addAttribute:NSForegroundColorAttributeName
                                          value:self.myColorGreen range:range];
                 
@@ -489,6 +490,11 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
 -(NSArray *)requestSearchWithOffset: (NSInteger)offset withWeakSelf:(BZFridgeViewController *) weakSelf
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfIngridient contains[c] %@",self.searchIngridient.text];
+    BZAppDelegate *appDelegate = (BZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (!appDelegate.isRussian)
+    {
+        predicate = [NSPredicate predicateWithFormat:@"toEnIngridient.enNameOfIngridient contains[c] %@", self.searchIngridient.text];
+    }
     NSFetchRequest *itemRequest;
     
     //  if ([self.searchIngridient.text isEqual:@""]) itemRequest = [BZIngridient MR_requestAllWithPredicate:predicate2];

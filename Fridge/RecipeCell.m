@@ -135,7 +135,7 @@ const NSString * theLabelsMaxXInset = @"28 25 20 18 15 12";
     theRightButton.theHeight = @"48 47 44 44 44 40".theDeviceValue;
     theRightButton.theWidth = theRightButton.theHeight;
     theRightButton.theMinY = @"12 10 9 8 8 8".theDeviceValue;
-    theRightButton.theMaxX = theRightButton.superview.theWidth - @"20 18 16 15 14 14".theDeviceValue;
+    theRightButton.theMaxX = [UIScreen mainScreen].bounds.size.width - 2 * cellMargin - @"20 18 16 15 14 14".theDeviceValue;
     [theRightButton addTarget:self action:@selector(actionRightButtonDidTouchedUpInside:) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel *theTitleLabel = [UILabel new];

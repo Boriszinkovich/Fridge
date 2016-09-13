@@ -205,7 +205,7 @@ const NSInteger recipesLoadNumber = 20;
     if ([theCell.theRightButton isSelected])
     {
         [theCell.theRightButton setSelected:NO];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalRecipeName];
         NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
         BZDish *dish = [dishes objectAtIndex:0];
         dish.isFavourite= [NSNumber numberWithBool:NO];
@@ -215,7 +215,7 @@ const NSInteger recipesLoadNumber = 20;
     else
     {
         [theCell.theRightButton setSelected:YES];
-        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalRecipeName];
         NSArray* dishes = [BZDish MR_findAllWithPredicate:predicate];
         BZDish* dish = [dishes objectAtIndex:0];
         dish.isFavourite= [NSNumber numberWithBool:YES];
@@ -240,9 +240,10 @@ const NSInteger recipesLoadNumber = 20;
         return cell;
     }
     BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
-    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeName = [dish methodGetLocalizedName];
+    cell.theOriginalRecipeName = dish.nameOfDish;
     cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
-    cell.theRecipeDescription = dish.ingridients;
+    cell.theRecipeDescription = [dish methodGetLocalizedIngridients];
     [cell.theRightButton setImage:[UIImage imageNamed:@"likeEmpty"] forState:UIControlStateNormal];
     [cell.theRightButton setImage:[UIImage imageNamed:@"likeFull"] forState:UIControlStateSelected];
     if ([dish.isFavourite boolValue])
@@ -260,7 +261,7 @@ const NSInteger recipesLoadNumber = 20;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalRecipeName];
     NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
     BZDish *dish = [dishes objectAtIndex:0];
     BZDetailReceptViewController *detailRecept = [[BZDetailReceptViewController alloc] init];
@@ -287,7 +288,8 @@ const NSInteger recipesLoadNumber = 20;
     BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
     cell.theRecipeName = dish.nameOfDish;
     cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
-    cell.theRecipeDescription = dish.ingridients;
+    cell.theRecipeDescription = [dish methodGetLocalizedIngridients
+    ];
     double theHeight = [cell methodGetHeight];
     return theHeight;
 }

@@ -226,7 +226,7 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 - (void)recipeCellRightButtonWasTapped:(RecipeCell * _Nonnull)theCell
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalRecipeName];
     NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
     BZDish *dish = [dishes objectAtIndex:0];
     NSInteger dd = [self.arrayOfDishes indexOfObject:dish];
@@ -261,7 +261,8 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
         return cell;
     }
     BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
-    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeName = [dish methodGetLocalizedName];
+    cell.theOriginalRecipeName = dish.nameOfDish;
     cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
     cell.theRecipeDescription = dish.ingridients;
     [cell.theRightButton setImage:[UIImage imageNamed:@"closeViolet.png"]
@@ -272,7 +273,7 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RecipeCell *theCell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theRecipeName];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalRecipeName];
     NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
     BZDish *dish = dishes[0];
     BZDetailReceptViewController *detailRecept = [[BZDetailReceptViewController alloc] init];
@@ -291,7 +292,8 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
         return 100;
     }
     BZDish *dish = [self.arrayOfDishes objectAtIndex:indexPath.section];
-    cell.theRecipeName = dish.nameOfDish;
+    cell.theRecipeName = [dish methodGetLocalizedName];
+    cell.theOriginalRecipeName = dish.nameOfDish;
     cell.theRecipeImage = [UIImage imageNamed:[NSString stringWithFormat:@"c%@",dish.image]];
     cell.theRecipeDescription = dish.ingridients;
     double theHeight = [cell methodGetHeight];
