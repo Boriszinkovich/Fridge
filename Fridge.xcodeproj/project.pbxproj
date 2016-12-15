@@ -27,7 +27,6 @@
 		CE2FAF9F1D7DE14400A5E22D /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2FAF9E1D7DE14400A5E22D /* MenuCell.m */; };
 		CE794F3A1D8192880059B94D /* HideRecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE794F391D8192880059B94D /* HideRecipeCell.m */; };
 		CE8D0C7C1D82B77A00694B44 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */; };
-		CE8D0C7E1D82B78D00694B44 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */; };
 		CE9098851D8541CD0037F631 /* BuyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098841D8541CD0037F631 /* BuyVC.m */; };
 		CE9098A81D8586EA0037F631 /* BZDish+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098991D8586EA0037F631 /* BZDish+CoreDataProperties.m */; };
 		CE9098A91D8586EA0037F631 /* BZDish.m in Sources */ = {isa = PBXBuildFile; fileRef = CE90989A1D8586EA0037F631 /* BZDish.m */; };
@@ -145,7 +144,6 @@
 		CE794F391D8192880059B94D /* HideRecipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HideRecipeCell.m; sourceTree = "<group>"; };
 		CE8D0C7A1D82B77A00694B44 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
 		CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
-		CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CE9098831D8541CD0037F631 /* BuyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyVC.h; sourceTree = "<group>"; };
 		CE9098841D8541CD0037F631 /* BuyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyVC.m; sourceTree = "<group>"; };
 		CE9098981D8586EA0037F631 /* BZDish+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BZDish+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE8D0C7E1D82B78D00694B44 /* StoreKit.framework in Frameworks */,
 				57750996DA3C6B91808E226E /* libPods-Fridge.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,7 +287,6 @@
 		4D175F8F6BF96C90DAA3BD54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CE8D0C7D1D82B78D00694B44 /* StoreKit.framework */,
 				3AF063E3FD2AAEDCFF07936F /* libPods-Fridge.a */,
 			);
 			name = Frameworks;
@@ -781,6 +777,12 @@
 					CE113F851C60A35300DDD73A = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = LXU9U5V765;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					CE113FA11C60A35300DDD73A = {
 						CreatedOnToolsVersion = 7.2;
@@ -1108,6 +1110,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LXU9U5V765;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Fridge.pch";
@@ -1128,6 +1131,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LXU9U5V765;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Fridge.pch";
