@@ -104,11 +104,10 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
 //    NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"Холодильник", @"Рецепты", @"Избранное", @"Помощь разработчикам", nil];
 //    NSArray *imagesArray    = [[NSArray alloc] initWithObjects:@"bz_fridge", @"bz_recipes", @"bz_favourite", @"bz_helpForDev", nil];
     NSArray *vcArray        = [[NSArray alloc] initWithObjects:fridgeViewController, recipeController, favouritesController, nil];
-    NSArray *titlesArray    = [[NSArray alloc] initWithObjects:@"Холодильник", @"Рецепты", @"Избранное", nil];
+    NSArray *titlesArray    = [[NSArray alloc] initWithObjects:NSLocalizedString(@"My fridge", @""), NSLocalizedString(@"Recipes", @""), NSLocalizedString(@"Favourite", @""), nil];
     NSArray *imagesArray    = [[NSArray alloc] initWithObjects:@"bz_fridge", @"bz_recipes", @"bz_favourite", nil];
     TGLGuillotineMenu *menuVC = [[TGLGuillotineMenu alloc] initWithViewControllers:vcArray MenuTitles:titlesArray andImagesTitles:imagesArray andStyle:TGLGuillotineMenuStyleTable];
     menuVC.delegate = self;
-    
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuVC];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

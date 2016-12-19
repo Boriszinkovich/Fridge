@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Fridge
+
+  Created by Boris Zinkovich on 15.12.16.
+  Copyright © 2016 BZ. All rights reserved.
+*/
+"My fridge" = "Холодильник";
+"Recipes" = "Рецепты";
+"Favourite" = "Избранное";

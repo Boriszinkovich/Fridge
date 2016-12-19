@@ -25,6 +25,8 @@
 		CE113FB21C60A35300DDD73A /* FridgeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FB11C60A35300DDD73A /* FridgeUITests.m */; };
 		CE113FDE1C6142FC00DDD73A /* TGLGuillotineMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CE113FDD1C6142FC00DDD73A /* TGLGuillotineMenu.m */; };
 		CE2FAF9F1D7DE14400A5E22D /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2FAF9E1D7DE14400A5E22D /* MenuCell.m */; };
+		CE6311071E02B89500F6566D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE6311091E02B89500F6566D /* Localizable.strings */; };
+		CE63110D1E02BA7000F6566D /* BZDetailRecipeCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE63110F1E02BA7000F6566D /* BZDetailRecipeCells.xib */; };
 		CE794F3A1D8192880059B94D /* HideRecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE794F391D8192880059B94D /* HideRecipeCell.m */; };
 		CE8D0C7C1D82B77A00694B44 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0C7B1D82B77A00694B44 /* MKStoreKit.m */; };
 		CE9098851D8541CD0037F631 /* BuyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9098841D8541CD0037F631 /* BuyVC.m */; };
@@ -76,7 +78,6 @@
 		CECC22151D88301F00C1ADC9 /* Fridge.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CECC22141D88301F00C1ADC9 /* Fridge.sqlite */; };
 		CEE5C7D41C68A652009C85BC /* XLHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7D31C68A652009C85BC /* XLHeaderView.m */; };
 		CEE5C7D81C68A6B7009C85BC /* BZDetailReceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7D71C68A6B7009C85BC /* BZDetailReceptViewController.m */; };
-		CEE5C7E01C690CA0009C85BC /* BZDetailRecipeCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5C7DF1C690CA0009C85BC /* BZDetailRecipeCells.xib */; };
 		CEE5C7E31C6912A2009C85BC /* BZIngridientsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7E21C6912A2009C85BC /* BZIngridientsCell.m */; };
 		CEE5C7E61C6912E6009C85BC /* BZWayToCookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7E51C6912E6009C85BC /* BZWayToCookCell.m */; };
 		CEE5C7EE1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5C7ED1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib */; };
@@ -140,6 +141,13 @@
 		CE113FDD1C6142FC00DDD73A /* TGLGuillotineMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGLGuillotineMenu.m; sourceTree = "<group>"; };
 		CE2FAF9D1D7DE14400A5E22D /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		CE2FAF9E1D7DE14400A5E22D /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		CE6311081E02B89500F6566D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CE63110A1E02B94D00F6566D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		CE63110B1E02B94D00F6566D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CE63110C1E02B94D00F6566D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CE63110E1E02BA7000F6566D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BZDetailRecipeCells.xib; sourceTree = "<group>"; };
+		CE6311111E02BA9600F6566D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BZDetailRecipeCells.strings; sourceTree = "<group>"; };
+		CE6311131E02BA9A00F6566D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/BZDetailRecipeCells.strings; sourceTree = "<group>"; };
 		CE794F381D8192880059B94D /* HideRecipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HideRecipeCell.h; sourceTree = "<group>"; };
 		CE794F391D8192880059B94D /* HideRecipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HideRecipeCell.m; sourceTree = "<group>"; };
 		CE8D0C7A1D82B77A00694B44 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
@@ -242,7 +250,6 @@
 		CEE5C7D61C68A6B7009C85BC /* BZDetailReceptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZDetailReceptViewController.h; sourceTree = "<group>"; };
 		CEE5C7D71C68A6B7009C85BC /* BZDetailReceptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZDetailReceptViewController.m; sourceTree = "<group>"; };
 		CEE5C7DA1C68C4D8009C85BC /* BZDetailDismissedProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BZDetailDismissedProtocol.h; sourceTree = "<group>"; };
-		CEE5C7DF1C690CA0009C85BC /* BZDetailRecipeCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZDetailRecipeCells.xib; sourceTree = "<group>"; };
 		CEE5C7E11C6912A2009C85BC /* BZIngridientsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridientsCell.h; sourceTree = "<group>"; };
 		CEE5C7E21C6912A2009C85BC /* BZIngridientsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridientsCell.m; sourceTree = "<group>"; };
 		CEE5C7E41C6912E6009C85BC /* BZWayToCookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZWayToCookCell.h; sourceTree = "<group>"; };
@@ -370,10 +377,11 @@
 				CE113F891C60A35300DDD73A /* Supporting Files */,
 				CEB4E2971C6373F300F3BE7A /* BZAllRecipesCell.xib */,
 				CEB4E2991C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib */,
-				CEE5C7DF1C690CA0009C85BC /* BZDetailRecipeCells.xib */,
+				CE63110F1E02BA7000F6566D /* BZDetailRecipeCells.xib */,
 				CEE5C7ED1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib */,
 				CE043C761C6A645600A5B3DE /* BZDynamicHeightUILabel.h */,
 				CE043C771C6A645600A5B3DE /* BZDynamicHeightUILabel.m */,
+				CE6311091E02B89500F6566D /* Localizable.strings */,
 			);
 			path = Fridge;
 			sourceTree = "<group>";
@@ -803,6 +811,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = CE113F7D1C60A35300DDD73A;
 			productRefGroup = CE113F871C60A35300DDD73A /* Products */;
@@ -822,12 +831,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE113F9C1C60A35300DDD73A /* LaunchScreen.storyboard in Resources */,
+				CE6311071E02B89500F6566D /* Localizable.strings in Resources */,
 				CEB4E29A1C6377CE00F3BE7A /* BZFavouriteRecipeCell.xib in Resources */,
 				CECC22151D88301F00C1ADC9 /* Fridge.sqlite in Resources */,
 				CEB4E2981C6373F300F3BE7A /* BZAllRecipesCell.xib in Resources */,
 				CE113F991C60A35300DDD73A /* Assets.xcassets in Resources */,
 				CEC63EA61D6F6C1100C19668 /* highlight.png in Resources */,
-				CEE5C7E01C690CA0009C85BC /* BZDetailRecipeCells.xib in Resources */,
+				CE63110D1E02BA7000F6566D /* BZDetailRecipeCells.xib in Resources */,
 				CE113F941C60A35300DDD73A /* Main.storyboard in Resources */,
 				CEC63EA21D6F6C1100C19668 /* NumericKeypad.xib in Resources */,
 				CEE5C7EE1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib in Resources */,
@@ -1006,6 +1016,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CE113F931C60A35300DDD73A /* Base */,
+				CE63110A1E02B94D00F6566D /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1014,8 +1025,28 @@
 			isa = PBXVariantGroup;
 			children = (
 				CE113F9B1C60A35300DDD73A /* Base */,
+				CE63110B1E02B94D00F6566D /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CE6311091E02B89500F6566D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE6311081E02B89500F6566D /* Base */,
+				CE63110C1E02B94D00F6566D /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CE63110F1E02BA7000F6566D /* BZDetailRecipeCells.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE63110E1E02BA7000F6566D /* Base */,
+				CE6311111E02BA9600F6566D /* en */,
+				CE6311131E02BA9A00F6566D /* ru */,
+			);
+			name = BZDetailRecipeCells.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1025,6 +1056,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1069,6 +1101,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

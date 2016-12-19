@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FzI-gZ-VxO"; */
+"FzI-gZ-VxO.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RsW-rx-id3"; */
+"RsW-rx-id3.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "WD7-lQ-BbC"; */
+"WD7-lQ-BbC.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Холодильник"; ObjectID = "ggB-F1-J6G"; */
+"ggB-F1-J6G.title" = "Холодильник";
+
+/* Class = "UIButton"; normalTitle = "Найти рецепты"; ObjectID = "xSS-DE-Lcb"; */
+"xSS-DE-Lcb.normalTitle" = "Найти рецепты";
