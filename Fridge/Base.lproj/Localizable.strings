@@ -8,3 +8,9 @@
 "My fridge" = "My fridge";
 "Recipes" = "Recipes";
 "Favourite" = "Favourite";
+"slcted" = "Fridge(%zd)";
+"search" = "Search(%zd)";
+"Cancel" = "Cancel";
+"Clear all" = "Clear all";
+"PopSort" = "Sort by popularity";
+"DateAddingSort" = "Sort by date of adding";

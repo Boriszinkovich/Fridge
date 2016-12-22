@@ -75,7 +75,7 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
                                          blue:90.f / 255.f alpha:1.0];
     if (!self.sectionTitleArray)
     {
-        self.sectionTitleArray = [NSMutableArray arrayWithObjects:@"Выбранные(0)", @"Поиск(642)", nil];
+        self.sectionTitleArray = [NSMutableArray arrayWithObjects:[NSString stringWithFormat:NSLocalizedString(@"slcted", @""), 0] , [NSString stringWithFormat:NSLocalizedString(@"search", @""), 642], nil];
     }
     if (!self.arrayForBool)
     {
@@ -155,9 +155,8 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
         NSLog(@"UIGestureRecognizerStateBegan.");
         UIActionSheet *actSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                               delegate:self
-                                                     cancelButtonTitle:@"Отменить"
-                                                destructiveButtonTitle:@"Очистить все"
-                                                     otherButtonTitles:@"Сортировать по популярности",@"Сортировать по дате добавления",nil];
+                                                     cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+                                            destructiveButtonTitle:NSLocalizedString(@"Clear all", @"") otherButtonTitles:NSLocalizedString(@"PopSort", @""), NSLocalizedString(@"DateAddingSort", @""),nil];
         [actSheet showInView:self.view];
     }
     
@@ -194,16 +193,17 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
     BOOL manyCells = [[self.arrayForBool objectAtIndex:section] boolValue];
     if (section == 0)
     {
+//        [NSMutableArray arrayWithObjects:[NSString stringWithFormat:NSLocalizedString(@"slcted", @""), 0] , [NSString stringWithFormat:NSLocalizedString(@"search", @""), 642], nil];
         NSPredicate *predicate2 =[NSPredicate predicateWithFormat:@"isInFridge == 1"];
         NSInteger count = [BZIngridient MR_countOfEntitiesWithPredicate:predicate2];
-        headerString.text = [NSString stringWithFormat:@"Выбранные(%ld)",(long)count];
+        headerString.text = [NSString stringWithFormat:NSLocalizedString(@"slcted", @""), count];
         UILongPressGestureRecognizer* headerLongTapped = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                                        action:@selector(sectionHeaderLongPressed:)];
         [headerView addGestureRecognizer:headerLongTapped];
     }
     else
     {
-        headerString.text = [NSString stringWithFormat:@"Поиск(%ld)",(long)self.numberOfSearched];
+        headerString.text = [NSString stringWithFormat:NSLocalizedString(@"search", @""), (long)self.numberOfSearched];
     }
     headerString.textAlignment      = NSTextAlignmentLeft;
     headerString.textColor          = [UIColor blackColor];

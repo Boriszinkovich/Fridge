@@ -60,7 +60,7 @@
     self.tableView.estimatedRowHeight = 80;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self.navigationItem setTitle:@"Рецепты"];
+    [self.navigationItem setTitle:NSLocalizedString(@"Recipes", @"")];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"                         "
                                                                     style:UIBarButtonItemStyleDone target:nil action:nil];
