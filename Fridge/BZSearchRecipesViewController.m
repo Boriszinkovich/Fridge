@@ -406,29 +406,6 @@
 
 #pragma mark - Methods (Public)
 
--(void) addToFavouriteWithCell: (BZRecipeCell*) theCell
-{
-//    if ([theCell.recipeButton isSelected])
-//    {
-//        [theCell.recipeButton setSelected:NO];
-//        NSPredicate *thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalNameString];
-//        NSArray *theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
-//        BZDish *theBZDish = [theDishesArray objectAtIndex:0];
-//        theBZDish.isFavourite= [NSNumber numberWithBool:NO];
-//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-//    }
-//    else
-//    {
-//        [theCell.recipeButton setSelected:YES];
-//        NSPredicate* thePredicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", theCell.theOriginalNameString];
-//        NSArray* theDishesArray = [BZDish MR_findAllWithPredicate:thePredicate];
-//        BZDish* theBZDish = theDishesArray[0];
-//        theBZDish.isFavourite= [NSNumber numberWithBool:YES];
-//        theBZDish.dateAddedToFavourites = [NSDate date];
-//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-//    }
-}
-
 
 - (void)methodLoadData
 {

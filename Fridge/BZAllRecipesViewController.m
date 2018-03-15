@@ -97,8 +97,6 @@ const NSInteger recipesLoadNumber = 20;
 
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
     [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
 }
 
@@ -112,9 +110,8 @@ const NSInteger recipesLoadNumber = 20;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setNeedsStatusBarAppearanceUpdate];
-    self.edgesForExtendedLayout = UIRectEdgeTop;
-    self.navigationController.navigationBar.hidden = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeAll;
     if ([self.navigationController.navigationBar respondsToSelector:@selector( setBackgroundImage:forBarMetrics:)])
     {
         [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
@@ -173,28 +170,6 @@ const NSInteger recipesLoadNumber = 20;
 }
 
 #pragma mark - Notifications
-
-- (void)receiveMenuDidOpenNotification:(NSNotification *)theNotification
-{
-    
-}
-
-- (void)receiveMenuDidCloseNotification:(NSNotification *)theNotification
-{
-    if (!self.isLoading)
-    {
-        self.isLoading = YES;
-        [self loadData];
-//        __weak BZAllRecipesViewController* weakSelf = self;
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-//                       {
-//                           dispatch_async(dispatch_get_main_queue(), ^
-//                                          {
-//                                              [weakSelf.tableView reloadData];
-//                                          });
-//                       });
-    }
-}
 
 #pragma mark - Gestures
 
@@ -319,10 +294,6 @@ const NSInteger recipesLoadNumber = 20;
 
 - (void)loadData
 {
-    if (!(self.isViewLoaded && self.view.window))
-    {
-        return;
-    }
     self.isLoading = YES;
     __weak BZRecipeViewController *weakSelf = self;
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)0]];
@@ -377,28 +348,14 @@ const NSInteger recipesLoadNumber = 20;
                    });
 }
 
-//- (void)addToFavouriteWithCell: (BZRecipeCell*) cell
-//{
-//    if ([cell.recipeButton isSelected])
-//    {
-//        [cell.recipeButton setSelected:NO];
-//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.theOriginalNameString];
-//        NSArray *dishes = [BZDish MR_findAllWithPredicate:predicate];
-//        BZDish *dish = [dishes objectAtIndex:0];
-//        dish.isFavourite= [NSNumber numberWithBool:NO];
-//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-//    }
-//    else
-//    {
-//        [cell.recipeButton setSelected:YES];
-//        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"nameOfDish == %@", cell.theOriginalNameString];
-//        NSArray* dishes = [BZDish MR_findAllWithPredicate:predicate];
-//        BZDish* dish = [dishes objectAtIndex:0];
-//        dish.isFavourite= [NSNumber numberWithBool:YES];
-//        dish.dateAddedToFavourites = [NSDate date];
-//        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-//    }
-//}
+- (void)menuDidClose
+{
+    if (!self.isLoading)
+    {
+        self.isLoading = YES;
+        [self loadData];
+    }
+}
 
 #pragma mark - Standard Methods
 

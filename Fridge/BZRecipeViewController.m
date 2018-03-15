@@ -138,6 +138,21 @@ static CGFloat cellSpacing = 20;
     return UIStatusBarStyleLightContent;
 }
 
+- (void)menuDidOpen
+{
+    
+}
+
+- (void)menuDidClose
+{
+    
+}
+
+- (void)selectedMenuItemAtIndex:(NSInteger)index
+{
+    
+}
+
 @end
 
 

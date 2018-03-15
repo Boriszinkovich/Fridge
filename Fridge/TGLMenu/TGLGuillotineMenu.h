@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
     BOOL isPresentedFirst;
 }
 
-@property (nonatomic, strong) UIViewController  *currentViewController;
+@property (nonatomic, strong) UIViewController<TGLGuillotineMenuDelegate>  *currentViewController;
 
 @property (nonatomic, strong) UIButton  *menuButton;
 @property (nonatomic, strong) NSArray   *viewControllers;

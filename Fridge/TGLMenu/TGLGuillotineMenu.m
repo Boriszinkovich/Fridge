@@ -601,10 +601,18 @@ static NSInteger cellHeightForIphone = 110;
 {
     if (self.isOpen)
     {
+        if ([self.currentViewController respondsToSelector:@selector(menuDidOpen)])
+        {
+            [self.currentViewController menuDidOpen];
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:keyNotifMenuDidOpen object:nil];
     }
     else
     {
+        if ([self.currentViewController respondsToSelector:@selector(menuDidClose)])
+        {
+            [self.currentViewController menuDidClose];
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:keyNotifMenuDidClose object:nil];
     }
 }

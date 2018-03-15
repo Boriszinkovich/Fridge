@@ -109,19 +109,10 @@ static NSString *stepsCellIdentifier = @"stepsCellIdentifier";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeTop;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-    {
-        [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:0];
-        NSArray *list=self.navigationController.navigationBar.subviews;
-        for (id obj in list)
-        {
-            if ([obj isKindOfClass:[UIImageView class]])
-            {
-                UIImageView *imageView=(UIImageView *)obj;
-                imageView.alpha=0;
-            }
-        }
-    }
+    
+    [self.navigationController.navigationBar setTranslucent:YES];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 }
 
 //- (void)viewDidLayoutSubviews

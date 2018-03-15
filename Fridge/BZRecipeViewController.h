@@ -10,9 +10,10 @@
 
 #import <CoreData/CoreData.h>
 
+#import "TGLGuillotineMenu.h"
 #import "BZDetailDismissedProtocol.h"
 
-@interface BZRecipeViewController : UIViewController <BZDetailDismissedProtocol, UITableViewDelegate, UITableViewDataSource>
+@interface BZRecipeViewController : UIViewController <BZDetailDismissedProtocol, UITableViewDelegate, UITableViewDataSource, TGLGuillotineMenuDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSOperation *currentOperation;

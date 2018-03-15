@@ -68,10 +68,6 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 {
     [super viewDidLoad];
     
-    
-//    [self.tableView setNeedsLayout];
-//    [self.tableView layoutIfNeeded];
-    
     UIActivityIndicatorView *theProgressView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:theProgressView];
     self.theProgressView = theProgressView;
@@ -82,12 +78,8 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     [theProgressView startAnimating];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFavouriteChangeNotification:) name:theDishFavouriteKey object:nil];
     [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
-//    [self.tableView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
-//    [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -169,56 +161,6 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
             [self.arrayOfDishes removeObject:theDish];
             [self.tableView reloadData];
         }
-    }
-}
-
-- (void)receiveMenuDidOpenNotification:(NSNotification *)theNotification
-{
-    
-}
-
-- (void)receiveMenuDidCloseNotification:(NSNotification *)theNotification
-{
-    if (!self.isLoading)
-    {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
-        self.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
-        if (self.numberOfFavourites != [self.arrayOfDishes count])
-        {
-            [self.arrayOfDishes removeAllObjects];
-            if (!self.isLoading)
-            {
-                [self loadData];
-                self.isLoading = YES;
-            }
-        }
-        else
-        {
-            [self.theProgressView stopAnimating];
-        }
-//        __weak BZFavouritesViewController* weakSelf = self;
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-//                       {
-//
-//                           dispatch_async(dispatch_get_main_queue(), ^
-//                                          {
-////                                              [weakSelf.tableView reloadData];
-//                                              NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
-//                                              weakSelf.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
-//                                              if (weakSelf.numberOfFavourites != [weakSelf.arrayOfDishes count])
-//                                              {
-//                                                  [weakSelf.arrayOfDishes removeAllObjects];
-//                                                  if (!weakSelf.isLoading)
-//                                                  {
-//                                                      [weakSelf loadData];
-//                                                      weakSelf.isLoading = YES;
-//                                                  }
-//                                              }
-//                                          });
-//                           
-//                           
-//                       });
-
     }
 }
 
@@ -321,10 +263,6 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 - (void)loadData
 {
-    if (!(self.isViewLoaded && self.view.window))
-    {
-        return;
-    }
     self.isLoading = YES;
     __weak BZRecipeViewController *weakSelf = self;
     /*  NSPredicate* predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
@@ -392,6 +330,29 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
                 [self.tableView setContentOffset:self.theLastContentOffset];
             }
         }
+    }
+}
+
+- (void)menuDidClose
+{
+    if (!self.isLoading)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
+        self.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
+        if (self.numberOfFavourites != [self.arrayOfDishes count])
+        {
+            [self.arrayOfDishes removeAllObjects];
+            if (!self.isLoading)
+            {
+                [self loadData];
+                self.isLoading = YES;
+            }
+        }
+        else
+        {
+            [self.theProgressView stopAnimating];
+        }
+        
     }
 }
 
