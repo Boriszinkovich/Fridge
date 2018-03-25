@@ -10,6 +10,8 @@
 
 @protocol TGLGuillotineMenuDelegate;
 
+@class TGLDelegateManager;
+
 typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
     TGLGuillotineMenuStyleTable,
     TGLGuillotineMenuStyleCollection,
@@ -48,9 +50,12 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
     CGPoint puntoAncoraggio;
     
     BOOL isPresentedFirst;
+    
+
 }
 
 @property (nonatomic, strong) UIViewController<TGLGuillotineMenuDelegate>  *currentViewController;
+@property (nonatomic, strong) TGLDelegateManager *delegateManager;
 
 @property (nonatomic, strong) UIButton  *menuButton;
 @property (nonatomic, strong) NSArray   *viewControllers;
@@ -68,7 +73,6 @@ typedef NS_ENUM(NSUInteger, TGLGuillotineMenuStyle) {
 
 // -
 - (BOOL)isOpen;
-
 // -
 - (void)switchMenuState;
 - (void)openMenu;

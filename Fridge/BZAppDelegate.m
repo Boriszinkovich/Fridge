@@ -71,14 +71,14 @@ static NSString *helpDevelopersControllerIdentifier = @"HelpDevelopersController
 
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Fridge.sqlite"];
     
-    NSArray *theDishArray = [BZDish MR_findAll];
+//    NSArray *theDishArray = [BZDish MR_findAll];
 //    [self methodLoadDishFromDishArray:theDishArray withindex:0];
 //    [self methodLoadDishStepsFromDishArray:theDishArray withindex:0];
 //    [self methodLoadRealDishStepsFromDishArray:theDishArray withindex:0];
 //    NSArray *theIngridientsArray = [BZIngridient MR_findAll];
 //    [self methodLoadIndgridientFromIngridientsArray:theIngridientsArray withindex:0];
 //    [[UINavigationBar appearance] setBarTintColor:[self colorWithHexString:@"728AA8"]];
-    NSLog(@"%ld",(long)[BZDish MR_countOfEntities]);
+//    NSLog(@"%ld",(long)[BZDish MR_countOfEntities]);
     
     
     

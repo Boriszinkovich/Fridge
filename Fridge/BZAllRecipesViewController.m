@@ -45,15 +45,6 @@ const NSInteger recipesLoadNumber = 20;
     {
         [theCell.theRightButton setSelected:NO];
     }
-//    BZRecipeCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.currentSelecterRaw]];
-//    if (isFavourite)
-//    {
-//        [cell.recipeButton setSelected:YES];
-//    }
-//    else
-//    {
-//        [cell.recipeButton setSelected:NO];
-//    }
 }
 
 - (void)detailViewDismissed
@@ -85,19 +76,17 @@ const NSInteger recipesLoadNumber = 20;
     theProgressView.theMinY = 68;
     theProgressView.theCenterX = [UIScreen mainScreen].bounds.size.width / 2;
     [theProgressView startAnimating];
-    // Do any additional setup after loading the view.
-//    [self.tableView registerNib:[UINib nibWithNibName:@"BZAllRecipesCell" bundle:nil] forCellReuseIdentifier:recipeCellIdentifier];
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.tableView addSubview:self.refreshControl];
-//    [self.refreshControl beginRefreshing];
-
-    //    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.tableView.estimatedRowHeight = 80;
-
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
+    
+    if (!self.isLoading && (!self.arrayOfDishes || !self.arrayOfDishes.count))
+    {
+        self.isLoading = YES;
+        NSLog(@"Load data AllRecipes - because of menuDidClose");
+        [self loadData];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -282,6 +271,7 @@ const NSInteger recipesLoadNumber = 20;
         {
             if (criticalNumber > [self.arrayOfDishes count])
             {
+                NSLog(@"Load data AllRecipes - because of scrollViewDidScroll");
                 [self loadData];
             }
         }
@@ -300,11 +290,13 @@ const NSInteger recipesLoadNumber = 20;
     NSFetchRequest *itemRequest = [BZDish MR_requestAllWithPredicate:predicate];
     [itemRequest setReturnsObjectsAsFaults:NO];
     NSArray *allDishes = [BZDish MR_executeFetchRequest:itemRequest];
-    NSInteger countDishes = [allDishes count];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                    {
-                       //   NSArray* allDishes = [BZDish MR_findAllWithPredicate:predicate];
-                       
+
+                       NSInteger countDishes = [allDishes count];
+                       NSLog(@"Load data AllRecipes - all fetched");
+
+
                        if (!weakSelf.nonFirstLoad)
                        {
 //                           sleep(1);
@@ -332,29 +324,23 @@ const NSInteger recipesLoadNumber = 20;
                                counter++;
                            }
                        }
-                       
-                       
+                       NSLog(@"Load data AllRecipes - non first load");
                        dispatch_async(dispatch_get_main_queue(), ^
-                                      {
-                                          [self.theProgressView stopAnimating];
-                                          self.theProgressView.alpha = 0;
-                                          weakSelf.isLoading = NO;
-                                          [weakSelf.arrayOfDishes addObjectsFromArray:arrayOfLoadDishes];
-                                          //       [weakSelf.tableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
-                                          [weakSelf.tableView reloadData];
-                                      });
-                       
-                       
+                       {
+                           self.isLoading = NO;
+                           [self.theProgressView stopAnimating];
+                           [self.arrayOfDishes addObjectsFromArray:arrayOfLoadDishes];
+                           [self.tableView reloadData];
+                           if (self.isFirstLoad)
+                           {
+                               self.isFirstLoad = NO;
+                               dispatch_async(dispatch_get_main_queue(), ^
+                                {
+                                    [self.tableView layoutSubviews];
+                                });
+                           }
+                       });
                    });
-}
-
-- (void)menuDidClose
-{
-    if (!self.isLoading)
-    {
-        self.isLoading = YES;
-        [self loadData];
-    }
 }
 
 #pragma mark - Standard Methods

@@ -9,6 +9,7 @@
 #import "TGLGuillotineMenu.h"
 
 #import "MenuCell.h"
+#import "TGLDelegateManager.h"
 
 @interface CustomCollectionViewCell : UICollectionViewCell
 
@@ -45,7 +46,8 @@ static NSInteger cellHeightForIphone = 110;
         self.viewControllers    = [vCs copy];
         self.menuTitles         = [titles copy];
         self.imagesTitles       = [imgTitles copy];
-        
+        self.delegateManager = [[TGLDelegateManager alloc] initWithViewControllers:self.viewControllers];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveAppDidBecomeActiveNotif:) name:UIApplicationDidBecomeActiveNotification object:nil];
        // self.menuColor = [UIColor colorWithRed:65.0 / 255.0 green:62.f / 255.f blue:79.f / 255.f alpha:1];
 //        self.menuColor = [self colorWithHexString:@"7388A4"];
         self.menuColor = [self colorWithHexString:@"739DC4"];
@@ -71,6 +73,11 @@ static NSInteger cellHeightForIphone = 110;
     self.menuStyle = style;
     
     return self;
+}
+
+- (void)setDelegate:(id<TGLGuillotineMenuDelegate>)delegate
+{
+    self.delegateManager.strongDelegate = delegate;
 }
 
 - (void)viewDidLoad {
@@ -143,7 +150,7 @@ static NSInteger cellHeightForIphone = 110;
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         {
 //             menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 , tableViewInset - 80 , tableViewW + 50, 4*self.cellHeight)];
-                         menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 , tableViewInset - 80 , tableViewW + 50, self.menuTitles.count * [MenuCell methodGetHeight])];
+                         menuTableView = [[UITableView alloc] initWithFrame:CGRectMake((screenW - tableViewW)/2 - 80 , tableViewInset - 80 , tableViewW + 50, self.menuTitles.count * [MenuCell methodGetHeight])];
         }
         else
         {
@@ -248,27 +255,28 @@ static NSInteger cellHeightForIphone = 110;
     return isOpen;
 }
 
-
 - (void)switchMenuState{
     
     NSLog(@"Menu Button Pressed");
     
     if (isOpen) {
         [self dismissMenu];
+        [self.delegateManager closeMenuWithButton];
     }else{
         [self openMenu];
+        [self.delegateManager openMenu];
     }
 }
 
 - (void)openMenu{
  //  screenW = [[UIScreen mainScreen] bounds].size.width + 1;
     menuView.bounds = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width + 1, [[UIScreen mainScreen] bounds].size.height);
-    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
-    
-    
-    if ([strongDelegate respondsToSelector:@selector(menuDidOpen)]) {
-        [strongDelegate menuDidOpen];
-    }
+//    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
+//
+//
+//    if ([strongDelegate respondsToSelector:@selector(menuDidOpen)]) {
+//        [strongDelegate menuDidOpen];
+//    }
     
     
     // - Menu Table
@@ -293,7 +301,10 @@ static NSInteger cellHeightForIphone = 110;
     pushOpen = [[UIPushBehavior alloc] initWithItems:@[menuView] mode:UIPushBehaviorModeContinuous];
     CGVector vectorOpen;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-    vectorOpen = CGVectorMake(0, 2200.0);
+    {
+        CGFloat coef = [UIScreen mainScreen].bounds.size.height / 568;
+        vectorOpen = CGVectorMake(0, 2200.0 * coef);
+    }
     else vectorOpen = CGVectorMake(0, 12000.0);
     pushOpen.pushDirection = vectorOpen;
     [animator addBehavior:pushOpen];
@@ -304,12 +315,12 @@ static NSInteger cellHeightForIphone = 110;
 - (void)dismissMenu{
     menuView.bounds = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width - 1, [[UIScreen mainScreen] bounds].size.height);
  //   screenW = [[UIScreen mainScreen] bounds].size.width;
-    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
-    
-    
-    if ([strongDelegate respondsToSelector:@selector(menuDidClose)]) {
-        [strongDelegate menuDidClose];
-    }
+//    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
+//
+//
+//    if ([strongDelegate respondsToSelector:@selector(menuDidClose)]) {
+//        [strongDelegate menuDidClose];
+//    }
     
     [animator removeBehavior:pushOpen];
     
@@ -317,7 +328,7 @@ static NSInteger cellHeightForIphone = 110;
     pushInit = [[UIPushBehavior alloc] initWithItems:@[menuView] mode:UIPushBehaviorModeInstantaneous];
     CGVector vector;
    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)  vector = CGVectorMake(900, 100);
-   else  vector = CGVectorMake(2400, 300);
+   else  vector = CGVectorMake(4000, 700);
     pushInit.pushDirection = vector;
     UIOffset offsetPush = UIOffsetMake(0, screenH/2);
     [pushInit setTargetOffsetFromCenter:offsetPush forItem:menuView];
@@ -385,31 +396,6 @@ static NSInteger cellHeightForIphone = 110;
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
-//    
-//    if(cell == nil){
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menuCell"];
-//    }
-//    
-//    cell.backgroundColor = [UIColor clearColor];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    
-//    cell.textLabel.textColor = [UIColor whiteColor];
-//    cell.textLabel.textAlignment = NSTextAlignmentLeft;
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-//    {
-//         cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:28.f];
-//    }
-//    else
-//    {
-//         cell.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:19.f];
-//    }
-//   
-//    cell.textLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
-//    cell.textLabel.numberOfLines = 0;
-//    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [self.imagesTitles objectAtIndex:indexPath.row]]];
-//    return cell;
 
     NSString *theMenuCellIdentifier = @"menuCell";
     MenuCell *theMenuCell = [tableView dequeueReusableCellWithIdentifier:theMenuCellIdentifier];
@@ -446,6 +432,7 @@ static NSInteger cellHeightForIphone = 110;
     [self presentController:[self.viewControllers objectAtIndex:indexPath.row]];
     self.navigationItem.title = [self.menuTitles objectAtIndex:indexPath.row];
     [self dismissMenu];
+    [self.delegateManager closeMenuWithIndex:indexPath.row];
 }
 
 #pragma mark - Collection view data source
@@ -503,16 +490,17 @@ static NSInteger cellHeightForIphone = 110;
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
-    
-    
-    if ([strongDelegate respondsToSelector:@selector(selectedMenuItemAtIndex:)]) {
-        [strongDelegate selectedMenuItemAtIndex:indexPath.row];
-    }
+//    id<TGLGuillotineMenuDelegate> strongDelegate = self.delegate;
+//
+//
+//    if ([strongDelegate respondsToSelector:@selector(selectedMenuItemAtIndex:)]) {
+//        [strongDelegate selectedMenuItemAtIndex:indexPath.row];
+//    }
     
     [self presentController:[self.viewControllers objectAtIndex:indexPath.row]];
     self.navigationItem.title = [self.menuTitles objectAtIndex:indexPath.row];
     [self dismissMenu];
+    [self.delegateManager closeMenuWithIndex:indexPath.row];
     
 }
 
@@ -537,7 +525,7 @@ static NSInteger cellHeightForIphone = 110;
 
 #pragma mark - Presentation Logic
 
-- (void)presentController:(UIViewController*)controller{
+- (void)presentController:(UIViewController<TGLGuillotineMenuDelegate> *)controller{
     
     if(self.currentViewController){
         [self removeCurrentViewController];
@@ -599,22 +587,41 @@ static NSInteger cellHeightForIphone = 110;
 
 - (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator
 {
-    if (self.isOpen)
+    if (!self.isOpen)
     {
-        if ([self.currentViewController respondsToSelector:@selector(menuDidOpen)])
-        {
-            [self.currentViewController menuDidOpen];
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:keyNotifMenuDidOpen object:nil];
+        [self.delegateManager menuHasClosed];
     }
-    else
+}
+
+#pragma mark - Notifications
+
+- (void)receiveAppDidBecomeActiveNotif:(NSNotification *)notification
+{
+    if (self.isFirstLoad)
     {
-        if ([self.currentViewController respondsToSelector:@selector(menuDidClose)])
+        self.isFirstLoad = NO;
+        UIViewController *firstVC = self.viewControllers.firstObject;
+        firstVC.view.accessibilityIdentifier = @"vc_id_0";
+        if (self.viewControllers.count > 1)
         {
-            [self.currentViewController menuDidClose];
+            [self loadIdent:1];
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:keyNotifMenuDidClose object:nil];
     }
+}
+
+- (void)loadIdent:(NSInteger)index
+{
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        UIViewController *currentVC = self.viewControllers[index];
+        currentVC.view.accessibilityIdentifier = [NSString stringWithFormat:@"vc_id_%zd", index];
+        NSInteger newIndex = index;
+        newIndex++;
+        if (self.viewControllers.count > newIndex)
+        {
+            [self loadIdent:newIndex];
+        }
+    });
 }
 
 @end

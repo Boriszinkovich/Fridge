@@ -82,6 +82,7 @@
 		CEE5C7E61C6912E6009C85BC /* BZWayToCookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7E51C6912E6009C85BC /* BZWayToCookCell.m */; };
 		CEE5C7EE1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5C7ED1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib */; };
 		CEE5C7F31C6938F4009C85BC /* BZRecipeStepsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5C7F21C6938F4009C85BC /* BZRecipeStepsCell.m */; };
+		CEF4D3F4205D9412004A733F /* TGLDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF4D3F3205D9412004A733F /* TGLDelegateManager.m */; };
 		CEFD5FBA1C64C0E6001B1621 /* BZIngridientAddedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD5FB91C64C0E6001B1621 /* BZIngridientAddedCell.m */; };
 		CEFD5FBD1C64C145001B1621 /* BZIngridientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD5FBC1C64C145001B1621 /* BZIngridientCell.m */; };
 		CEFE7B2C1C6CAB25007C2D07 /* BZChoosePortionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFE7B2B1C6CAB25007C2D07 /* BZChoosePortionsViewController.m */; };
@@ -257,6 +258,8 @@
 		CEE5C7ED1C691A77009C85BC /* BZRecipeDetailCellWayToCook.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BZRecipeDetailCellWayToCook.xib; sourceTree = "<group>"; };
 		CEE5C7F11C6938F4009C85BC /* BZRecipeStepsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZRecipeStepsCell.h; sourceTree = "<group>"; };
 		CEE5C7F21C6938F4009C85BC /* BZRecipeStepsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZRecipeStepsCell.m; sourceTree = "<group>"; };
+		CEF4D3F2205D9412004A733F /* TGLDelegateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TGLDelegateManager.h; sourceTree = "<group>"; };
+		CEF4D3F3205D9412004A733F /* TGLDelegateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TGLDelegateManager.m; sourceTree = "<group>"; };
 		CEFD5FB81C64C0E6001B1621 /* BZIngridientAddedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridientAddedCell.h; sourceTree = "<group>"; };
 		CEFD5FB91C64C0E6001B1621 /* BZIngridientAddedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZIngridientAddedCell.m; sourceTree = "<group>"; };
 		CEFD5FBB1C64C145001B1621 /* BZIngridientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZIngridientCell.h; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 			children = (
 				CE113FDC1C6142FC00DDD73A /* TGLGuillotineMenu.h */,
 				CE113FDD1C6142FC00DDD73A /* TGLGuillotineMenu.m */,
+				CEF4D3F2205D9412004A733F /* TGLDelegateManager.h */,
+				CEF4D3F3205D9412004A733F /* TGLDelegateManager.m */,
 			);
 			path = TGLMenu;
 			sourceTree = "<group>";
@@ -958,6 +963,7 @@
 				CEC63E9D1D6F6C1100C19668 /* NSDate+BZExtensions.m in Sources */,
 				CE043C781C6A645600A5B3DE /* BZDynamicHeightUILabel.m in Sources */,
 				CE9098AA1D8586EA0037F631 /* BZIngridient+CoreDataProperties.m in Sources */,
+				CEF4D3F4205D9412004A733F /* TGLDelegateManager.m in Sources */,
 				CEC63EAD1D6F6C1100C19668 /* UIColor+BZExtensions.m in Sources */,
 				CE9098AB1D8586EA0037F631 /* BZIngridient.m in Sources */,
 				CEC63EA01D6F6C1100C19668 /* NSObject+BZExtensions.m in Sources */,

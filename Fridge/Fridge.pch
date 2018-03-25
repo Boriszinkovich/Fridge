@@ -13,6 +13,7 @@
 #import "BZExtensionsManager.h"
 #import "MKStoreKit.h"
 
+#define keyNotifMenuWillOpen @"keyNotifMenuWillOpen"
 #define keyNotifMenuDidOpen @"keyNotifMenuDidOpen"
 #define keyNotifMenuDidClose @"keyNotifMenuDidClose"
 #define keyInAppPurchaseIdentifier @"keyInAppPurchaseIdentifier"

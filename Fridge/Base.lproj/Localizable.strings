@@ -12,6 +12,7 @@
 "search" = "Search(%zd)";
 "Cancel" = "Cancel";
 "Clear all" = "Clear all";
+"Clear" = "Clear";
 "PopSort" = "Sort by popularity";
 "DateAddingSort" = "Sort by date of adding";
 

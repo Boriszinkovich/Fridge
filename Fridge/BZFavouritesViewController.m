@@ -33,20 +33,6 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 #pragma mark - Class Methods (Private)
 
-//- (void)changedFavourite:(BOOL)isFavourite
-//{
-//    [super changedFavourite:isFavourite];
-//    BZRecipeFavouritesCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.currentSelecterRaw]];
-//    if (isFavourite)
-//    {
-//        [cell.recipeButton setSelected:YES];
-//    }
-//    else
-//    {
-//        [cell.recipeButton setSelected:NO];
-//    }
-//}
-
 - (void)detailViewDismissed
 {
     self.isNeedUpdate = YES;
@@ -76,10 +62,11 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
     theProgressView.theMinY = 68;
     theProgressView.theCenterX = [UIScreen mainScreen].bounds.size.width / 2;
     [theProgressView startAnimating];
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveFavouriteChangeNotification:) name:theDishFavouriteKey object:nil];
     [self.tableView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self loadDataIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -265,9 +252,6 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 {
     self.isLoading = YES;
     __weak BZRecipeViewController *weakSelf = self;
-    /*  NSPredicate* predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
-     NSFetchRequest *itemRequest = [BZDish MR_requestAllWithPredicate:predicate];
-     [itemRequest setReturnsObjectsAsFaults:NO];*/
     NSArray *arrayOfLoadDishes = [self requestWithOffset:[weakSelf.arrayOfDishes count]];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                    {
@@ -281,17 +265,19 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
                        
                        dispatch_async(dispatch_get_main_queue(), ^
                                       {
-//                                          if ([self.refreshControl isRefreshing])
-//                                          {
-//                                              [self.refreshControl endRefreshing];
-//                                          }
-//                                          [self.refreshControl removeFromSuperview];
-//                                          self.refreshControl = 4;
                                           [self.theProgressView stopAnimating];
                                           self.theProgressView.alpha = 0;
                                           weakSelf.isLoading = NO;
                                           [weakSelf.arrayOfDishes addObjectsFromArray:arrayOfLoadDishes];
                                           [weakSelf.tableView reloadData];
+                                          if (self.isFirstLoad)
+                                          {
+                                              self.isFirstLoad = NO;
+                                              dispatch_async(dispatch_get_main_queue(), ^
+                                              {
+                                                  [self.tableView layoutSubviews];
+                                              });
+                                          }
                                       });
                    });
     
@@ -323,10 +309,8 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
         if (theEdgeInsets.top != 0)
         {
             self.tableView.contentInset = UIEdgeInsetsZero;
-            //            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
             if (!self.currentSelecterRaw)
             {
-                //                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
                 [self.tableView setContentOffset:self.theLastContentOffset];
             }
         }
@@ -335,24 +319,49 @@ static NSString* recipeFavouriteCellIdentifier = @"recipeFavouriteCellIdentifier
 
 - (void)menuDidClose
 {
-    if (!self.isLoading)
+//    if (!self.isLoading)
+//    {
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
+//        self.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
+//        if (self.numberOfFavourites != [self.arrayOfDishes count])
+//        {
+//            [self.arrayOfDishes removeAllObjects];
+//            if (!self.isLoading)
+//            {
+//                NSLog(@"Load data FavouriteController - all fetched");
+//                [self loadData];
+//                self.isLoading = YES;
+//            }
+//        }
+//        else
+//        {
+//            [self.theProgressView stopAnimating];
+//        }
+//
+//    }
+}
+
+- (void)loadDataIfNeeded
+{
+    if (self.isLoading)
     {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
-        self.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
-        if (self.numberOfFavourites != [self.arrayOfDishes count])
+        return;
+    }
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isFavourite == %@", [NSString stringWithFormat:@"%ld",(long)1]];
+    self.numberOfFavourites = [BZDish MR_countOfEntitiesWithPredicate:predicate];
+    if (self.numberOfFavourites != [self.arrayOfDishes count])
+    {
+        [self.arrayOfDishes removeAllObjects];
+        if (!self.isLoading)
         {
-            [self.arrayOfDishes removeAllObjects];
-            if (!self.isLoading)
-            {
-                [self loadData];
-                self.isLoading = YES;
-            }
+            NSLog(@"Load data FavouriteController - all fetched");
+            [self loadData];
+            self.isLoading = YES;
         }
-        else
-        {
-            [self.theProgressView stopAnimating];
-        }
-        
+    }
+    else
+    {
+        [self.theProgressView stopAnimating];
     }
 }
 

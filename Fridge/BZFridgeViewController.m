@@ -16,6 +16,11 @@
 
 #import <MagicalRecord/MagicalRecord.h>
 
+typedef NS_ENUM(NSUInteger, ActionSheetType) {
+    ActionSheetTypeLongPress,
+    ActionSheetTypeDelete
+};
+
 @interface BZFridgeViewController ()
 
 @property (strong, nonatomic) NSMutableArray *sectionTitleArray;
@@ -86,15 +91,16 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
     self.arrayOfSearchedIngridients = [NSMutableArray array];
     [self loadData];
     [self loadIngridientsDataWithSearchDescriptor:nil];
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidOpenNotification:) name:keyNotifMenuDidOpen object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuDidCloseNotification:) name:keyNotifMenuDidClose object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMenuWillOpenNotif:) name:keyNotifMenuWillOpen object:nil];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
@@ -114,14 +120,16 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
 
 #pragma mark - Notifications
 
-- (void)receiveMenuDidOpenNotification:(NSNotification *)theNotification
+- (void)receiveMenuWillOpenNotif:(NSNotification *)theNotification
 {
-    
-}
-
-- (void)receiveMenuDidCloseNotification:(NSNotification *)theNotification
-{
-    
+    if (self.searchIngridient.isFirstResponder)
+    {
+        UIButton *cancelButton = [self methodGetSearchBarCancelButton];
+        if (cancelButton)
+        {
+            [cancelButton sendActionsForControlEvents: UIControlEventTouchUpInside];
+        }
+    }
 }
 
 #pragma mark - Gestures
@@ -157,6 +165,7 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
                                                               delegate:self
                                                      cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
                                             destructiveButtonTitle:NSLocalizedString(@"Clear all", @"") otherButtonTitles:NSLocalizedString(@"PopSort", @""), NSLocalizedString(@"DateAddingSort", @""),nil];
+        actSheet.tag = ActionSheetTypeLongPress;
         [actSheet showInView:self.view];
     }
     
@@ -324,7 +333,17 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 1)
+    if (indexPath.section == 0)
+    {
+        UIActionSheet *actSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                              delegate:self
+                                                     cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+                                                destructiveButtonTitle:NSLocalizedString(@"Clear", @"") otherButtonTitles:nil];
+        actSheet.tag = ActionSheetTypeDelete;
+        actSheet.theID = indexPath.row;
+        [actSheet showInView:self.view];
+    }
+    else if (indexPath.section == 1)
     {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark)
@@ -368,18 +387,8 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    
     [searchBar setShowsCancelButton:YES animated:YES];
-    NSArray *searchBarSubViews = [[self.searchIngridient.subviews objectAtIndex:0] subviews];
-    UIButton *cancelButton;
-    for (UIView *subView in searchBarSubViews)
-    {
-        if ([subView isKindOfClass:NSClassFromString(@"UINavigationButton")])
-        {
-            cancelButton = (UIButton*)subView;
-            cancelButton.bounds = CGRectMake(cancelButton.bounds.origin.x - 10, cancelButton.bounds.origin.y, cancelButton.bounds.size.width + 10, cancelButton.bounds.size.height);
-        }
-    }
+    UIButton *cancelButton = [self methodGetSearchBarCancelButton];
     if (cancelButton)
     {
         [cancelButton setTitle:@"Отмена" forState:UIControlStateNormal];
@@ -418,32 +427,42 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
 {
     NSLog(@"%@ (Кнопка по индексу %ld)",[actionSheet buttonTitleAtIndex:buttonIndex],(long)buttonIndex);
     if (buttonIndex == actionSheet.cancelButtonIndex) [actionSheet dismissWithClickedButtonIndex:actionSheet.cancelButtonIndex animated:YES];
-    if (buttonIndex == 1)
+    if (actionSheet.tag == ActionSheetTypeDelete)
     {
-        [self.arrayOfChosedIngridients removeAllObjects];
-        NSSortDescriptor *popularDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dishNumber" ascending:NO];
-        [self loadIngridientsDataWithSearchDescriptor:popularDescriptor];
-        
-    }
-    if (buttonIndex == 2)
-    {
-        [self.arrayOfChosedIngridients removeAllObjects];
-        NSSortDescriptor *popularDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateAddedToFridge" ascending:NO];
-        [self loadIngridientsDataWithSearchDescriptor:popularDescriptor];
-        
-    }
-    if (buttonIndex == actionSheet.destructiveButtonIndex)
-    {
-        for (BZIngridient* ingridient in self.arrayOfChosedIngridients)
-        {
-            ingridient.isInFridge = [NSNumber numberWithBool:NO];
-            
-        }
+        BZIngridient *ingridient = [self.arrayOfChosedIngridients objectAtIndex:actionSheet.theID];
+        ingridient.isInFridge = [NSNumber numberWithBool:NO];
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-        [self.arrayOfChosedIngridients removeAllObjects];
+        [self.arrayOfChosedIngridients removeObjectAtIndex:actionSheet.theID];
         [self.tableView reloadData];
     }
-    
+    else if (actionSheet.tag == ActionSheetTypeLongPress)
+    {
+        if (buttonIndex == 1)
+        {
+            [self.arrayOfChosedIngridients removeAllObjects];
+            NSSortDescriptor *popularDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dishNumber" ascending:NO];
+            [self loadIngridientsDataWithSearchDescriptor:popularDescriptor];
+            
+        }
+        if (buttonIndex == 2)
+        {
+            [self.arrayOfChosedIngridients removeAllObjects];
+            NSSortDescriptor *popularDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateAddedToFridge" ascending:NO];
+            [self loadIngridientsDataWithSearchDescriptor:popularDescriptor];
+            
+        }
+        if (buttonIndex == actionSheet.destructiveButtonIndex)
+        {
+            for (BZIngridient* ingridient in self.arrayOfChosedIngridients)
+            {
+                ingridient.isInFridge = [NSNumber numberWithBool:NO];
+                
+            }
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+            [self.arrayOfChosedIngridients removeAllObjects];
+            [self.tableView reloadData];
+        }
+    }
 }
 
 - (void)methodShowNoIngridientsDialog
@@ -463,6 +482,21 @@ static NSString *ingridientAddedCell = @"ingridientAddedCell";
 #pragma mark - Methods (Public)
 
 #pragma mark - Methods (Private)
+
+- (UIButton *)methodGetSearchBarCancelButton
+{
+    NSArray *searchBarSubViews = [[self.searchIngridient.subviews objectAtIndex:0] subviews];
+    UIButton *cancelButton;
+    for (UIView *subView in searchBarSubViews)
+    {
+        if ([subView isKindOfClass:NSClassFromString(@"UINavigationButton")])
+        {
+            cancelButton = (UIButton*)subView;
+            cancelButton.bounds = CGRectMake(cancelButton.bounds.origin.x - 10, cancelButton.bounds.origin.y, cancelButton.bounds.size.width + 10, cancelButton.bounds.size.height);
+        }
+    }
+    return cancelButton;
+}
 
 - (void)loadData
 {

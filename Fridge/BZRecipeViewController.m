@@ -10,11 +10,13 @@
 
 #import "BZRecipeCell.h"
 #import "BZDish.h"
+#import "TGLGuillotineMenu.h"
 
 #import <MagicalRecord/MagicalRecord.h>
 
 @interface BZRecipeViewController ()
 
+@property (nonatomic, strong) TGLGuillotineMenu *menu;
 
 @end
 
@@ -54,7 +56,8 @@ static CGFloat cellSpacing = 20;
     self.arrayOfDishes = [NSMutableArray array];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    UINavigationController *rootNavVC = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    self.menu = (TGLGuillotineMenu *)rootNavVC.viewControllers.firstObject;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -83,6 +86,16 @@ static CGFloat cellSpacing = 20;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return nil;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
